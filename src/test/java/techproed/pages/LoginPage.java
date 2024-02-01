@@ -17,7 +17,6 @@ public class LoginPage {
 
     @FindBy(xpath = "//button[@name='login']")
     public WebElement signButtoN;
-
     @FindBy(xpath = "//*[@class='cart-toggle']")// GUYS PLS CHECK THIS XPATH ----- 2 ELEMENTS COME UP IN a TAG
     public WebElement cart;
 
