@@ -1,5 +1,6 @@
 package techproed.pages;
 
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -43,5 +44,6 @@ public class DashboardPage {
 
     @FindBy(partialLinkText = "edit-address/shipping/")
     public WebElement editShippingAddress;
+
 
 }
