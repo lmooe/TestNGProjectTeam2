@@ -1,4 +1,4 @@
 package techproed.pages;
 
-public class AddressPage {
+public class VenderPage {
 }
