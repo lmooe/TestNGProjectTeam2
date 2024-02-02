@@ -27,7 +27,7 @@ public class DataProviderUtils {
     }
 
     //    Data Provider to get the USER credentials from the EXCEL SHEET called user_data ( for Day18_DataProvider2 )
-    // to enable parallel testing we use @DataProvider (parallel = true) but causes problem  so its not recommended
+    // to enable parallel testing we use @DataProvider (parallel = true) but causes problem, so it's not recommended
     @DataProvider
     public Object[][] userData(){
         String excelPath = "./resources/data_sheet.xlsx";
@@ -37,5 +37,4 @@ public class DataProviderUtils {
 
         return userInfo;
     }
-
 }

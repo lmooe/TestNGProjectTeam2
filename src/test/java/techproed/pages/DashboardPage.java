@@ -43,4 +43,5 @@ public class DashboardPage {
 
     @FindBy(partialLinkText = "edit-address/shipping/")
     public WebElement editShippingAddress;
+
 }
