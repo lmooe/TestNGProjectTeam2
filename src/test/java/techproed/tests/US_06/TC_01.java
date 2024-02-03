@@ -41,9 +41,9 @@ public class TC_01 {
         HomePage homePage = new HomePage();
 //        BrowserUtils.clickWithTimeOut(homePage.singin, 1);
         BrowserUtils.clickWithTimeOut(Driver.getDriver().findElement(By.xpath("//*[text()='Sign In']")), 1);
-//        BrowserUtils.sendKeysWithTimeout(homePage.username, ConfigReader.getProperty("username"), 1);
 //        BrowserUtils.sendKeysWithTimeout(homePage.password, ConfigReader.getProperty("username"), 1);
-        BrowserUtils.clickWithTimeOut(homePage.signButton, 1);
+//        BrowserUtils.sendKeysWithTimeout(homePage.password, ConfigReader.getProperty("password"), 1);
+//        BrowserUtils.clickWithTimeOut(homePage.signButton, 1);
 //    Click in the search box, enter product name (Tshirt) and click enter
         BrowserUtils.sendKeysWithTimeout(homePage.searchBox, "Tshirt", 1);
 //    Searchbox locator //input[@class='form-control']
