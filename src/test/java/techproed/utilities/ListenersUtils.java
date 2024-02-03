@@ -1,11 +1,9 @@
 package techproed.utilities;
-
 import org.testng.*;
 import org.testng.annotations.ITestAnnotation;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-
 public class ListenersUtils implements ITestListener, IRetryAnalyzer, IAnnotationTransformer {
     @Override
     public void onStart(ITestContext context) {
@@ -71,5 +69,3 @@ public class ListenersUtils implements ITestListener, IRetryAnalyzer, IAnnotatio
         annotation.setRetryAnalyzer(ListenersUtils.class);
     }
 }
-
-
