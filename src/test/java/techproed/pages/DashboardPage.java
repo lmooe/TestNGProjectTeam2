@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class DashboardPage {
 
+
+
     @FindBy(xpath = "//a[text()='Dashboard']")
     public WebElement dashboard;
 
