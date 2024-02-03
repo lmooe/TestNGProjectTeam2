@@ -3,7 +3,7 @@ package techproed.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage {
+public class HomePage {
 
     @FindBy(xpath = "//*[@ class='login inline-type']")
     public WebElement singin;
@@ -16,7 +16,8 @@ public class LoginPage {
     public WebElement password;
 
     @FindBy(xpath = "//button[@name='login']")
-    public WebElement signButtoN;
+    public WebElement signButton;
+
     @FindBy(xpath = "//*[@class='cart-toggle']")// GUYS PLS CHECK THIS XPATH ----- 2 ELEMENTS COME UP IN a TAG
     public WebElement cart;
 
@@ -26,10 +27,14 @@ public class LoginPage {
     @FindBy(xpath = "//a[@class='login logout inline-type']")
     public WebElement signOut;
 
-    //----------- I GIVE UP :(  WHO FINDS THE XPATH FOR  "SEARCH" WEBELEMENT  WILL GET A CHOCOLATE FROM ME
 
     @FindBy(xpath = "//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wcfm-store-manager']")
     public WebElement storeMng; //check this one please !!
 
+    // ************************
+    @FindBy ( xpath="//div[@class='search-wrapper hs-simple']") //  this one shows 1:1 i am still not sure pls check !!!
+    public WebElement searchBox;
+
+    //**********************
 
 }
