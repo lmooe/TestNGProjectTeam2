@@ -28,4 +28,10 @@ public class ProductPage {
     @FindBy(xpath = "//a[@data-title='Add to wishlist']")
     public WebElement wishListButton;
 
+//  Shopping Cart Sidebar
+    @FindBy (partialLinkText = "cart")
+    public WebElement viewCartButton;
+
+    @FindBy (linkText = "Checkout")
+    public WebElement checkoutButton;
 }

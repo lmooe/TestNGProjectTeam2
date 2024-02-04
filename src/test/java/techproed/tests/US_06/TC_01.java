@@ -1,6 +1,7 @@
 package techproed.tests.US_06;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -9,6 +10,7 @@ import org.testng.annotations.Test;
 import techproed.pages.AddNewProductPage;
 import techproed.pages.HomePage;
 import techproed.pages.ProductPage;
+import techproed.pages.ShoppingCartPage;
 import techproed.utilities.*;
 
 public class TC_01 {
@@ -21,8 +23,8 @@ public class TC_01 {
     Click 'Add to Cart' button
     Verify the message '"Tshirt" has been added to your cart.' appears
     Click on Cart icon
-    Verify product is visible on Shopping Cart sidebar
     Click on View Cart button
+    Verify product is visible in Shopping Cart
     Click on '+' button
     Verify quantity amount has increased
     Click on Update Cart button
@@ -36,40 +38,46 @@ public class TC_01 {
 
     HomePage homePage = new HomePage();
     ProductPage productPage = new ProductPage();
+    ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
 
     @BeforeMethod
     public void setUp(){
 //    User is on www.allovercommerce.com
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+//    User has signed in.
+        BrowserUtils.clickWithTimeOut(homePage.singIn1, 1);
+        homePage.username.click();
+        homePage.username.clear();
+        homePage.username.sendKeys(ConfigReader.getProperty("user1"));
+        homePage.password.click();
+        homePage.password.clear();
+        homePage.password.sendKeys(ConfigReader.getProperty("pass1"));
+        BrowserUtils.clickWithTimeOut(homePage.signInButton, 1);
+        WaitUtils.waitFor(3);
     }
 
     @Test
     public void TC_01(){
-//    User has signed in.
-        BrowserUtils.clickWithTimeOut(homePage.singIn1, 1);
-        Driver.getDriver().findElement(By.id("username")).click();
-        Driver.getDriver().findElement(By.id("username")).clear();
-        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("user1"));
-        Driver.getDriver().findElement(By.id("password")).click();
-        Driver.getDriver().findElement(By.id("password")).clear();
-        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("pass1"));
-        BrowserUtils.clickWithTimeOut(homePage.signInButton, 1);
-
-//        BrowserUtils.sendKeysWithTimeout(homePage.username, ConfigReader.getProperty("user1"), 1);
-//        BrowserUtils.sendKeysWithTimeout(homePage.password, ConfigReader.getProperty("pass1"), 1);
-//        BrowserUtils.clickWithTimeOut(homePage.signInButton, 1);
-
 //    Click in the search box, enter product name (Tshirt) and click enter
-//        BrowserUtils.sendKeysWithTimeout(homePage.searchBox, "Tshirt", 1);
-//    Searchbox locator //input[@class='form-control']
+        homePage.searchBox.click();
+        homePage.searchBox.clear();
+        homePage.searchBox.sendKeys(ConfigReader.getProperty("product1"), Keys.ENTER);
+        WaitUtils.waitFor(2);
 //    Click 'Add to Cart' button
-//        BrowserUtils.clickWithTimeOut(productPage.addToCartButton, 1);
+        productPage.addToCartButton.click();
 //    Verify the message "'Tshirt' has been added to your cart." appears
-//        String successMessage = productPage.addedToCartAlert.getText();
-//        Assert.assertEquals(successMessage,"VIEW CART \"Tshirt\" has been added to your cart.");
+        String successMessage = productPage.addedToCartAlert.getText();
+        System.out.println(successMessage);
+        Assert.assertTrue(successMessage.contains("has been added to your cart."));
 //    Click on Cart icon
-//    Verify product is visible on Shopping Cart sidebar
+        homePage.cart.click();
+        WaitUtils.waitFor(2);
 //    Click on View Cart button
+        ActionUtils.actionsScrollRight();
+        productPage.viewCartButton.click();
+//    Verify product is visible in Shopping Cart
+        String productInCart = shoppingCartPage.productAddedInCart.getText();
+        Assert.assertTrue(productInCart.contains(ConfigReader.getProperty("product1")));
 //    Click on '+' button
 //    Verify quantity amount has increased
 //    Click on Update Cart button
