@@ -2,6 +2,7 @@ package techproed.tests.US_06;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -12,6 +13,9 @@ import techproed.pages.HomePage;
 import techproed.pages.ProductPage;
 import techproed.pages.ShoppingCartPage;
 import techproed.utilities.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TC_01 {
 
@@ -26,7 +30,6 @@ public class TC_01 {
     Click on View Cart button
     Verify product is visible in Shopping Cart
     Click on '+' button
-    Verify quantity amount has increased
     Click on Update Cart button
     Click on 'Proceed to Checkout' button
     Verify country, street address, town, postcode and phone have been populated
@@ -79,12 +82,9 @@ public class TC_01 {
         System.out.println(productInCart);
         Assert.assertTrue(productInCart.contains(ConfigReader.getProperty("product1")));
 //    Click on '+' button
-        "//table[@id='table1']//tr//td[5]"
-
-
-//    Verify quantity amount has increased
-
+        shoppingCartPage.plusButton.click();
 //    Click on Update Cart button
+        shoppingCartPage.updateCartButton.click();
 //    Click on 'Proceed to Checkout' button
 //    Verify country, street address, town, postcode and phone have been populated
 //    Verify 'Payment Methods' are visible
