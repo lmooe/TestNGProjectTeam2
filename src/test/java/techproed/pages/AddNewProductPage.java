@@ -125,6 +125,74 @@ public class AddNewProductPage{
 //    @FindBy(xpath = "//*[@id='catalog_visibility']/option")
 //    public List<WebElement> allCatVisibilityDropdownOptions;
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Inventory Section
+
+    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[1]")
+    public WebElement menuInventory;
+
+    @FindBy (id = "sku")
+    public WebElement sku;
+
+    @FindBy (id = "manage_stock")
+    public WebElement manageStock;
+
+    @FindBy(id = "stock_qty")
+    public WebElement stockQuantity;
+
+    @FindBy(id = "sold_individually")
+    public WebElement soldIndividually;
+
+
+//Shipping Section
+
+    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[4]")
+    public WebElement menuShipping;
+
+    @FindBy (id = "weight")
+    public WebElement weight;
+
+    @FindBy (id = "length")
+    public WebElement length;
+
+    @FindBy (id = "width")
+    public WebElement width;
+
+    @FindBy (id = "height")
+    public WebElement height;
+
+    // >>>>> PROCESSING TIME DROPDOWN LIST BAK
+
+
+// Attributes Section
+
+    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[5]")
+    public WebElement menuAttributes;
+
+    @FindBy (id = "attributes_is_active_1")
+    public WebElement colorSelectBox;
+
+    @FindBy (id = "attributes_is_active_2")
+    public WebElement sizeSelectBox;
+
+    @FindBy (xpath = "(//li[@class='select2-search select2-search--inline'])[2]")
+    public WebElement colorType;
+
+    @FindBy (xpath = "(//li[@class='select2-search select2-search--inline'])[3]")
+    public WebElement sizeType;
+
+//
+    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[7]")
+    public WebElement menuLinked;
+
+    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[8]")
+    public WebElement menuSeo;
+
+    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[10]")
+    public WebElement menuAdvanced;
+
+
 
 }
 
