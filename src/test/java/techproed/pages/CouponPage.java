@@ -7,6 +7,7 @@ import techproed.utilities.Driver;
 
 public class CouponPage {
 
+
     public CouponPage (){
 
         PageFactory.initElements(Driver.getDriver(),this);
@@ -65,4 +66,5 @@ public class CouponPage {
 
     @FindBy(id = "wcfm_coupon_manager_submit_button")
     WebElement submitButton;
+
 }
