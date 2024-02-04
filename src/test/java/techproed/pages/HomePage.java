@@ -10,6 +10,7 @@ public class HomePage {
     public HomePage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
     @FindBy(xpath = "//*[text()='Sign In']")      //  OR ==> "//a[@class='login inline-type']")
     public WebElement singIn1;
 

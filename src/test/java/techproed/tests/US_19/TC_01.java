@@ -1,5 +1,6 @@
 package techproed.tests.US_19;
 
+import org.openqa.selenium.Keys;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
@@ -10,30 +11,22 @@ import techproed.utilities.WaitUtils;
 
 public class TC_01 {
 
-    HomePage homepage = new HomePage();
-    @BeforeTest
-    public void setUP(){
+
+    @Test
+    public void test01(){
+
+        HomePage homepage = new HomePage();
 
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-       // homepage.singIn1.click;
-      //  BrowserUtils.clickWithTimeOut(homepage.singIn1,2);
+
+        homepage.username.sendKeys(ConfigReader.getProperty("username"),Keys.TAB,ConfigReader.getProperty("password"),Keys.ENTER);
+
+
 
 
     }
 
-  //  @Test
-   //public void TC_01test(){
 
-
-
-     //   homepage.singIn1.click;
-      //  BrowserUtils.clickWithTimeOut(homepage.singIn1,2);
-       // Driver.getDriver().findElement(xpath "//span[text()='Sign In']").click();
-        //BrowserUtils.clickWithTimeOut(homepage.singIn1,2);
-
-
-      //  homepage.singIn1.click();
-       // BrowserUtils.clickWithTimeOut(homepage.singIn1,2);
 
 
 
