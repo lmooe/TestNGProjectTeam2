@@ -164,6 +164,8 @@ public class AddNewProductPage{
 
     // >>>>> PROCESSING TIME DROPDOWN LIST BAK
 
+    @FindBy(id = "_wcfmmp_processing_time" )
+    public WebElement processingTime;
 
 // Attributes Section
 
