@@ -2,7 +2,7 @@ package techproed.utilities;
 
 import org.testng.annotations.DataProvider;
 
-public class DataProviderUtils {
+public class    DataProviderUtils {
 
     //    Data Provider Method to get the employee credentials
     @DataProvider
