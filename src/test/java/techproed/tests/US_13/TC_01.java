@@ -1,75 +1,35 @@
 package techproed.tests.US_13;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
 public class TC_01 {
-    package techproed.pages;
-
-import org.apache.commons.math3.stat.descriptive.summary.Product;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-    public class AddNewProductPage {
-
-
-        @FindBy(xpath = "//*[@id='product_type']")
-        public WebElement SimpleProduct;
-
-        @FindBy(xpath = "//*[@id='product_type']")
-        public WebElement VariableProduct;
-
-        @FindBy(xpath = "//*[@id='product_type']")
-        public WebElement GroupedProduct;
-
-        @FindBy(xpath = "//*[@id='product_type']")
-        public WebElement ExternalAffiliateProduct;
-
-        @FindBy(xpath = "//*[@id='featured_img_display']")
-        public WebElement ProductImage;
-
-
-        @FindBy(xpath = "//*[@id='gallery_img_gimage_0_display']")
-        public WebElement addnewproductgallery;
-
-        @FindBy(xpath = "//*[@id='is_virtual']")
-        public WebElement checkboxvirtual;
-
-        @FindBy(xpath = "//*[@id='is_downloadable']")
-        public WebElement checkboxdownloadable;
 
 
 
-        @FindBy(xpath = "//*[@id='pro_title']")
-        public WebElement producttitle;
+    // US_13 : "Vendor should be able to add Shipping Address. (My Account > Addresses > Shipping Address)"
 
+    // Acceptance Criteria : Vendor should enter First name, Last name, Country/Region, Street address, Town / City, State, ZIP Code.
 
-        @FindBy(xpath = "//[@id='regular_price']")
-        public WebElement regularprice;
+    // TC_01 : Vendor should enter First name, Last name, Country/Region, Street address, Town / City, State, ZIP Code.
 
-        @FindBy(xpath = "//[@id='sale_price']")
-        public WebElement saleprice;
-
-        @FindBy(xpath = "//[@id='wp-excerpt-wrap']")
-        public WebElement Shortdescription;
-
-        @FindBy(xpath = "//[@id='wp-description-wrap']")
-        public WebElement description;
-
-        @FindBy(xpath = "//[@id='product_cats_checklist']")
-        public WebElement categories;
-
-        @FindBy(xpath = "//[@id='wp-product_brand']")
-        public WebElement productbrands;
-
-
-
-
-
-
-
-
-
-
-    }
+    /*
+    Given User should navigate to Allover Commerce url
+    When Click on sign in button
+    And Enter username into username/email box
+    And Enter password into password box
+    And Click on sign in button
+    And Click on user icon to navigate My Account page
+    And Click on Addresses button
+    And Click add button under the Shipping Address
+    And Enter firstname into First name box
+    And Enter lastname into Last name box
+    And Enter Country/Region into County/Region box
+    And Enter a Street address into Street address box
+    And Enter a Town/City into Town/City box
+    And Enter a state into State box
+    And Enter a Zip Code into ZipCode box
+    And Click on save address button
+    Then Verify data has been entered in all required blank fields
+     */
 }
+
+
+
