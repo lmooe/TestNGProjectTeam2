@@ -29,7 +29,7 @@ public class ProductPage {
     public WebElement wishListButton;
 
 //  Shopping Cart Sidebar
-    @FindBy (partialLinkText = "cart")
+    @FindBy (xpath = "//a[@class='button wc-forward']")
     public WebElement viewCartButton;
 
     @FindBy (linkText = "Checkout")

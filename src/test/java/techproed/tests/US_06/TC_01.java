@@ -57,7 +57,7 @@ public class TC_01 {
     }
 
     @Test
-    public void TC_01(){
+    public void TC_01() throws InterruptedException {
 //    Click in the search box, enter product name (Tshirt) and click enter
         homePage.searchBox.click();
         homePage.searchBox.clear();
@@ -73,13 +73,17 @@ public class TC_01 {
         homePage.cart.click();
         WaitUtils.waitFor(2);
 //    Click on View Cart button
-        ActionUtils.actionsScrollRight();
-        productPage.viewCartButton.click();
+        JSUtils.JSclickWithTimeout(productPage.viewCartButton);
 //    Verify product is visible in Shopping Cart
         String productInCart = shoppingCartPage.productAddedInCart.getText();
+        System.out.println(productInCart);
         Assert.assertTrue(productInCart.contains(ConfigReader.getProperty("product1")));
 //    Click on '+' button
+        "//table[@id='table1']//tr//td[5]"
+
+
 //    Verify quantity amount has increased
+
 //    Click on Update Cart button
 //    Click on 'Proceed to Checkout' button
 //    Verify country, street address, town, postcode and phone have been populated
