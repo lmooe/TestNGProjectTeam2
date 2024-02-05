@@ -2,6 +2,7 @@ package techproed.tests.US_06;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
@@ -52,4 +53,10 @@ public class TC_02 {
     System.out.println(successMessage);
     Assert.assertTrue(successMessage.contains("No products were found"));
 }
+
+    @AfterMethod
+    public void tearDown() {
+        Driver.closeDriver();
+    }
+
 }

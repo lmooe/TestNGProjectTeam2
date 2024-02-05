@@ -5,13 +5,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import techproed.pages.AddNewProductPage;
-import techproed.pages.HomePage;
-import techproed.pages.ProductPage;
-import techproed.pages.ShoppingCartPage;
+import techproed.pages.*;
 import techproed.utilities.*;
 
 import java.util.ArrayList;
@@ -23,9 +21,9 @@ public class TC_01 {
     Pre-condition:
     User has signed in.
 
-    Click in the search box, enter product name (Tshirt) and click enter
+    Click in the search box, enter product name and click enter
     Click 'Add to Cart' button
-    Verify message '"Tshirt" has been added to your cart.' appears
+    Verify message "VIEW CART '(product name)' has been added to your cart." appears
     Click on Cart icon
     Click on View Cart button
     Verify product is visible in Shopping Cart
@@ -33,16 +31,17 @@ public class TC_01 {
     Click on Update Cart button
     Verify message "Cart updated." appears
     Click on 'Proceed to Checkout' button
-    Verify country, street address, town, postcode and phone have been populated
+    Verify country, street address lines 1 & 2 , town, postcode and phone have been populated
     Verify 'Payment Methods' are visible
     Select 'Pay at the door'
     Select 'Place order'
-    On order complete page verify 'Thank you. Your order has been received.' is visible
+    On order complete page, verify 'Thank you. Your order has been received.' is visible
      */
 
     HomePage homePage = new HomePage();
     ProductPage productPage = new ProductPage();
     ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+    CheckOutPage checkOutPage = new CheckOutPage();
 
     @BeforeMethod
     public void setUp(){
@@ -92,15 +91,29 @@ public class TC_01 {
         Assert.assertEquals(cartUpdateMsg, "Cart updated.");
 //    Click on 'Proceed to Checkout' button
         JSUtils.JSclickWithTimeout(shoppingCartPage.checkoutButton);
-//    Verify country, street address, town, postcode and phone have been populated
-
+//    Verify country, street address lines 1 & 2, town, county, postcode and phone have been populated
+        Assert.assertTrue(checkOutPage.billCountryDD.isDisplayed());
+        Assert.assertTrue(checkOutPage.billAddressLine1.isDisplayed());
+        Assert.assertTrue(checkOutPage.billAddressLine2.isDisplayed());
+        Assert.assertTrue(checkOutPage.billTownCity.isDisplayed());
+        Assert.assertTrue(checkOutPage.billCounty.isDisplayed());
+        Assert.assertTrue(checkOutPage.billZipPostCode.isDisplayed());
+        Assert.assertTrue(checkOutPage.billPhoneNumb.isDisplayed());
 //    Verify 'Payment Methods' are visible
-
+        Assert.assertTrue(checkOutPage.wireTransferEFT.isDisplayed());
+        Assert.assertTrue(checkOutPage.payAtDoor.isDisplayed());
 //    Select 'Pay at the door'
+        BrowserUtils.clickWithTimeOut(checkOutPage.payAtDoor, 1);
+        BrowserUtils.clickWithTimeOut(checkOutPage.placeOrderButton, 1);
+//    On order complete page, verify 'Thank you. Your order has been received.' is visible
+        WaitUtils.waitFor(2);
+        String orderRecMsg = checkOutPage.orderReceivedMessage.getText();
+        System.out.println(orderRecMsg);
+        Assert.assertEquals(orderRecMsg,"Thank you. Your order has been received.");
+    }
 
-//    Select 'Place order'
-
-//    On order complete page verify 'Thank you. Your order has been received.' is visible
-
+    @AfterMethod
+    public void tearDown(){
+        Driver.closeDriver();
     }
 }
