@@ -14,50 +14,53 @@ public class CheckOutPage {
 
 
     //SHOPPING CHART POP-UP
-    @FindBy(linkText = "View cart")
-    WebElement viewChartButton;
+    @FindBy(xpath = "//a[@class='button wc-forward']")
+    public WebElement viewChartButton;
 
-    @FindBy(linkText = "View cart")
-    WebElement checkoutButton;
+    @FindBy(xpath = "//button[@name='clear_cart']")
+    public WebElement clearChart;
+
+    @FindBy(xpath = "//a[@class='button checkout wc-forward']")
+    public WebElement checkoutButton;
 
 
 
 
     //ENTER CODE
-    @FindBy(linkText = "Enter your code")
-    WebElement enterYourCode;
+    @FindBy(xpath = "//a[@class='showcoupon']")
+    public WebElement enterYourCode;
 
     @FindBy(id = "coupon_code")
-    WebElement couponCodeField;
+    public WebElement couponCodeField;
 
     @FindBy(xpath = "//button[@name='apply_coupon']")
-    WebElement applyCouponButton;
+    public WebElement applyCouponButton;
 
 
 
     //YOUR ORDER PART
 
     @FindBy(xpath = "(//td[@class='product-name'])[1]")
-    WebElement productNameAndNumber;
+    public WebElement productNameAndNumber;
 
 
     @FindBy(xpath = "(//td//span[@class='woocommerce-Price-amount amount'])[1]")
-    WebElement productPrice;
+    public WebElement productPrice;
 
-    @FindBy(xpath = "//input[@value='bacs']")
-    WebElement wireTransferEFT;
+    @FindBy(xpath = "//input[@id='payment_method_bacs']")
+    public WebElement wireTransferEFT;
 
     @FindBy(xpath = "//div[@class='payment_box payment_method_bacs']")
-    WebElement additionInfoForWireTransfer;
+    public WebElement additionInfoForWireTransfer;
 
-    @FindBy(xpath = "//input[@value='cod']")
-    WebElement payAtDoor;
+    @FindBy(xpath = "//input[@id='payment_method_cod']")
+    public WebElement payAtDoor;
 
-    @FindBy(id = "//button[@id='place_order']")
-    WebElement placeOrderButton;
+    @FindBy(xpath = "//button[@id='place_order']")
+    public WebElement placeOrderButton;
 
     @FindBy(xpath = "//div[@class='woocommerce-order']")
-    WebElement verificationOrderMessage;
+    public WebElement verificationOrderMessage;
 
 
 }
