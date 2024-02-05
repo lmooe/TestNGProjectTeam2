@@ -1,4 +1,5 @@
 package techproed.pages;
 
-public class WishListPage {
+public class
+WishListPage {
 }
