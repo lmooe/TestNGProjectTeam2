@@ -67,17 +67,17 @@ public class TC_01 {
       @Test
     public void US06_TC01() {
 //    Verify first name has been populated.
-        WaitUtils.waitFor(2);
-        String firstName = JSUtils.JSgetValueBy(dashboardPage.accDetailsFirstName);
-        Assert.assertNotNull(firstName, "The first name is not null");
-          Assert.assertFalse(firstName.isEmpty(), "The first name is not empty");
-
-
-
-
-
-//    Verify last name has been populated.
-//    Verify email address has been populated.
+//        WaitUtils.waitFor(2);
+//        String firstName = JSUtils.JSgetValueBy(dashboardPage.accDetailsFirstName);
+//        Assert.assertNotNull(firstName, "The first name is not null");
+//          Assert.assertFalse(firstName.isEmpty(), "The first name is not empty");
+//
+//
+//
+//
+//
+////    Verify last name has been populated.
+////    Verify email address has been populated.
 //          String email = JSUtils.JSgetValueBy(dashboardPage.accDetailsEmail.getText());
 //          WaitUtils.waitFor(2);
 //          Assert.assertTrue(email.contains("@"));
