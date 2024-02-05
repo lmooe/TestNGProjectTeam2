@@ -1,10 +1,12 @@
 package techproed.pages;
 
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class DashboardPage {
+
 
     @FindBy(xpath = "//a[text()='Dashboard']")
     public WebElement dashboard;
@@ -44,6 +46,7 @@ public class DashboardPage {
 
     @FindBy(partialLinkText = "edit-address/shipping/")
     public WebElement editShippingAddress;
+
 
 
 }

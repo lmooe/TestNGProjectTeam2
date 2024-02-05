@@ -7,7 +7,8 @@ import techproed.utilities.Driver;
 
 import java.util.List;
 
-public class AddNewProductPage{
+public class
+AddNewProductPage{
 
 
     public AddNewProductPage(){

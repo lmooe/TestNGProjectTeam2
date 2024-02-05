@@ -1,11 +1,16 @@
 package techproed.pages;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.w3c.dom.html.HTMLInputElement;
 import techproed.utilities.Driver;
 
 public class HomePage {
+
+
+
 
     public HomePage(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -22,20 +27,20 @@ public class HomePage {
     @FindBy (xpath = "//input[@id='register-policy']")
     public WebElement agreePolicy;
 
-    @FindBy (xpath = "//button[text()='Sign Up']")
-    public WebElement singUpButton;
+    @FindBy(xpath = "//button[text()='Sign Up']")
+    public static WebElement singUpButton;
 
     @FindBy (xpath = "//a[text()='Become a Vendor']")
     public WebElement becomeVendor;
 
     @FindBy(id="//input[@id='username']")
-    public WebElement username;
+    public static WebElement username;
 
     @FindBy(id="//input[@id='password']")
-    public WebElement password;
+    public static WebElement password;
 
     @FindBy(xpath = "//button[@name='login']")
-    public WebElement signInButton;
+    public static WebElement signInButton;
 
     @FindBy(xpath ="(//*[@class='w-icon-cart'])[1]")
     public WebElement cart;
