@@ -2,8 +2,14 @@ package techproed.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import techproed.utilities.Driver;
 
 public class LoginPage {
+
+    public LoginPage(){
+        PageFactory.initElements(Driver.getDriver(),this);
+    }
 
     @FindBy(xpath = "//*[@ class='login inline-type']")
     public WebElement singin;
@@ -30,6 +36,26 @@ public class LoginPage {
 
     @FindBy(xpath = "//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wcfm-store-manager']")
     public WebElement storeMng; //check this one please !!
+
+//    For Registration Page:
+    @FindBy(id = "reg_username")
+    public WebElement regUsername;
+
+    @FindBy(id = "reg_email")
+        public WebElement regEmail;
+
+    @FindBy(id = "reg_password")
+        public WebElement regPassword;
+
+    @FindBy(id = "register-policy")
+        public WebElement regCheckBox;
+    @FindBy(xpath = "//button[@name='register']")
+        public WebElement signUpButton;
+
+    @FindBy(xpath = "//a[span='Register']")
+    public WebElement registerButton;
+
+
 
 
 }

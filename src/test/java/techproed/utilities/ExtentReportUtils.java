@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static techproed.utilities.MediaUtils.takeScreenshotOfTheEntirePageAsString;
+
 public class ExtentReportUtils {
 
     protected static ExtentReports extentReports;
