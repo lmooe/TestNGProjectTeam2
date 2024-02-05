@@ -22,18 +22,30 @@ public class TC_01 {
     ProductPage productPage = new ProductPage();
     CheckOutPage checkOutPage = new CheckOutPage();
 
-
-    @Test
-    public void vendorBuyProductTest(){
-
+    @BeforeMethod
+    public void deleteCart(){
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
         //Sign in
-        homePage.singIn1.click();
+        JSUtils.JSclickWithTimeout(homePage.singIn1);
         homePage.username.sendKeys(ConfigReader.getProperty("email"));
         homePage.password.sendKeys(ConfigReader.getProperty("password"));
         homePage.signInButton.click();
         WaitUtils.waitFor(2);
+
+        //Delete cart, if it is not empty
+        homePage.cart.click();
+        WaitUtils.waitFor(2);
+        if(Integer.parseInt(checkOutPage.productCounter.getText())>0){
+            checkOutPage.viewChartButton.click();
+            checkOutPage.clearChart.click();
+        }
+    }
+
+
+    @Test
+    public void vendorBuyProductTest(){
+
 
         //Search and add product
         homePage.searchBox.sendKeys("Shoe", Keys.ENTER);
