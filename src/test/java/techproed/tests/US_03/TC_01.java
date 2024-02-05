@@ -22,6 +22,7 @@ public class TC_01 {
     */
 
 //    User has just registered.
+
 //    User has already entered first name and last name under Account Details.
 //    User is on Billing address page (Home>My Account> Addresses>Billing address).
 //    Verify first name has been populated.

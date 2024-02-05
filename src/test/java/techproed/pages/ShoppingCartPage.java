@@ -20,4 +20,10 @@ public class ShoppingCartPage {
     @FindBy (xpath = "//button[@name='update_cart']")
     public WebElement updateCartButton;
 
+    @FindBy (xpath = "//*[text()='Cart updated.']")
+    public WebElement cartUpdated;
+
+    @FindBy (xpath = "//a[contains(text(), 'checkout')]")
+    public WebElement checkoutButton;
+
 }

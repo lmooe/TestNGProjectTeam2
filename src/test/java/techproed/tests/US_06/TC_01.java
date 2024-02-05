@@ -25,12 +25,13 @@ public class TC_01 {
 
     Click in the search box, enter product name (Tshirt) and click enter
     Click 'Add to Cart' button
-    Verify the message '"Tshirt" has been added to your cart.' appears
+    Verify message '"Tshirt" has been added to your cart.' appears
     Click on Cart icon
     Click on View Cart button
     Verify product is visible in Shopping Cart
     Click on '+' button
     Click on Update Cart button
+    Verify message "Cart updated." appears
     Click on 'Proceed to Checkout' button
     Verify country, street address, town, postcode and phone have been populated
     Verify 'Payment Methods' are visible
@@ -68,7 +69,7 @@ public class TC_01 {
         WaitUtils.waitFor(2);
 //    Click 'Add to Cart' button
         productPage.addToCartButton.click();
-//    Verify the message "'Tshirt' has been added to your cart." appears
+//    Verify message "'Tshirt' has been added to your cart." appears
         String successMessage = productPage.addedToCartAlert.getText();
         System.out.println(successMessage);
         Assert.assertTrue(successMessage.contains("has been added to your cart."));
@@ -85,11 +86,20 @@ public class TC_01 {
         shoppingCartPage.plusButton.click();
 //    Click on Update Cart button
         shoppingCartPage.updateCartButton.click();
+        WaitUtils.waitFor(2);
+//    Verify message "Cart updated." appears
+        String cartUpdateMsg = shoppingCartPage.cartUpdated.getText();
+        Assert.assertEquals(cartUpdateMsg, "Cart updated.");
 //    Click on 'Proceed to Checkout' button
+        JSUtils.JSclickWithTimeout(shoppingCartPage.checkoutButton);
 //    Verify country, street address, town, postcode and phone have been populated
+
 //    Verify 'Payment Methods' are visible
+
 //    Select 'Pay at the door'
+
 //    Select 'Place order'
+
 //    On order complete page verify 'Thank you. Your order has been received.' is visible
 
     }
