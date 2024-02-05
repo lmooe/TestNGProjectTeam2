@@ -23,17 +23,6 @@ public class ProductPage {
     @FindBy(xpath = "//a[@data-title='Add to wishlist']")
     public WebElement wishListButton;
 
-    @FindBy(xpath = "//button[@title='Minus']")
-    public WebElement minusButton;
-
-    @FindBy(xpath = "//button[@title='Plus']")
-    public WebElement plusButton;
-
-    @FindBy(xpath = "//a[@title='Compare']")
-    public WebElement compareButton;
-
-    @FindBy(xpath = "//a[@data-title='Add to wishlist']")
-    public WebElement wishListButton;
 
 //  Shopping Cart Sidebar
     @FindBy (xpath = "//a[@class='button wc-forward']")
