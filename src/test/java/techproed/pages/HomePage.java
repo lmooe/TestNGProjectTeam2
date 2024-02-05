@@ -16,7 +16,7 @@ public class HomePage {
     @FindBy (xpath = "//a[@class='register inline-type']")
     public WebElement register;
 
-    @FindBy(xpath = "//a[text()='Sign Up'])")
+    @FindBy(xpath = "//button[@name='register']")
     public WebElement singUp;
 
     @FindBy (xpath = "//input[@id='register-policy']")

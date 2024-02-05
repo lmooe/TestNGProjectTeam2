@@ -48,7 +48,8 @@ public class TC_01 {
 
 
         //Search and add product
-        homePage.searchBox.sendKeys("Shoe", Keys.ENTER);
+        homePage.searchBox.sendKeys(ConfigReader.getProperty("product2"), Keys.ENTER);
+
         WebElement leatherShoe = Driver.getDriver().findElement(By.linkText("Leather shoes"));
         JSUtils.JSclickWithTimeout(leatherShoe);
         WaitUtils.waitFor(2);
@@ -56,9 +57,8 @@ public class TC_01 {
         productPage.plusButton.click();
         WaitUtils.waitFor(2);
 
-        //ASK========>>>>>>> value is different for each product
-        WebElement addToChartButton = Driver.getDriver().findElement(By.xpath("//button[@name='add-to-cart']"));
-        addToChartButton.click();
+
+        productPage.addToCartButton2.click();
         WaitUtils.waitFor(1);
 
 
@@ -82,6 +82,9 @@ public class TC_01 {
         JSUtils.JSclickWithTimeout(checkOutPage.placeOrderButton);
         Assert.assertTrue(checkOutPage.verificationOrderMessage.getText().contains("Thank you. Your order has been received."));
         WaitUtils.waitFor(1);
+
+        //Go to order and verify your order
+
 
 
         //Close driver

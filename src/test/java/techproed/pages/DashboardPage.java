@@ -1,10 +1,19 @@
 package techproed.pages;
 
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import techproed.utilities.Driver;
 
 public class DashboardPage {
+
+    public DashboardPage(){
+        PageFactory.initElements(Driver.getDriver(),this);
+    }
+//  Added by Sarah
 
     @FindBy(xpath = "//a[text()='Dashboard']")
     public WebElement dashboard;
@@ -21,8 +30,9 @@ public class DashboardPage {
     @FindBy(xpath = "//a[text()='Addresses']")
     public WebElement addresses;
 
-    @FindBy(xpath ="//a[text()='Account details']" )
+    @FindBy (xpath = "//p[text()='Account details']")
     public WebElement accountDetails;
+//  xpath corrected by Sarah
 
     @FindBy(xpath = "//a[text()='Wishlist']")
     public WebElement wishlist;
@@ -45,5 +55,16 @@ public class DashboardPage {
     @FindBy(partialLinkText = "edit-address/shipping/")
     public WebElement editShippingAddress;
 
+    @FindBy (id = "account_first_name")
+    public WebElement accDetailsFirstName;
+
+    @FindBy (id = "account_last_name")
+    public WebElement accDetailsLastName;
+
+    @FindBy (id = "account_email")
+    public WebElement accDetailsEmail;
+
+    @FindBy (id = "//button[text()='Save changes']")
+    public WebElement accDetailsSaveChanges;
 
 }
