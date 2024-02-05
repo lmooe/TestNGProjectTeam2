@@ -2,6 +2,7 @@ package techproed.tests.US_06;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
@@ -40,7 +41,7 @@ public class TC_02 {
     }
 
 @Test
-    public void TC_02(){
+    public void US06_TC02(){
 
 //    Click in the search box, enter random characters and click enter
     homePage.searchBox.click();
@@ -52,4 +53,10 @@ public class TC_02 {
     System.out.println(successMessage);
     Assert.assertTrue(successMessage.contains("No products were found"));
 }
+
+    @AfterMethod
+    public void tearDown() {
+        Driver.closeDriver();
+    }
+
 }

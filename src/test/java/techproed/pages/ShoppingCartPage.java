@@ -14,4 +14,16 @@ public class ShoppingCartPage {
     @FindBy (linkText = "Tshirt")
     public WebElement productAddedInCart;
 
+    @FindBy (xpath = "//table/tbody/tr/td[4]/div/div/button[@title='Plus']")
+    public WebElement plusButton;
+
+    @FindBy (xpath = "//button[@name='update_cart']")
+    public WebElement updateCartButton;
+
+    @FindBy (xpath = "//*[text()='Cart updated.']")
+    public WebElement cartUpdated;
+
+    @FindBy (xpath = "//a[contains(text(), 'checkout')]")
+    public WebElement checkoutButton;
+
 }
