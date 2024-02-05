@@ -41,7 +41,7 @@ public class TC_02 {
     }
 
 @Test
-    public void TC_02(){
+    public void US06_TC02(){
 
 //    Click in the search box, enter random characters and click enter
     homePage.searchBox.click();

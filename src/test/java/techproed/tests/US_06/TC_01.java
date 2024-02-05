@@ -60,7 +60,7 @@ public class TC_01 {
     }
 
     @Test
-    public void TC_01() throws InterruptedException {
+    public void US06_TC01() throws InterruptedException {
 //    Click in the search box, enter product name (Tshirt) and click enter
         homePage.searchBox.click();
         homePage.searchBox.clear();
