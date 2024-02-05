@@ -62,5 +62,11 @@ public class CheckOutPage {
     @FindBy(xpath = "//div[@class='woocommerce-order']")
     public WebElement verificationOrderMessage;
 
+    @FindBy(xpath = "//a[@class='btn btn-dark btn-link btn-icon-right btn-close']")
+    public WebElement closeButton;
+
+    @FindBy(xpath = "(//span[@class='cart-count'])[1]")
+    public WebElement productCounter;
+
 
 }
