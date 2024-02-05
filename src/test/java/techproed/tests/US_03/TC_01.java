@@ -2,6 +2,7 @@ package techproed.tests.US_03;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -40,6 +41,7 @@ public class TC_01 {
     Faker faker = new Faker();
     DashboardPage dashboardPage = new DashboardPage();
     SoftAssert softAssert = new SoftAssert();
+    JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
 
     @BeforeMethod
     public void setUp(){
@@ -66,8 +68,14 @@ public class TC_01 {
     public void US06_TC01() {
 //    Verify first name has been populated.
         WaitUtils.waitFor(2);
-        String firstName = JSUtils.JSgetValueBy(dashboardPage.accDetailsFirstName.);
-        System.out.println(firstName);
+        String firstName = JSUtils.JSgetValueBy(dashboardPage.accDetailsFirstName);
+        Assert.assertNotNull(firstName, "The first name is not null");
+          Assert.assertFalse(firstName.isEmpty(), "The first name is not empty");
+
+
+
+
+
 //    Verify last name has been populated.
 //    Verify email address has been populated.
 //          String email = JSUtils.JSgetValueBy(dashboardPage.accDetailsEmail.getText());
@@ -84,5 +92,7 @@ public class TC_01 {
 //    Click on Save Address button
 //    Verify message 'Address changed successfully.' appears
 //    Verify billing address has been added
-    }
+
+
+      }
 }
