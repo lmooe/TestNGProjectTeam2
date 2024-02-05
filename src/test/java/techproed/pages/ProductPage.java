@@ -28,10 +28,13 @@ public class ProductPage {
     @FindBy(xpath = "//a[@data-title='Add to wishlist']")
     public WebElement wishListButton;
 
-//  Shopping Cart Sidebar
+
+    //SHOPPING CART SIDEBAR
     @FindBy (xpath = "//a[@class='button wc-forward']")
     public WebElement viewCartButton;
+//  Same locator exists in Checkout Page
 
     @FindBy (linkText = "Checkout")
     public WebElement checkoutButton;
+//  Same locator exists in Checkout Page
 }
