@@ -2,9 +2,7 @@ package techproed.tests;
 
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import techproed.pages.DashboardPage;
 import techproed.pages.LoginPage;
-import techproed.utilities.BrowserUtils;
 import techproed.utilities.Driver;
 
 public class test1 {
