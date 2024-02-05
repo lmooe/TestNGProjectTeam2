@@ -1,5 +1,4 @@
 package techproed.pages;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,7 +10,7 @@ public class VendorPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(id = "user_email")
+    @FindBy (id = "user_email")
     public WebElement vendorRegistrationEmail;
 
     @FindBy (name = "wcfm_email_verified_input")
@@ -25,4 +24,7 @@ public class VendorPage {
 
     @FindBy (xpath = "//*[@id='wcfm_membership_registration_form_expander']/div[2]")
     public WebElement vendorVerifyMessage;
+
+
+
 }

@@ -24,6 +24,44 @@ public class CheckOutPage {
     public WebElement checkoutButton;
 
 
+    //BILLING DETAILS
+//  Added by Sarah (same locators as in BillShipAddressPage)
+    @FindBy(id = "billing_first_name")
+    public WebElement billFirstName;
+
+    @FindBy(id = "billing_last_name")
+    public WebElement billLastName;
+
+    @FindBy(id = "billing_company")
+    public WebElement billCompOptional;
+
+    @FindBy (id="select2-billing_country-container")
+    public WebElement billCountryDD;
+
+    @FindBy (name="billing_address_1")
+    public WebElement billAddressLine1;
+
+    @FindBy (name="billing_address_2")
+    public WebElement billAddressLine2;
+
+    @FindBy(name="billing_city")
+    public WebElement billTownCity;
+
+    @FindBy (id="select2-billing_state-container")
+    public WebElement billStateProvinceDD;
+
+    @FindBy(name="billing_postcode")
+    public WebElement billZipPostCode;
+
+    @FindBy(id="billing_phone")
+    public WebElement billPhoneNumb;
+
+    @FindBy (id="billing_email")
+    public WebElement billEmail;
+
+    @FindBy (id = "billing_state")
+    public WebElement billCounty;
+//  Added by Sarah (UK specific for US_03 & US_06)
 
 
     //ENTER CODE
@@ -67,6 +105,10 @@ public class CheckOutPage {
 
     @FindBy(xpath = "(//span[@class='cart-count'])[1]")
     public WebElement productCounter;
+
+    @FindBy(xpath = "//p[text()='Thank you. Your order has been received.']")
+    public WebElement orderReceivedMessage;
+//  Added by Sarah (almost the same as verificationOrderMessage but for 'Thank you. Your order has been received.' text only)
 
 
 }
