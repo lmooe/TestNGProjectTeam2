@@ -38,6 +38,9 @@ public class HomePage {
     @FindBy(xpath = "//button[@name='login']")
     public WebElement signInButton;
 
+    @FindBy(xpath = "//h2 [text()='My Account']")
+    public WebElement verify;
+
     @FindBy(xpath ="(//*[@class='w-icon-cart'])[1]")
     public WebElement cart;
 
