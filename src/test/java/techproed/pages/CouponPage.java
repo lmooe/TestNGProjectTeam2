@@ -14,57 +14,57 @@ public class CouponPage {
     }
 
     @FindBy(linkText = "Coupons")
-    WebElement couponsButton;
+    public WebElement couponsButton;
 
     @FindBy(id = "add_new_coupon_dashboard")
-    WebElement addNewCouponButton;
+    public WebElement addNewCouponButton;
 
     @FindBy(id = "title")
-    WebElement codeField;
+    public WebElement codeField;
 
     @FindBy(id = "description")
-    WebElement descriptionField;
+    public WebElement descriptionField;
 
     @FindBy(id = "discount_type")
-    WebElement discountTypeDropdown;
+    public WebElement discountTypeDropdown;
 
     @FindBy(id = "coupon_amount")
-    WebElement couponAmountField;
+    public WebElement couponAmountField;
 
     @FindBy(xpath = "//input[@name='expiry_date']")
-    WebElement yearField;
+    public WebElement yearField;
 
     @FindBy(xpath = "//select[@class='ui-datepicker-month']")
-    WebElement monthDropdown;
+    public WebElement monthDropdown;
 
     @FindBy(xpath = "//select[@class='ui-datepicker-year']")
-    WebElement yearDropdown;
+    public WebElement yearDropdown;
 
     @FindBy(linkText = "15")
-    WebElement dayBox;
+    public WebElement dayBox;
 
     @FindBy(id = "free_shipping")
-    WebElement allowFreeShippingCheckBox;
+    public WebElement allowFreeShippingCheckBox;
 
     @FindBy(id = "show_on_store")
-    WebElement showOnStoreCheckBox;
+    public WebElement showOnStoreCheckBox;
 
     @FindBy(id = "minimum_amount")
-    WebElement minimumAmount;
+    public WebElement minimumAmount;
 
     @FindBy(id = "maximum_amount")
-    WebElement maximumAmount;
+    public WebElement maximumAmount;
 
     @FindBy(xpath = "(//input[@class='select2-search__field'])[3]")
-    WebElement productCategoriesField;
+    public WebElement productCategoriesField;
 
     @FindBy(xpath = "(//input[@class='select2-search__field'])[4]")
-    WebElement excludeCategoriesField;
+    public WebElement excludeCategoriesField;
 
     @FindBy(id = "customer_email")
-    WebElement emailRestrictionField;
+    public WebElement emailRestrictionField;
 
     @FindBy(id = "wcfm_coupon_manager_submit_button")
-    WebElement submitButton;
+    public WebElement submitButton;
 
 }
