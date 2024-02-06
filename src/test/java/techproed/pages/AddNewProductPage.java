@@ -44,7 +44,7 @@ public class AddNewProductPage{
     @FindBy(id = "featured_img_remove_button")
     public WebElement removeImgButton;
 
-    @FindBy(id = "gallery_img_gimage_0_display")
+    @FindBy(id = "gallery_img_gimage_1_display")
     public WebElement addGalleryPhotoIcon;
 
 //    @FindBy(xpath = "//button[text()='Add to Gallery']")
@@ -78,7 +78,7 @@ public class AddNewProductPage{
     public List<WebElement> categoriesCheckboxList;
 
     @FindBy(xpath = "//*[.='+Add new category']")
-    public WebElement addNewCategory;
+    public List<WebElement> addNewCategory;
 
     @FindBy(id = "wcfm_new_cat")
     public WebElement categoryNameInput;
@@ -129,13 +129,13 @@ public class AddNewProductPage{
 
 //Inventory Section
 
-    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[1]")
+    @FindBy (xpath = "//div[text()='Inventory']")
     public WebElement menuInventory;
 
     @FindBy (id = "sku")
     public WebElement sku;
 
-    @FindBy (id = "manage_stock")
+    @FindBy (xpath = "(//input[@value='enable'])[3]")
     public WebElement manageStock;
 
     @FindBy(id = "stock_qty")
@@ -147,7 +147,7 @@ public class AddNewProductPage{
 
 //Shipping Section
 
-    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[4]")
+    @FindBy (xpath = "//div[text()='Shipping']")
     public WebElement menuShipping;
 
     @FindBy (id = "weight")
