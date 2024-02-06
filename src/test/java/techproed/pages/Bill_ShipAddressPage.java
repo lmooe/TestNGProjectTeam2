@@ -20,6 +20,9 @@ public class Bill_ShipAddressPage {
     @FindBy(xpath = "//*[@class='edit btn btn-link btn-primary btn-underline mb-4']")
     public WebElement editBillingAdd;
 
+    @FindBy (xpath = "//*[text()='Address changed successfully.']")
+    public WebElement addressChangedMsg;
+
     @FindBy(id = "billing_first_name")
     public WebElement billFirstName;
 
@@ -29,7 +32,7 @@ public class Bill_ShipAddressPage {
     @FindBy(id = "billing_company")
     public WebElement billCompOptional;
 
-    @FindBy (id="select2-billing_country-container")
+    @FindBy (id="billing_country") // Sarah updated locator on 06/02/24
     public WebElement billCountryDD;
 
     @FindBy (name="billing_address_1")
@@ -40,6 +43,9 @@ public class Bill_ShipAddressPage {
 
     @FindBy(name="billing_city")
     public WebElement billTownCity;
+
+    @FindBy (id = "billing_state")
+    public WebElement billCounty;
 
     @FindBy (id="select2-billing_state-container")
     public WebElement billStateProvinceDD;
