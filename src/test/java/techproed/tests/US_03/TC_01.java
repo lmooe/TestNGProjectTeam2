@@ -69,7 +69,7 @@ public class TC_01 {
     }
 
     @Test
-    public void US06_TC01() {
+    public void US03_TC01() {
 //    Verify first name has been populated.
         boolean firstName = bill_shipAddressPage.billFirstName.isDisplayed();
         System.out.println("firstName = " + firstName);

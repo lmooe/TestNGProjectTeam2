@@ -20,8 +20,11 @@ public class Bill_ShipAddressPage {
     @FindBy(xpath = "//*[@class='edit btn btn-link btn-primary btn-underline mb-4']")
     public WebElement editBillingAdd;
 
-    @FindBy (xpath = "//*[text()='Address changed successfully.']")
+    @FindBy (xpath = "//*[text()='Address changed successfully.']") // Sarah added locator on 06/02/24
     public WebElement addressChangedMsg;
+
+    @FindBy (xpath = "//*[text()='Street address is a required field.']") // Sarah added locator on 06/02/24
+    public WebElement streetAddRequiredMsg;
 
     @FindBy(id = "billing_first_name")
     public WebElement billFirstName;
