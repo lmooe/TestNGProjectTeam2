@@ -169,7 +169,7 @@ public class AddNewProductPage{
 
 // Attributes Section
 
-    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[5]")
+    @FindBy (xpath = "//div[text()='Attributes']")
     public WebElement menuAttributes;
 
     @FindBy (id = "attributes_is_active_1")

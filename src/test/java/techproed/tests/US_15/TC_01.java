@@ -109,7 +109,7 @@ public class TC_01 {
         //TS_3- The user needs to click on "Shipping" and must see related section is visible and needs to enter valid data to
         //     Weight, Dimensions (Length, Width, Height) fields. User needs to select valid options of Shipping class and
         //     Processing Time dropdown lists.
-//       BrowserUtils.clickWithTimeOut(anpp.menuShipping,1);
+       BrowserUtils.clickWithTimeOut(anpp.menuShipping,1);
 //        BrowserUtils.verifyElementDisplayed(anpp.weight);
 //        BrowserUtils.sendKeysWithTimeout(anpp.weight, ConfigReader.getProperty("Weight"),1);
 //        BrowserUtils.sendKeysWithTimeout(anpp.length, ConfigReader.getProperty("Length"),1);
@@ -123,7 +123,7 @@ public class TC_01 {
         //TS_4- The user needs to click on "Attributes" and must see related section is visible and needs to click Color
         //    and Size boxes, and choose given data in color and size sections
 
-
+        BrowserUtils.clickWithTimeOut(anpp.menuAttributes,1);
 
 
 
