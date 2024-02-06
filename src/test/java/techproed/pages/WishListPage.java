@@ -42,8 +42,27 @@ public class WishListPage {
     @FindBy(xpath = "//span[@class='posted_in']")
     public WebElement categoryOnPopUp;
 
-    @FindBy(xpath = "//div[@class='star-rating']")
-    public WebElement reviewsVisible;
+//    @FindBy(xpath = "//div[@class='star-rating']")
+//    public WebElement reviewsVisible;
+
+    @FindBy(xpath = "//a[@class='woocommerce-review-link scroll-to']")
+    public WebElement reviews;
+
+    @FindBy(xpath = "//button[@title='Close (Esc)']")
+    public WebElement closeButtonOnPopUp;
+
+    @FindBy(xpath = "//span[@class='sku_wrapper']")
+    public WebElement skuNumber;
+
+    @FindBy(xpath = "//a[@class='btn btn-success btn-md']")
+    public WebElement addToCart;
+
+    @FindBy(xpath = "//a[@class='btn btn-success btn-md']")
+    public WebElement message;
+
+
+//    @FindBy(id = "id=jquery-yith-wcwl-js-extra")
+//    public WebElement successMessage;
 
 
 }
