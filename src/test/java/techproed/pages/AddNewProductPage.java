@@ -194,6 +194,11 @@ public class AddNewProductPage{
     @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[10]")
     public WebElement menuAdvanced;
 
+//
+
+    @FindBy (xpath = "//span[@class='product-status product-status-publish' and text()='Published']")
+    public WebElement published;
+
 
 
 }

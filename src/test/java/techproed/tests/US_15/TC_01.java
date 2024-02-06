@@ -2,6 +2,7 @@ package techproed.tests.US_15;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import techproed.pages.AddNewProductPage;
@@ -125,16 +126,22 @@ public class TC_01 {
 
             //TS_4- The user needs to click on "Attributes" and must see related section is visible and needs to click Color
             //    and Size boxes, and choose given data in color and size sections
-
             BrowserUtils.clickWithTimeOut(anpp.menuAttributes,5);
             BrowserUtils.clickWithTimeOut(anpp.colorSelectBox,5);
+            Thread.sleep(2000);
             BrowserUtils.sendKeysWithTimeout(anpp.colorType, ConfigReader.getProperty("Color"),5);
             BrowserUtils.clickWithTimeOut(anpp.sizeSelectBox,1);
-            BrowserUtils.sendKeysWithTimeout(anpp.sizeType, ConfigReader.getProperty("Size"),1);
+            Thread.sleep(2000);
+            BrowserUtils.sendKeysWithTimeout(anpp.sizeType, ConfigReader.getProperty("Size"),5);
+            Thread.sleep(2000);
 
+            //TS_5- The user needs to click submit button
+            BrowserUtils.clickWithTimeOut(anpp.productSubmitButton,5);
+            Thread.sleep(2000);
 
-
-
+        //VERIFICATION
+        Assert.assertTrue(anpp.published.isDisplayed());
+        System.out.println("US_15 TC_1 is passed!!!");
 
 
         }
