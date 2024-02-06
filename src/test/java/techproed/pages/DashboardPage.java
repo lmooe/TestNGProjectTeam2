@@ -64,7 +64,11 @@ public class DashboardPage {
     @FindBy (id = "account_email")
     public WebElement accDetailsEmail;
 
-    @FindBy (id = "//button[text()='Save changes']")
+    @FindBy (id = "password_2")
+    public WebElement confirmPassButton;
+
+    @FindBy (id = "//button[@name='save_account_details']")
     public WebElement accDetailsSaveChanges;
+//  I can't get the test to click this locator in a way that returns the success message.
 
 }
