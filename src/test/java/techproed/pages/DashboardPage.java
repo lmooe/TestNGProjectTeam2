@@ -64,6 +64,8 @@ public class DashboardPage {
     @FindBy (id = "account_email")
     public WebElement accDetailsEmail;
 
+
+    
     @FindBy (id = "password_2")
     public WebElement confirmPassButton;
 
