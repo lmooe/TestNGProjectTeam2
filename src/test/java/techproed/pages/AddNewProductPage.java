@@ -135,7 +135,7 @@ public class AddNewProductPage{
     @FindBy (id = "sku")
     public WebElement sku;
 
-    @FindBy (xpath = "(//input[@value='enable'])[3]")
+    @FindBy (id = "manage_stock")
     public WebElement manageStock;
 
     @FindBy(id = "stock_qty")
