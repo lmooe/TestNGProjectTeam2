@@ -1,11 +1,25 @@
 package techproed.pages;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.util.LRUMap;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import techproed.utilities.Driver;
 
 public class Bill_ShipAddressPage {
+
+
+   
+    public static LRUMap<Object, Object> shippingZipcodeInput;
+    public static Alert shipAddressLine1Input;
+    public static WebElement[] allShippingAddressTableElements;
+    public static WebElement saveAddressButton;
+    public static Bill_ShipAddressPage shipZipPostCodeInput;
+    public static Bill_ShipAddressPage townCityInput;
+
+
 
     public Bill_ShipAddressPage(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -18,13 +32,13 @@ public class Bill_ShipAddressPage {
     // Note: works for both existing and new profile
 
     @FindBy(xpath = "//*[@class='edit btn btn-link btn-primary btn-underline mb-4']")
-    public WebElement editBillingAdd;
+    public static WebElement editBillingAdd;
 
     @FindBy(id = "billing_first_name")
-    public WebElement billFirstName;
+    public static WebElement billFirstName;
 
     @FindBy(id = "billing_last_name")
-    public WebElement billLastName;
+    public static WebElement billLastName;
 
     @FindBy(id = "billing_company")
     public WebElement billCompOptional;
@@ -76,7 +90,7 @@ public class Bill_ShipAddressPage {
     public WebElement shipCompOptional;
 
     @FindBy (id="select2-shipping_country-container")
-    public WebElement shipCountryDD;
+    public static WebElement shipCountryDD;
 
     @FindBy (name="shipping_address_1")
     public WebElement shipAddressLine1;
@@ -97,6 +111,12 @@ public class Bill_ShipAddressPage {
     public WebElement shipSaveAddressButton;
 
 
+    public static void clear() {
+    }
 
+    public static void clear(Bill_ShipAddressPage shipZipPostCode) {
+    }
 
+    public void notify(Object city) {
+    }
 }
