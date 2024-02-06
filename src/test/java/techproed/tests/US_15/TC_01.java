@@ -59,7 +59,8 @@ public class TC_01 {
         BrowserUtils.clickWithTimeOut(anpp.addNewButton,1);
 
         //PC_4- User must enter valid product title, product image, gallery image, product category
-
+        BrowserUtils.sendKeysWithTimeout(anpp.productTitleInput, ConfigReader.getProperty("product_title"),1);
+        BrowserUtils.
 
 
 
