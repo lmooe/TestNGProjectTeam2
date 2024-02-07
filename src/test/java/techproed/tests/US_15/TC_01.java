@@ -81,7 +81,7 @@ public class TC_01 {
 //  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> look at here later <<<<<<<<<<<<<<<<<<<
 
 //            //product category
-//            Select selectCategory = new Select((WebElement) anpp.categoriesCheckboxList);
+//            FOR EACH METHODU
 //            selectCategory.selectByVisibleText(ConfigReader.getProperty("product_category"));
 //
 //
@@ -140,7 +140,7 @@ public class TC_01 {
             Thread.sleep(2000);
 
         //VERIFICATION
-        Assert.assertTrue(anpp.published.isDisplayed());
+        Assert.assertTrue(anpp.published.isDisplayed());  //OR Assert.assertTrue(anpp.published.getText().contains("Published"));
         System.out.println("US_15 TC_1 is passed!!!");
 
 
