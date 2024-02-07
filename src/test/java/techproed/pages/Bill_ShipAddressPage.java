@@ -33,6 +33,12 @@ public class Bill_ShipAddressPage {
     @FindBy(xpath = "//*[@class='edit btn btn-link btn-primary btn-underline mb-4']")
     public static WebElement editBillingAdd;
 
+    @FindBy (xpath = "//*[text()='Address changed successfully.']") // Sarah added locator on 06/02/24
+    public WebElement addressChangedMsg;
+
+    @FindBy (xpath = "//*[text()='Street address is a required field.']") // Sarah added locator on 06/02/24
+    public WebElement streetAddRequiredMsg;
+
     @FindBy(id = "billing_first_name")
     public static WebElement billFirstName;
 
@@ -42,10 +48,21 @@ public class Bill_ShipAddressPage {
     @FindBy(id = "billing_company")
     public WebElement billCompOptional;
 
+<<<<<<< HEAD
     @FindBy(id = "select2-billing_country-container")
     public WebElement billCountryDD;
 
     @FindBy(name = "billing_address_1")
+=======
+    @FindBy (id="billing_country") // Sarah updated locator on 06/02/24
+    public WebElement billCountryDD;
+
+    //For US_12
+    @FindBy (id="select2-billing_country-container") // Fatih added locator on 06/02/24
+    public WebElement billCountryDD1;
+
+    @FindBy (name="billing_address_1")
+>>>>>>> 4367f99b7e5ce94ff08416b340e2484d3a6fcb3d
     public WebElement billAddressLine1;
 
     @FindBy(name = "billing_address_2")
@@ -54,7 +71,14 @@ public class Bill_ShipAddressPage {
     @FindBy(name = "billing_city")
     public WebElement billTownCity;
 
+<<<<<<< HEAD
     @FindBy(id = "select2-billing_state-container")
+=======
+    @FindBy (id = "billing_state")
+    public WebElement billCounty;
+
+    @FindBy (id="select2-billing_state-container")
+>>>>>>> 4367f99b7e5ce94ff08416b340e2484d3a6fcb3d
     public WebElement billStateProvinceDD;
 
     @FindBy(name = "billing_postcode")

@@ -13,12 +13,6 @@ import techproed.utilities.*;
 
 public class TC_01 {
 
-
-    // US_13 : "Vendor should be able to add Shipping Address. (My Account > Addresses > Shipping Address)"
-
-    // Acceptance Criteria : Vendor should enter First name, Last name, Country/Region, Street address, Town / City, State, ZIP Code.
-
-    // TC_01 : Vendor should enter First name, Last name, Country/Region, Street address, Town / City, State, ZIP Code.
      /*
     Given User should navigate to Allover Commerce url
     When Click on sign in button
@@ -49,7 +43,10 @@ public class TC_01 {
         WaitUtils.waitForPageToLoad(20);
 
 
-        public void vendorAddShippingAddress() {
+
+
+        public void billingAndShippingAddress() {
+
 
             homePage.signIn.click();
             homePage.username.sendKeys(ConfigReader.getProperty("Vendor"));
@@ -93,20 +90,10 @@ public class TC_01 {
                     "Town/City must be entered.");
 
 
-
-
-
-
-
-
-
-
-
-
         }
     }
-}
 
+}
 
 
 
