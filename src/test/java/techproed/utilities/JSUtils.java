@@ -37,6 +37,8 @@ public class JSUtils {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", WaitUtils.waitForVisibility(element,5));
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
+
+
     /*
    @param String id of teh webelement that we want to locate
    locating element using javascript executor
