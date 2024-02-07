@@ -51,9 +51,10 @@ public class HomePage {
     public WebElement storeMng; //check this one please !!
 
 
-    @FindBy (className = "form-control")
+   // @FindBy (className = "form-control")
+    //public WebElement searchBox;
+    @FindBy (xpath = "(//input[@name='s'])[1]")
     public WebElement searchBox;
-
 
     @FindBy (xpath = "//a[text()='My Account']")
     public WebElement MyAccountOnFooter;
