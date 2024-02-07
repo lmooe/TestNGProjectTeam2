@@ -77,7 +77,6 @@ public WebElement accountDetails1;
 
     @FindBy (xpath = "//form/p[7]")
     public WebElement accDetailsSaveChanges;
-//  I can't get the test to click this locator in a way that returns the success message.
 
     @FindBy (xpath = "//button[@name='save_account_details']")
     public WebElement accDetailsSaveChanges1;
