@@ -63,7 +63,11 @@ public class TC_01 {
         dashboardPage.accountDetails.click();
         dashboardPage.accDetailsFirstName.sendKeys(faker.name().firstName());
         dashboardPage.accDetailsLastName.sendKeys(faker.name().lastName());
-        dashboardPage.confirmPassButton.sendKeys(Keys.ENTER);
+        dashboardPage.confirmPassButton.sendKeys(Keys.TAB);
+        ActionUtils.actionsHoverOverOnElement(dashboardPage.accDetailsSaveChanges);
+        WaitUtils.waitFor(2);
+        ActionUtils.actionsDoubleClick(dashboardPage.accDetailsSaveChanges1);
+        WaitUtils.waitFor(2);
         dashboardPage.addresses.click();
         bill_shipAddressPage.editBillingAdd.click();
     }
