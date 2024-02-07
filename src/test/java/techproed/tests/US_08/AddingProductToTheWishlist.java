@@ -15,21 +15,24 @@ import techproed.utilities.*;
 public class AddingProductToTheWishlist {
 
     WishListPage wishListPage= new WishListPage();
-//@AfterTest
-//public void quit(){
-//    Driver.closeDriver();
-//
-
-    //}
+    @AfterTest
+    public void quit(){
+        Driver.closeDriver();
+    }
     @Test
     public void addProducttoWishlist() throws InterruptedException {
         Actions actions= new Actions(Driver.getDriver());
+
+//      User goes to https://www.allovercommerce.com
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+
+//      User must click on the specific product (Automatic crusher) he/she likes
         ActionUtils.actionsScrollDown();
         Thread.sleep(2000);
         actions.click(wishListPage.clickOnAutomaticCrusher).build().perform();
         WaitUtils.waitForPageToLoad(2);
 
+//      User must click on the wishlist icon(heart icon under add to cart button)
         actions.click(wishListPage.clickOnHeart).build().perform();
 
 //      User must see heart icon with filled color
@@ -50,8 +53,7 @@ public class AddingProductToTheWishlist {
         WaitUtils.waitForPageToLoad(15);
 
 //      User should see a new window pop up
-//      User should see details about the product like price, category, review
-
+//      User should see details about the product like price, category, review,SKU number
 //      Category:
         JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
         // Use JavaScript Executor to get the text content (JS Executor returns Object, so you have to typecast to String)
@@ -78,6 +80,7 @@ public class AddingProductToTheWishlist {
         System.out.println(actualSKU);
         String expectedSKU="SKU: MS46891362";
         Assert.assertEquals(actualSKU,expectedSKU);
+
 //      User closes the pop-up window
         JSUtils.JSscrollIntoView(wishListPage.priceOnPopUp);
         JSUtils.JSclickWithTimeout(wishListPage.closeButtonOnPopUp);
@@ -85,27 +88,17 @@ public class AddingProductToTheWishlist {
 
 //      User must click on the add to cart button in the actions tab
         Thread.sleep(5000);
-        WaitUtils.waitForClickablility(wishListPage.addToCart,5);
-        actions.click(wishListPage.addToCart).build().perform();
-//        WaitUtils.waitForPageToLoad(10);
-        Thread.sleep(8000);
+        WaitUtils.waitFor(5);
+        wishListPage.addToCartButton.click();
+        Thread.sleep(9000);
+        WaitUtils.waitForPageToLoad(10);
+
 //      User should see the message: “Product name” has been added to your cart.
-
-        BrowserUtils.verifyElementDisplayed(wishListPage.message);
-
-//        Driver.getDriver().switchTo().alert().accept();
-//        WebElement actualContent = Driver.getDriver().findElement(By.id("id=jquery-yith-wcwl-js-extra"));
-//        System.out.println(actualContent);
-//        String actualText = (String) js.executeScript("return arguments[0].textContent.trim()", actualContent);
-//        Assert.assertTrue(actualText.contains("“Automatic Crusher” has been added to your cart."));
-//        JSUtils.JSgetValueBy("jquery-yith-wcwl-js-extra");
-
-//        Driver.getDriver().findElement(By.id("id=jquery-yith-wcwl-js-extra")).click();
-Thread.sleep(5000);
-//       String text=Driver.getDriver().switchTo().alert().getText();
-//        System.out.println(text);
-
-
+        String actualMessage=BrowserUtils.getTextWithTimeout(wishListPage.successMessage,5);
+        String expectedMessage="VIEW CART “Automatic Crusher” has been added to your cart.";
+        System.out.println(actualMessage);
+        Assert.assertEquals(actualMessage,expectedMessage);
+        Thread.sleep(5000);
 
     }
 }

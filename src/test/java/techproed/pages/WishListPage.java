@@ -42,9 +42,6 @@ public class WishListPage {
     @FindBy(xpath = "//span[@class='posted_in']")
     public WebElement categoryOnPopUp;
 
-//    @FindBy(xpath = "//div[@class='star-rating']")
-//    public WebElement reviewsVisible;
-
     @FindBy(xpath = "//a[@class='woocommerce-review-link scroll-to']")
     public WebElement reviews;
 
@@ -54,15 +51,11 @@ public class WishListPage {
     @FindBy(xpath = "//span[@class='sku_wrapper']")
     public WebElement skuNumber;
 
-    @FindBy(xpath = "//a[@class='btn btn-success btn-md']")
-    public WebElement addToCart;
+    @FindBy(xpath="//a[@aria-label='Add “Automatic Crusher” to your cart']")
+    public WebElement addToCartButton;
 
-    @FindBy(xpath = "//a[@class='btn btn-success btn-md']")
-    public WebElement message;
-
-
-//    @FindBy(id = "id=jquery-yith-wcwl-js-extra")
-//    public WebElement successMessage;
+    @FindBy(xpath = "//div[@role='alert']")
+    public WebElement successMessage;
 
 
 }
