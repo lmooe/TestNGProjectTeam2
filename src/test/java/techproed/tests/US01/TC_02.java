@@ -5,7 +5,7 @@ import org.openqa.selenium.Alert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import techproed.pages.LoginPage;
+import techproed.pages.HomePage;
 import techproed.utilities.BrowserUtils;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
@@ -46,19 +46,19 @@ public class TC_02 {
         String fakeEmail = faker.internet().emailAddress();
         String  validPasssword= faker.internet().password(12,20);
 
-        LoginPage loginPage = new LoginPage();
+        HomePage homePage = new HomePage();
 
-        BrowserUtils.clickWithTimeOut(loginPage.registerButton,2);
+        BrowserUtils.clickWithTimeOut(homePage.registerButton,2);
 
-        BrowserUtils.sendKeysWithTimeout(loginPage.regUsername,fakeName,2);
+        BrowserUtils.sendKeysWithTimeout(homePage.regUsername,fakeName,2);
 
-        BrowserUtils.sendKeysWithTimeout(loginPage.regEmail,fakeEmail,2);
+        BrowserUtils.sendKeysWithTimeout(homePage.regEmail,fakeEmail,2);
 
-        BrowserUtils.sendKeysWithTimeout(loginPage.regPassword,validPasssword,2);
+        BrowserUtils.sendKeysWithTimeout(homePage.regPassword,validPasssword,2);
 
-        BrowserUtils.clickWithTimeOut(loginPage.regCheckBox,2);
+        BrowserUtils.clickWithTimeOut(homePage.regCheckBox,2);
 
-        BrowserUtils.clickWithTimeOut(loginPage.signUpButton,2);
+        BrowserUtils.clickWithTimeOut(homePage.signUpButton,2);
 
         Alert alert = Driver.getDriver().switchTo().alert();
 

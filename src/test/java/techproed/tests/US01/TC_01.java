@@ -1,13 +1,10 @@
 package techproed.tests.US01;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
-import techproed.pages.LoginPage;
+import techproed.pages.HomePage;
 import techproed.utilities.BrowserUtils;
 import techproed.utilities.Driver;
 import techproed.utilities.WaitUtils;
@@ -48,17 +45,17 @@ public class TC_01 {
         String fakeEmail = faker.internet().emailAddress();
         String password = "Adf./;'1234"; // 11 length
 
-        LoginPage loginPage = new LoginPage();
+        HomePage homePage = new HomePage();
 
-        BrowserUtils.clickWithTimeOut(loginPage.registerButton,2);
+        BrowserUtils.clickWithTimeOut(homePage.registerButton,2);
 
 //        loginPage.regUsername.sendKeys();
-        BrowserUtils.sendKeysWithTimeout(loginPage.regUsername,fakeName,2);
-        loginPage.regEmail.sendKeys(fakeEmail);
-        loginPage.regPassword.sendKeys(password);
+        BrowserUtils.sendKeysWithTimeout(homePage.regUsername,fakeName,2);
+        homePage.regEmail.sendKeys(fakeEmail);
+        homePage.regPassword.sendKeys(password);
 //        loginPage.regCheckBox.click();
-        BrowserUtils.clickWithTimeOut(loginPage.regCheckBox,2);
-        BrowserUtils.clickWithTimeOut(loginPage.signUpButton,2);
+        BrowserUtils.clickWithTimeOut(homePage.regCheckBox,2);
+        BrowserUtils.clickWithTimeOut(homePage.signUpButton,2);
 
         String currentUrl = Driver.getDriver().getCurrentUrl();
         if (currentUrl.equals("https://allovercommerce.com/my-account-2/")){

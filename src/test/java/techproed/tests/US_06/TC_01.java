@@ -79,7 +79,7 @@ public class TC_01 {
         System.out.println(productInCart);
         Assert.assertTrue(productInCart.contains(ConfigReader.getProperty("product1")));
 //    Click on '+' button
-        "//table[@id='table1']//tr//td[5]"
+//        "//table[@id='table1']//tr//td[5]"
 
 
 //    Verify quantity amount has increased
