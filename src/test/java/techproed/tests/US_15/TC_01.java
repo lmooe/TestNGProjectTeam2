@@ -12,6 +12,7 @@ import techproed.utilities.BrowserUtils;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 import org.openqa.selenium.support.ui.Select;
+import techproed.utilities.ExtentReportUtils;
 
 public class TC_01 {
 
@@ -148,6 +149,7 @@ public class TC_01 {
         Assert.assertTrue(anpp.published.isDisplayed());  //OR Assert.assertTrue(anpp.published.getText().contains("Published"));
         System.out.println("US_15 TC_1 is passed!!!");
 
+        ExtentReportUtils.passAndCaptureScreenshot("Passed!!");
 
         }
 
