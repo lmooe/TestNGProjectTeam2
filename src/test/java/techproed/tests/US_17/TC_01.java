@@ -7,20 +7,15 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import techproed.pages.CheckOutPage;
-import techproed.pages.CouponPage;
-import techproed.pages.HomePage;
-import techproed.pages.ProductPage;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
-import techproed.utilities.JSUtils;
-import techproed.utilities.WaitUtils;
+import techproed.pages.*;
+import techproed.utilities.*;
 
 public class TC_01 {
 
     HomePage homePage = new HomePage();
     ProductPage productPage = new ProductPage();
     CheckOutPage checkOutPage = new CheckOutPage();
+    DashboardPage dashboardPage = new DashboardPage();
 
     @BeforeMethod
     public void deleteCart(){
@@ -31,12 +26,11 @@ public class TC_01 {
         homePage.username.sendKeys(ConfigReader.getProperty("email"));
         homePage.password.sendKeys(ConfigReader.getProperty("password"));
         homePage.signInButton.click();
-        WaitUtils.waitFor(2);
+        WaitUtils.waitFor(4);
 
         //Delete cart, if it is not empty
-        homePage.cart.click();
-        WaitUtils.waitFor(2);
         if(Integer.parseInt(checkOutPage.productCounter.getText())>0){
+            homePage.cart.click();
             checkOutPage.viewChartButton.click();
             checkOutPage.clearChart.click();
         }
@@ -48,19 +42,13 @@ public class TC_01 {
 
 
         //Search and add product
-        homePage.searchBox.sendKeys("Shoe", Keys.ENTER);
+        homePage.searchBox.sendKeys(ConfigReader.getProperty("product2"), Keys.ENTER);
+
         WebElement leatherShoe = Driver.getDriver().findElement(By.linkText("Leather shoes"));
         JSUtils.JSclickWithTimeout(leatherShoe);
-        WaitUtils.waitFor(2);
 
-        productPage.plusButton.click();
-        WaitUtils.waitFor(2);
-
-        //ASK========>>>>>>> value is different for each product
-        WebElement addToChartButton = Driver.getDriver().findElement(By.xpath("//button[@name='add-to-cart']"));
-        addToChartButton.click();
-        WaitUtils.waitFor(1);
-
+        BrowserUtils.clickWithTimeOut(productPage.plusButton,2);
+        BrowserUtils.clickWithTimeOut(productPage.addToCartButton2,1);
 
         //Go to cart pop-up and click checkout button
         homePage.cart.click();
@@ -69,8 +57,8 @@ public class TC_01 {
 
 
         //verify the products' name and price
-        Assert.assertTrue(checkOutPage.productNameAndNumber.getText().contains("Leather shoes  × 2"));
-        Assert.assertTrue(checkOutPage.productPrice.getText().contains("$200.00"));
+        Assert.assertTrue(checkOutPage.productNameAndNumber.getText().contains(ConfigReader.getProperty("productNameAndNumber")));
+        Assert.assertTrue(checkOutPage.productPrice.getText().contains(ConfigReader.getProperty("productPrice")));
 
 
         //Click Wire/Transfer Button and verify the addition information
@@ -82,6 +70,12 @@ public class TC_01 {
         JSUtils.JSclickWithTimeout(checkOutPage.placeOrderButton);
         Assert.assertTrue(checkOutPage.verificationOrderMessage.getText().contains("Thank you. Your order has been received."));
         WaitUtils.waitFor(1);
+
+        //Go to order and verify your order
+        homePage.signOut.click();
+        dashboardPage.orders.click();
+        checkOutPage.view.click();
+        Assert.assertTrue(checkOutPage.productNameInOrder.getText().contains("Leather shoes × 2"));
 
 
         //Close driver

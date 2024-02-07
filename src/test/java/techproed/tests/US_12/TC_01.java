@@ -58,6 +58,7 @@ public class TC_01 {
 
         Assert.assertTrue(billShipAddressPage.billEmail.getAttribute("value").equals(ConfigReader.getProperty("US12email")),
                 "Email address does not match.");
+        System.out.println("Success!!! US_12 TC_01");
 
 
     }
