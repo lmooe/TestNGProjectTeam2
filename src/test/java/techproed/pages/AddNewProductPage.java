@@ -3,7 +3,9 @@ package techproed.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import techproed.utilities.Driver;
+import techproed.utilities.JSUtils;
 
 import java.util.List;
 
@@ -47,10 +49,13 @@ public class AddNewProductPage{
     @FindBy(id = "gallery_img_gimage_0_display")
     public WebElement addGalleryPhotoIcon;
 
+    @FindBy (xpath = "(//button[text()='Upload files'])[2]")
+    public WebElement uploadFiles;
+
 //    @FindBy(xpath = "//button[text()='Add to Gallery']")
 //    public WebElement addToGalleryButton;
 
-    @FindBy(xpath = "(//button[@type='button'])[83]")
+    @FindBy(xpath = "(//button[text()='Add to Gallery'])[2]")
     public WebElement addToGalleryButton;
 
     @FindBy(id = "gallery_img_gimage_0_remove_button")
@@ -78,7 +83,7 @@ public class AddNewProductPage{
     public List<WebElement> categoriesCheckboxList;
 
     @FindBy(xpath = "//*[.='+Add new category']")
-    public WebElement addNewCategory;
+    public List<WebElement> addNewCategory;
 
     @FindBy(id = "wcfm_new_cat")
     public WebElement categoryNameInput;
@@ -91,6 +96,28 @@ public class AddNewProductPage{
 
     @FindBy(id = "wcfm_new_parent_cat")
     public WebElement categorySectionDropdown;
+
+    /////not sure:
+    @FindBy(xpath = "//ul[@id='product_cats_checklist']/li")
+    public List<WebElement> categorySelectOptions;
+
+    @FindBy(xpath = "//input[@name='product_cats[]']")
+    public List<WebElement> categoryCheckbox;
+
+//    @FindBy(xpath = "//ul[@id='product_cats_checklist']/li")
+//    private List<WebElement> selectCategoriesOptions;
+
+//    public void selectCategories(String desiredValue) {
+//        for (WebElement category : selectCategoriesOptions) {
+//            String categoryValue =category.getText();
+//            if (categoryValue.equals(desiredValue)) {
+//                JSUtils.JSclickWithTimeout(category);
+//                break;
+//            }
+//        }
+//    }
+
+
 
     @FindBy(xpath = " //*[@id='product_cats_checklist']/li/ul/li/span")
     public List<WebElement> allSubCategoryNames;
@@ -129,7 +156,7 @@ public class AddNewProductPage{
 
 //Inventory Section
 
-    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[1]")
+    @FindBy (xpath = "//div[text()='Inventory']")
     public WebElement menuInventory;
 
     @FindBy (id = "sku")
@@ -147,7 +174,7 @@ public class AddNewProductPage{
 
 //Shipping Section
 
-    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[4]")
+    @FindBy (xpath = "//div[text()='Shipping']")
     public WebElement menuShipping;
 
     @FindBy (id = "weight")
@@ -164,10 +191,12 @@ public class AddNewProductPage{
 
     // >>>>> PROCESSING TIME DROPDOWN LIST BAK
 
+    @FindBy(id = "_wcfmmp_processing_time" )
+    public WebElement processingTime;
 
 // Attributes Section
 
-    @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[5]")
+    @FindBy (xpath = "//div[text()='Attributes']")
     public WebElement menuAttributes;
 
     @FindBy (id = "attributes_is_active_1")
@@ -191,6 +220,11 @@ public class AddNewProductPage{
 
     @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[10]")
     public WebElement menuAdvanced;
+
+//
+
+    @FindBy (xpath = "//span[@class='product-status product-status-publish' and text()='Published']")
+    public WebElement published;
 
 
 

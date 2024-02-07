@@ -33,6 +33,9 @@ public class DashboardPage {
     @FindBy (xpath = "//p[text()='Account details']")
     public WebElement accountDetails;
 //  xpath corrected by Sarah
+// This doesn't work for me Sarah So, I created new one with same name but 1 at the end and make it work for me
+@FindBy (xpath = "//a[text()='Account details']")
+public WebElement accountDetails1;
 
     @FindBy(xpath = "//a[text()='Wishlist']")
     public WebElement wishlist;
@@ -49,8 +52,10 @@ public class DashboardPage {
     @FindBy(partialLinkText = "vendor-register")
     public WebElement becomeAVendor;
 
-    @FindBy(partialLinkText = "edit-address/billing/")
+    @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div/div/div/div/div[3]/div[1]/div/a")
     public WebElement editBillingAddress;
+    //This is different.
+    //It doesn't accept partialLinkText or class name, and I had to copy and paste the xpath from the inspecting
 
     @FindBy(partialLinkText = "edit-address/shipping/")
     public WebElement editShippingAddress;
@@ -64,7 +69,13 @@ public class DashboardPage {
     @FindBy (id = "account_email")
     public WebElement accDetailsEmail;
 
-    @FindBy (id = "//button[text()='Save changes']")
+
+    
+    @FindBy (id = "password_2")
+    public WebElement confirmPassButton;
+
+    @FindBy (id = "//button[@name='save_account_details']")
     public WebElement accDetailsSaveChanges;
+//  I can't get the test to click this locator in a way that returns the success message.
 
 }

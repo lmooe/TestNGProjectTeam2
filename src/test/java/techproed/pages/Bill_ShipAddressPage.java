@@ -20,6 +20,12 @@ public class Bill_ShipAddressPage {
     @FindBy(xpath = "//*[@class='edit btn btn-link btn-primary btn-underline mb-4']")
     public WebElement editBillingAdd;
 
+    @FindBy (xpath = "//*[text()='Address changed successfully.']") // Sarah added locator on 06/02/24
+    public WebElement addressChangedMsg;
+
+    @FindBy (xpath = "//*[text()='Street address is a required field.']") // Sarah added locator on 06/02/24
+    public WebElement streetAddRequiredMsg;
+
     @FindBy(id = "billing_first_name")
     public WebElement billFirstName;
 
@@ -29,8 +35,12 @@ public class Bill_ShipAddressPage {
     @FindBy(id = "billing_company")
     public WebElement billCompOptional;
 
-    @FindBy (id="select2-billing_country-container")
+    @FindBy (id="billing_country") // Sarah updated locator on 06/02/24
     public WebElement billCountryDD;
+
+    //For US_12
+    @FindBy (id="select2-billing_country-container") // Fatih added locator on 06/02/24
+    public WebElement billCountryDD1;
 
     @FindBy (name="billing_address_1")
     public WebElement billAddressLine1;
@@ -40,6 +50,9 @@ public class Bill_ShipAddressPage {
 
     @FindBy(name="billing_city")
     public WebElement billTownCity;
+
+    @FindBy (id = "billing_state")
+    public WebElement billCounty;
 
     @FindBy (id="select2-billing_state-container")
     public WebElement billStateProvinceDD;
@@ -55,6 +68,9 @@ public class Bill_ShipAddressPage {
 
     @FindBy  (xpath = "//button[@name='save_address']")
     public WebElement billSaveAddressButton;
+
+    @FindBy (xpath = "//div[@class='woocommerce-message alert alert-simple alert-icon alert-close-top alert-success']")
+    public WebElement successMessageBilling;
 
 
     /////////////  Shipping Address  ////////////////
