@@ -30,11 +30,11 @@ public class DashboardPage {
     @FindBy(xpath = "//a[text()='Addresses']")
     public WebElement addresses;
 
-    @FindBy (xpath = "//a[text()='Account details']")
+    @FindBy (xpath = "//p[text()='Account details']")
     public WebElement accountDetails;
 //  xpath corrected by Sarah
 // This doesn't work for me Sarah So, I created new one with same name but 1 at the end and make it work for me
-// Actually my test works with both.  I've ammended accountDetails to be the same xpath as accountDetails1.
+
 @FindBy (xpath = "//a[text()='Account details']")
 public WebElement accountDetails1;
 
