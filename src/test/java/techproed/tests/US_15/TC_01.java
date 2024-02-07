@@ -67,16 +67,21 @@ public class TC_01 {
         //product title
         BrowserUtils.sendKeysWithTimeout(anpp.productTitleInput, ConfigReader.getProperty("product_title"), 3);
         //product image for display
-//        String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
-//        BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 10);
-//        BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
-//        BrowserUtils.clickWithTimeOut(anpp.selectToUploadButton, 10);
+        String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+        BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 10);
+        BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
+        Thread.sleep(3000);
+        BrowserUtils.clickWithTimeOut(anpp.selectToUploadButton, 10);
+        Thread.sleep(2000);
 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> look at here later <<<<<<<<<<<<<<<<<<<
         //product image for gallery
-        //  BrowserUtils.clickWithTimeOut(anpp.addGalleryPhotoIcon,1);
-//            BrowserUtils.sendKeysWithTimeout(anpp.addGalleryPhotoIcon, newProductImage, 1);
-//            BrowserUtils.clickWithTimeOut(anpp.addToGalleryButton,1);
+          BrowserUtils.clickWithTimeOut(anpp.addGalleryPhotoIcon,10);
+        Thread.sleep(3000);
+        anpp.uploadFiles.click();
+          BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
+        Thread.sleep(3000);
+          BrowserUtils.clickWithTimeOut(anpp.addToGalleryButton,10);
+        Thread.sleep(3000);
 
 //  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> look at here later <<<<<<<<<<<<<<<<<<<
 
