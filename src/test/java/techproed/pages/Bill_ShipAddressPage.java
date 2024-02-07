@@ -11,18 +11,17 @@ import techproed.utilities.Driver;
 public class Bill_ShipAddressPage {
 
 
-   
     public static LRUMap<Object, Object> shippingZipcodeInput;
     public static Alert shipAddressLine1Input;
     public static WebElement[] allShippingAddressTableElements;
     public static WebElement saveAddressButton;
     public static Bill_ShipAddressPage shipZipPostCodeInput;
     public static Bill_ShipAddressPage townCityInput;
+    public static JsonFormat.Features invalidDataAlertList;
 
 
-
-    public Bill_ShipAddressPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public Bill_ShipAddressPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
 
@@ -43,31 +42,31 @@ public class Bill_ShipAddressPage {
     @FindBy(id = "billing_company")
     public WebElement billCompOptional;
 
-    @FindBy (id="select2-billing_country-container")
+    @FindBy(id = "select2-billing_country-container")
     public WebElement billCountryDD;
 
-    @FindBy (name="billing_address_1")
+    @FindBy(name = "billing_address_1")
     public WebElement billAddressLine1;
 
-    @FindBy (name="billing_address_2")
+    @FindBy(name = "billing_address_2")
     public WebElement billAddressLine2;
 
-    @FindBy(name="billing_city")
+    @FindBy(name = "billing_city")
     public WebElement billTownCity;
 
-    @FindBy (id="select2-billing_state-container")
+    @FindBy(id = "select2-billing_state-container")
     public WebElement billStateProvinceDD;
 
-    @FindBy(name="billing_postcode")
+    @FindBy(name = "billing_postcode")
     public WebElement billZipPostCode;
 
-    @FindBy(id="billing_phone")
+    @FindBy(id = "billing_phone")
     public WebElement billPhoneNumb;
 
-    @FindBy (id="billing_email")
+    @FindBy(id = "billing_email")
     public WebElement billEmail;
 
-    @FindBy  (xpath = "//button[@name='save_address']")
+    @FindBy(xpath = "//button[@name='save_address']")
     public WebElement billSaveAddressButton;
 
 
@@ -89,34 +88,25 @@ public class Bill_ShipAddressPage {
     @FindBy(id = "shipping_company")
     public WebElement shipCompOptional;
 
-    @FindBy (id="select2-shipping_country-container")
+    @FindBy(id = "select2-shipping_country-container")
     public static WebElement shipCountryDD;
 
-    @FindBy (name="shipping_address_1")
+    @FindBy(name = "shipping_address_1")
     public WebElement shipAddressLine1;
 
-    @FindBy (name="shipping_address_2")
+    @FindBy(name = "shipping_address_2")
     public WebElement shipAddressLine2;
 
-    @FindBy(name="shipping_city")
+    @FindBy(name = "shipping_city")
     public WebElement shipTownCity;
 
-    @FindBy (id="select2-shipping_state-container")
-    public WebElement shipStateProvinceDD;
+    @FindBy(id = "select2-shipping_state-container")
+    public static WebElement shipStateProvinceDD;
 
-    @FindBy(name="shipping_postcode")
+    @FindBy(name = "shipping_postcode")
     public WebElement shipZipPostCode;
 
-    @FindBy  (xpath = "//button[@name='save_address']")
+    @FindBy(xpath = "//button[@name='save_address']")
     public WebElement shipSaveAddressButton;
-
-
-    public static void clear() {
-    }
-
-    public static void clear(Bill_ShipAddressPage shipZipPostCode) {
-    }
-
-    public void notify(Object city) {
-    }
 }
+
