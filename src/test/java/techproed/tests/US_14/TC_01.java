@@ -45,7 +45,7 @@ import techproed.utilities.Driver;
 
             HomePage homepage = new HomePage();
             //Click on sign in button
-            BrowserUtils.clickWithTimeOut(homepage.singIn1,10);
+            BrowserUtils.clickWithTimeOut(homepage.signIn,10);
             //Enter username into username/email box
             BrowserUtils.sendKeysWithTimeout(homepage.username,ConfigReader.getProperty("email"),10);
             //Enter password into password box

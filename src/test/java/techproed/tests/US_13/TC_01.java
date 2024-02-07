@@ -51,7 +51,7 @@ public class TC_01 {
 
         public void vendorAddShippingAddress() {
 
-            homePage.singIn1.click();
+            homePage.signIn.click();
             homePage.username.sendKeys(ConfigReader.getProperty("Vendor"));
             homePage.password.sendKeys(ConfigReader.getProperty("VendorAccount"));
             homePage.signInButton.click();
