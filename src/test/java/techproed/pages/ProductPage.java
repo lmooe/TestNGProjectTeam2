@@ -13,6 +13,9 @@ public class ProductPage {
     @FindBy(xpath = "//button[@value='15773']")
     public WebElement addToCartButton;
 
+    @FindBy(xpath = "//button[@name='add-to-cart']")  //Added by Esra
+    public WebElement addToCartButton2;
+
     @FindBy(xpath = "//div[@role='alert']")
     public WebElement addedToCartAlert;
 
