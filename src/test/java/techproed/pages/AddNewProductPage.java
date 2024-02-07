@@ -1,5 +1,6 @@
 package techproed.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -23,6 +24,7 @@ AddNewProductPage{
 
     @FindBy(xpath = "//span[text()='Add New']")
     public WebElement addNewButton;
+
     @FindBy(id = "product_type")
     public WebElement productTypeDropdown;
 
@@ -119,6 +121,10 @@ AddNewProductPage{
 //    }
 
 
+    @FindBy (id = "regular_price")
+    public WebElement priceField;
+    @FindBy (id = "sale_price")
+    public WebElement salePriceField;
 
     @FindBy(xpath = " //*[@id='product_cats_checklist']/li/ul/li/span")
     public List<WebElement> allSubCategoryNames;
@@ -155,6 +161,21 @@ AddNewProductPage{
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    @FindBy (id = "is_virtual")
+    public WebElement virtualBox;
+
+    @FindBy (id = "is_downloadable")
+    public WebElement downloadBox;
+
+    public static void radioClickByProducCategorytIndex(int index){
+        int numOfRadio =Driver.getDriver().findElements(By.xpath("//ul[@id='product_cats_checklist']/li")).size();
+        for (int i=0;i<numOfRadio;i++){
+            if (!Driver.getDriver().findElements(By.xpath("//ul[@id='product_cats_checklist']/li")).get(index).isSelected()) {
+                Driver.getDriver().findElements(By.xpath("//ul[@id='product_cats_checklist']/li")).get(index).click();
+            }
+        }
+    }
+
 //Inventory Section
 
     @FindBy (xpath = "//div[text()='Inventory']")
@@ -189,8 +210,6 @@ AddNewProductPage{
 
     @FindBy (id = "height")
     public WebElement height;
-
-    // >>>>> PROCESSING TIME DROPDOWN LIST BAK
 
     @FindBy(id = "_wcfmmp_processing_time" )
     public WebElement processingTime;

@@ -58,7 +58,6 @@ public class HomePage {
     @FindBy (className = "form-control")
     public WebElement searchBox;
 
-
     @FindBy (xpath = "//a[text()='My Account']")
     public WebElement MyAccountOnFooter;
 
