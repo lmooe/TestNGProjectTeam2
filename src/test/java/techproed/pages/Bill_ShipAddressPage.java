@@ -38,6 +38,10 @@ public class Bill_ShipAddressPage {
     @FindBy (id="billing_country") // Sarah updated locator on 06/02/24
     public WebElement billCountryDD;
 
+    //For US_12
+    @FindBy (id="select2-billing_country-container") // Fatih added locator on 06/02/24
+    public WebElement billCountryDD1;
+
     @FindBy (name="billing_address_1")
     public WebElement billAddressLine1;
 
