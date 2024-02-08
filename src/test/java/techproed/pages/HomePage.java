@@ -78,4 +78,7 @@ public class HomePage {
     @FindBy (xpath = "//p[contains(text(), 'selection')]")
     public WebElement noProductsFoundAlert;
 
+    @FindBy (xpath = "//*[@id='signup']/form/p[6]")
+    public WebElement emailWarningText;
+
 }
