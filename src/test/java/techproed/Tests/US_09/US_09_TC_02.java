@@ -6,10 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
 import techproed.pages.VendorPage;
-import techproed.utilities.BrowserUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
-import techproed.utilities.WaitUtils;
+import techproed.utilities.*;
 
 public class US_09_TC_02 {
     HomePage homePage = new HomePage();
@@ -25,19 +22,20 @@ public class US_09_TC_02 {
         WaitUtils.waitFor(3);
         BrowserUtils.clickWithTimeOut(homePage.register, 1);
 
-        homePage.regUsername.click();
+        JSUtils.JSclickWithTimeout(homePage.regUsername);
         homePage.regUsername.sendKeys(faker.name().username());
-        homePage.regEmail.click();
+        JSUtils.JSclickWithTimeout(homePage.regEmail);
         homePage.regEmail.sendKeys("lipa.logen@farmoaks.com");
-        homePage.regPassword.click();
+        JSUtils.JSclickWithTimeout(homePage.regPassword);
         homePage.regPassword.sendKeys(faker.internet().password());
-        homePage.agreePolicy.click();
+        JSUtils.JSclickWithTimeout((homePage.agreePolicy));
         BrowserUtils.clickWithTimeOut(homePage.signUpButton, 1);
         WaitUtils.waitFor(3);
 
 
+
         String emailUsedMessage = homePage.noSuccess.getText();
-        Assert.assertEquals(emailUsedMessage, "Account is already registered with your email address");
+        Assert.assertTrue(emailUsedMessage.contains("An account is already registered with your email address."));
 
     }
 }

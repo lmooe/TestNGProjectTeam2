@@ -6,15 +6,13 @@ import org.testng.annotations.Test;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
 import techproed.pages.VendorPage;
-import techproed.utilities.BrowserUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
-import techproed.utilities.WaitUtils;
+import techproed.utilities.*;
 
 public class US_09_TC_01 {
 
     HomePage homePage = new HomePage();
     Faker faker = new Faker();
+    DashboardPage dashboardPage= new DashboardPage();
 
     VendorPage vendorPage = new VendorPage();
 
@@ -25,26 +23,28 @@ public class US_09_TC_01 {
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
         BrowserUtils.clickWithTimeOut(homePage.register, 1);
 
-        homePage.regUsername.click();
+        JSUtils.JSclickWithTimeout(homePage.regUsername);
         homePage.regUsername.sendKeys(faker.name().username());
-        homePage.regEmail.click();
+        JSUtils.JSclickWithTimeout(homePage.regEmail);
         homePage.regEmail.sendKeys(faker.internet().emailAddress());
-        homePage.regPassword.click();
+        JSUtils.JSclickWithTimeout(homePage.regPassword);
         homePage.regPassword.sendKeys(faker.internet().password());
-        homePage.agreePolicy.click();
+        JSUtils.JSclickWithTimeout(homePage.agreePolicy);
         BrowserUtils.clickWithTimeOut(homePage.signUpButton, 1);
-        WaitUtils.waitFor(3);
+        JSUtils.JSclickWithTimeout(homePage.MyAccountOnFooter);
 
-        homePage.becomeVendor.click();
 
-        vendorPage.vendorRegistrationEmail.click();
-        vendorPage.vendorRegistrationEmail.sendKeys("lipa.logen@farmoaks.com");
+        JSUtils.JSclickWithTimeout(homePage.becomeVendor);
+
+        //JSUtils.JSclickWithTimeout(vendorPage.vendorRegistrationEmail);
+        //vendorPage.vendorRegistrationEmail.sendKeys("lipa.logen@farmoaks.com");
         //vendorPage.vendorRegistrationEmail.sendKeys(faker.internet().emailAddress());
-        vendorPage.vendorResendCode.click();
+        JSUtils.JSclickWithTimeout(vendorPage.vendorResendCode);
 
         //manually retrieve code from email and input into verification code
+        // tc will fail here as expected, since we cannot get code via faker email.
 
-        vendorPage.vendorConfirmButton.click();
+        JSUtils.JSclickWithTimeout(vendorPage.vendorConfirmButton);
         WaitUtils.waitFor(2);
 
         String successMsg = vendorPage.setupPage.getText();

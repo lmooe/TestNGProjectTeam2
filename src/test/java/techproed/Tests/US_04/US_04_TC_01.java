@@ -45,10 +45,11 @@ public class US_04_TC_01 {
         dashboardPage.addresses.click();
         WaitUtils.waitFor(1);
 
-        billShipAddressPage.addShip.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.addShip);
         WaitUtils.waitFor(1);
 
-        billShipAddressPage.shipFirstName.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipFirstName);
+        WaitUtils.waitFor(2);
         billShipAddressPage.shipFirstName.sendKeys("Jane");
         billShipAddressPage.shipLastName.click();
         billShipAddressPage.shipLastName.sendKeys("Doe");
@@ -58,7 +59,7 @@ public class US_04_TC_01 {
         WebElement canadaOption = Driver.getDriver().findElement(By.xpath("//*[@value='CA']"));
         canadaOption.click();
 
-        billShipAddressPage.shipAddressLine1.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipAddressLine1);
         billShipAddressPage.shipAddressLine1.sendKeys("150 Dowling Ave");
         billShipAddressPage.shipAddressLine2.click();
         billShipAddressPage.shipAddressLine2.sendKeys("unit 700");
@@ -76,6 +77,6 @@ public class US_04_TC_01 {
 
         String successMsg = billShipAddressPage.successMessage.getText();
 
-        Assert.assertEquals(successMsg, "Address changed successfully");
+        Assert.assertEquals(successMsg, "Address changed successfully.");
     }
 }

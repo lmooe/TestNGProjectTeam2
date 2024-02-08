@@ -84,9 +84,10 @@ public class HomePage {
     @FindBy (xpath = "//p[contains(text(), 'selection')]")
     public WebElement noProductsFoundAlert;
 
-    @FindBy (xpath = "//*[@class='submit-status'")
+    @FindBy (xpath = "//p[text()='An account is already registered with your email address. ']")
     public WebElement noSuccess;
 
-
+    @FindBy (className = "page-title")
+    public WebElement myAccountTitle;
 
 }
