@@ -112,6 +112,8 @@ public class CheckOutPage {
     @FindBy(xpath = "(//span[@class='cart-count'])[1]")
     public WebElement productCounter;
 
+    @FindBy(xpath = "//<li[@class='alert alert-simple alert-icon alert-close-top alert-danger']")
+    public WebElement alertMsg;
     @FindBy(xpath = "//p[text()='Thank you. Your order has been received.']")
     public WebElement orderReceivedMessage;
 //  Added by Sarah (almost the same as verificationOrderMessage but for 'Thank you. Your order has been received.' text only)
