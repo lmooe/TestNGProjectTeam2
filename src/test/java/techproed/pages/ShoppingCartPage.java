@@ -26,4 +26,5 @@ public class ShoppingCartPage {
     @FindBy (xpath = "//a[contains(text(), 'checkout')]")
     public WebElement checkoutButton;
 
+
 }
