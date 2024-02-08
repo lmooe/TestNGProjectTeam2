@@ -148,7 +148,7 @@ public class TC_01 {
     }
 
     @AfterMethod
-    public void teardown(){
+    public void tearDown() {
         Driver.closeDriver();
     }
 }

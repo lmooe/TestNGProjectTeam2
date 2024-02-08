@@ -149,10 +149,11 @@ public class TC_01 {
         Assert.assertEquals(successMsg, "Address changed successfully.");
         ExtentReportUtils.passAndCaptureScreenshot("Billing address changed message successfully displayed");
         ExtentReportUtils.flush();
+
     }
 
     @AfterMethod
-    public void teardown(){
+    public void tearDown() {
         Driver.closeDriver();
     }
 }

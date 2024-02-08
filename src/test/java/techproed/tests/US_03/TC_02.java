@@ -123,7 +123,7 @@ public class TC_02 {
     }
 
     @AfterMethod
-    public void teardown(){
+    public void tearDown() {
         Driver.closeDriver();
     }
 }
