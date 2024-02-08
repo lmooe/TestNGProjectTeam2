@@ -8,11 +8,8 @@ import org.testng.annotations.Test;
 import techproed.pages.AddNewProductPage;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
-import techproed.utilities.BrowserUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
+import techproed.utilities.*;
 import org.openqa.selenium.support.ui.Select;
-import techproed.utilities.ExtentReportUtils;
 
 public class TC_01 {
 
@@ -87,6 +84,11 @@ public class TC_01 {
 //  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> look at here later <<<<<<<<<<<<<<<<<<<
 
 //            //product category
+//
+        JSUtils.JSclickWithTimeout(anpp.categoryboxTarhana);
+
+        Thread.sleep(2000);
+
 //            FOR EACH METHODU
 //            selectCategory.selectByVisibleText(ConfigReader.getProperty("product_category"));
 //

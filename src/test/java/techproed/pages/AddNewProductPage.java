@@ -84,6 +84,9 @@ public class AddNewProductPage{
     @FindBy(xpath = "//*[@id='product_cats_checklist']/li/input")
     public List<WebElement> categoriesCheckboxList;
 
+    @FindBy(xpath = "//input[@value='1283']")
+    public WebElement categoryboxTarhana;
+
     @FindBy(xpath = "//*[.='+Add new category']")
     public List<WebElement> addNewCategory;
 
