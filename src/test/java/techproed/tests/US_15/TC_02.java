@@ -7,10 +7,7 @@ import org.testng.annotations.Test;
 import techproed.pages.AddNewProductPage;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
-import techproed.utilities.BrowserUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
-import techproed.utilities.JSUtils;
+import techproed.utilities.*;
 
 import java.util.List;
 
@@ -87,17 +84,17 @@ public class TC_02 {
             //product category
 
 
-            for (WebElement category : anpp.categorySelectOptions) {
-                String categoryValue =category.getText();
-                System.out.println(categoryValue);
-                Thread.sleep(2000);
-                if (categoryValue.equals("456")) {
-                    //anpp.categoryCheckbox.click; BUT HOW TO DESIRED ONE
-
-                    break;
-                }
-            }
-           Thread.sleep(3000);
+//            for (WebElement category : anpp.categorySelectOptions) {
+//                String categoryValue =category.getText();
+//                System.out.println(categoryValue);
+//                Thread.sleep(2000);
+//                if (categoryValue.equals("456")) {
+//                    //anpp.categoryCheckbox.click; BUT HOW TO DESIRED ONE
+//
+//                    break;
+//                }
+//            }
+//           Thread.sleep(3000);
 
          //   anpp.selectCategories(ConfigReader.getProperty("product_category"));
 
@@ -161,6 +158,9 @@ public class TC_02 {
             //VERIFICATION
             Assert.assertFalse(anpp.published.isDisplayed());  //OR Assert.assertTrue(anpp.published.getText().contains("Published"));
             System.out.println("US_15 TC_2 is Failed!!!-bug-");
+
+
+            ExtentReportUtils.passAndCaptureScreenshot("FAIL!");
 
 
         }

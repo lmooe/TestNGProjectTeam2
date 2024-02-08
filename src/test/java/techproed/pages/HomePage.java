@@ -54,7 +54,6 @@ public class HomePage {
     @FindBy (className = "form-control")
     public WebElement searchBox;
 
-
     @FindBy (xpath = "//a[text()='My Account']")
     public WebElement MyAccountOnFooter;
 
@@ -78,5 +77,8 @@ public class HomePage {
 
     @FindBy (xpath = "//p[contains(text(), 'selection')]")
     public WebElement noProductsFoundAlert;
+
+    @FindBy (xpath = "//*[@id='signup']/form/p[6]")
+    public WebElement emailWarningText;
 
 }
