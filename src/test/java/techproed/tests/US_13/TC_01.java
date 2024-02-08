@@ -50,7 +50,7 @@ public class TC_01 {
         public void bill_Ship_Address_Test () {
             {
 
-                homePage.signIn.click();
+                homePage.singIn1.click();
                 homePage.username.sendKeys(ConfigReader.getProperty("Vendor"));
                 homePage.password.sendKeys(ConfigReader.getProperty("VendorAccount"));
                 homePage.signInButton.click();

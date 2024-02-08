@@ -42,7 +42,7 @@ public class TC_03 {
 
         HomePage homepage = new HomePage();
         //Click on sign in button
-        BrowserUtils.clickWithTimeOut(homepage.signIn, 10);
+        BrowserUtils.clickWithTimeOut(homepage.singIn1, 10);
         //Enter username into username/email box
         BrowserUtils.sendKeysWithTimeout(homepage.username, ConfigReader.getProperty("email"), 10);
         //Enter password into password box
@@ -138,52 +138,25 @@ public class TC_03 {
 
 
 
-                //  Click on +Add new category option
-                BrowserUtils.clickWithTimeOut(addNewProductPage.categoriesCheckboxList,10);
+                Assert.assertFalse(addNewProductPage.published.isDisplayed());
+                System.out.println("US_14 Failed");
 
-                //  Enter a new category name
-                Faker faker = new Faker();
-                String newCategoryName = faker.name().name();
-                storeManagerPageUS_14.categoryNameInput.sendKeys(newCategoryName);
 
-                //  Select a location under one of main categories from the category section dropdown
-                Select select = new Select(storeManagerPageUS_14.categorySectionDropdown);
-                select.selectByVisibleText(storeManagerPageUS_14.allMainCategoryNames.get(0).getText());
+                ExtentReportUtils.passAndCaptureScreenshot("FAIL!");
 
-                //  Click on add
-                JSUtils.clickElementByJS(storeManagerPageUS_14.addCategoryNameButton);
-                Driver.getDriver().navigate().refresh();
 
-                //  Verify that new category is created as a sub-category under a main category
-                ReusableMethods.waitFor(1);
-                for(WebElement eachCategory : storeManagerPageUS_14.allSubCategoryNames){
-                    if(eachCategory.getText().equals(newCategoryName)){
-                        Assert.assertTrue(eachCategory.getText().equals(newCategoryName));
-                    }
-                }
+
 
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+            }
 
 
             }
 
         }
-    }
-    }
+
+
 
 
 

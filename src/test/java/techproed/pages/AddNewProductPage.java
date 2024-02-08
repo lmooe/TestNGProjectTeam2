@@ -90,7 +90,7 @@ AddNewProductPage{
     @FindBy(xpath = "//*[@id='product_cats_checklist']/li/input")
     public List<WebElement> categoriesCheckboxList;
 
-    @FindBy(xpath = "//*[.='+Add new category']")
+    @FindBy(xpath = "//*[.=class='description wcfm_full_ele wcfm_side_add_new_category wcfm_add_new_category wcfm_add_new_taxonomy[2]")
     public List<WebElement> addNewCategory;
 
     @FindBy(id = "wcfm_new_cat")

@@ -11,13 +11,6 @@ import techproed.utilities.Driver;
 public class Bill_ShipAddressPage {
 
 
-    public static LRUMap<Object, Object> shippingZipcodeInput;
-    public static Alert shipAddressLine1Input;
-    public static WebElement[] allShippingAddressTableElements;
-    public static WebElement saveAddressButton;
-    public static Bill_ShipAddressPage shipZipPostCodeInput;
-    public static Bill_ShipAddressPage townCityInput;
-    public static JsonFormat.Features invalidDataAlertList;
 
 
     public Bill_ShipAddressPage() {
@@ -48,12 +41,12 @@ public class Bill_ShipAddressPage {
     @FindBy(id = "billing_company")
     public WebElement billCompOptional;
 
-<<<<<<< HEAD
+
     @FindBy(id = "select2-billing_country-container")
     public WebElement billCountryDD;
 
     @FindBy(name = "billing_address_1")
-=======
+
     @FindBy (id="billing_country") // Sarah updated locator on 06/02/24
     public WebElement billCountryDD;
 
@@ -62,7 +55,7 @@ public class Bill_ShipAddressPage {
     public WebElement billCountryDD1;
 
     @FindBy (name="billing_address_1")
->>>>>>> 4367f99b7e5ce94ff08416b340e2484d3a6fcb3d
+
     public WebElement billAddressLine1;
 
     @FindBy(name = "billing_address_2")
@@ -71,14 +64,14 @@ public class Bill_ShipAddressPage {
     @FindBy(name = "billing_city")
     public WebElement billTownCity;
 
-<<<<<<< HEAD
+
     @FindBy(id = "select2-billing_state-container")
-=======
+public WebElement billstate;
     @FindBy (id = "billing_state")
     public WebElement billCounty;
 
     @FindBy (id="select2-billing_state-container")
->>>>>>> 4367f99b7e5ce94ff08416b340e2484d3a6fcb3d
+
     public WebElement billStateProvinceDD;
 
     @FindBy(name = "billing_postcode")
