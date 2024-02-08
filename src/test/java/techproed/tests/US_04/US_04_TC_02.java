@@ -1,4 +1,4 @@
-package techproed.Tests.US_04;
+package techproed.tests.US_04;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
@@ -9,8 +9,6 @@ import techproed.pages.Bill_ShipAddressPage;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
 import techproed.utilities.*;
-
-import static org.testng.Assert.*;
 
 public class US_04_TC_02 {
     HomePage homePage = new HomePage();

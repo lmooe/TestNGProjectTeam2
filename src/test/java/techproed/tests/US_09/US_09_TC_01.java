@@ -1,4 +1,4 @@
-package techproed.Tests.US_09;
+package techproed.tests.US_09;
 
 import com.github.javafaker.Faker;
 import org.testng.Assert;

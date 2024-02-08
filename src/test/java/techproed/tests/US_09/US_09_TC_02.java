@@ -1,7 +1,6 @@
-package techproed.Tests.US_09;
+package techproed.tests.US_09;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
