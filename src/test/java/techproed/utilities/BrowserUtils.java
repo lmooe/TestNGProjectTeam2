@@ -60,7 +60,7 @@ public class BrowserUtils {
         }
     }
     //    CHECKBOX BUTTON
-    public void checkboxClickByIndex(int index){
+    public static void checkboxClickByIndex(int index){
         int numOfRadio =Driver.getDriver().findElements(By.xpath("//input[@type='checkbox']")).size();
         try{
             for (int i=0;i<numOfRadio;i++){

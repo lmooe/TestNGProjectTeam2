@@ -1,9 +1,12 @@
 package techproed.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import techproed.utilities.Driver;
+import techproed.utilities.JSUtils;
 
 import java.util.List;
 
@@ -20,6 +23,7 @@ public class AddNewProductPage{
 
     @FindBy(xpath = "//span[text()='Add New']")
     public WebElement addNewButton;
+
     @FindBy(id = "product_type")
     public WebElement productTypeDropdown;
 
@@ -44,13 +48,16 @@ public class AddNewProductPage{
     @FindBy(id = "featured_img_remove_button")
     public WebElement removeImgButton;
 
-    @FindBy(id = "gallery_img_gimage_1_display")
+    @FindBy(id = "gallery_img_gimage_0_display")
     public WebElement addGalleryPhotoIcon;
+
+    @FindBy (xpath = "(//button[text()='Upload files'])[2]")
+    public WebElement uploadFiles;
 
 //    @FindBy(xpath = "//button[text()='Add to Gallery']")
 //    public WebElement addToGalleryButton;
 
-    @FindBy(xpath = "(//button[@type='button'])[83]")
+    @FindBy(xpath = "(//button[text()='Add to Gallery'])[2]")
     public WebElement addToGalleryButton;
 
     @FindBy(id = "gallery_img_gimage_0_remove_button")
@@ -77,6 +84,9 @@ public class AddNewProductPage{
     @FindBy(xpath = "//*[@id='product_cats_checklist']/li/input")
     public List<WebElement> categoriesCheckboxList;
 
+    @FindBy(xpath = "//input[@value='1283']")
+    public WebElement categoryboxTarhana;
+
     @FindBy(xpath = "//*[.='+Add new category']")
     public List<WebElement> addNewCategory;
 
@@ -91,6 +101,18 @@ public class AddNewProductPage{
 
     @FindBy(id = "wcfm_new_parent_cat")
     public WebElement categorySectionDropdown;
+
+    /////not sure:
+    @FindBy(xpath = "//ul[@id='product_cats_checklist']/li")
+    public List<WebElement> categorySelectOptions;
+
+    @FindBy(xpath = "//input[@name='product_cats[]']")
+    public List<WebElement> categoryCheckbox;
+
+    @FindBy (id = "regular_price")
+    public WebElement priceField;
+    @FindBy (id = "sale_price")
+    public WebElement salePriceField;
 
     @FindBy(xpath = " //*[@id='product_cats_checklist']/li/ul/li/span")
     public List<WebElement> allSubCategoryNames;
@@ -127,6 +149,15 @@ public class AddNewProductPage{
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    @FindBy (id = "is_virtual")
+    public WebElement virtualBox;
+
+    @FindBy (id = "is_downloadable")
+    public WebElement downloadBox;
+
+    @FindBy (xpath = "//a[text()='Simple Product']")
+    public WebElement productCreated;
+
 //Inventory Section
 
     @FindBy (xpath = "//div[text()='Inventory']")
@@ -135,7 +166,7 @@ public class AddNewProductPage{
     @FindBy (id = "sku")
     public WebElement sku;
 
-    @FindBy (xpath = "(//input[@value='enable'])[3]")
+    @FindBy (id = "manage_stock")
     public WebElement manageStock;
 
     @FindBy(id = "stock_qty")
@@ -161,8 +192,6 @@ public class AddNewProductPage{
 
     @FindBy (id = "height")
     public WebElement height;
-
-    // >>>>> PROCESSING TIME DROPDOWN LIST BAK
 
     @FindBy(id = "_wcfmmp_processing_time" )
     public WebElement processingTime;
@@ -193,6 +222,11 @@ public class AddNewProductPage{
 
     @FindBy (xpath = "(//div[@class='page_collapsible_content_holder'])[10]")
     public WebElement menuAdvanced;
+
+//
+
+    @FindBy (xpath = "//span[@class='product-status product-status-publish' and text()='Published']")
+    public WebElement published;
 
 
 
