@@ -43,7 +43,7 @@ public class TC_02 {
 
         Faker faker = new Faker();
         String fakeName = faker.name().firstName();
-        String fakeEmail = faker.internet().emailAddress();
+        String fakeEmail = fakeName + "yahoo.com";
         String  validPasssword= faker.internet().password(12,20);
 
         HomePage homePage = new HomePage();
@@ -66,7 +66,12 @@ public class TC_02 {
 
         System.out.println("alertMessage = " + alertMessage);
 
-//        if (alertMessage.equals(""))
+        if (alertMessage.equals("Please include an '@' in the email address. " + "'" + fakeEmail + "' is missing an '@'.")){
+            System.out.println("Test PASSED");
+        }else {
+            System.out.println("Test FAILED");
+        }
+
     }
 
 

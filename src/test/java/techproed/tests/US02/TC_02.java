@@ -1,6 +1,8 @@
 package techproed.tests.US02;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,7 +23,7 @@ public class TC_02 {
 
     @BeforeMethod
     public void setUp(){
-        Driver.getDriver().get("https://google.com/");
+        Driver.getDriver().get("https://allovercommerce.com/");
         WaitUtils.waitForPageToLoad(20);
     }
 
@@ -58,6 +60,12 @@ public class TC_02 {
         BrowserUtils.clickWithTimeOut(homePage.regCheckBox,2);
 
         BrowserUtils.clickWithTimeOut(homePage.signUpButton,2);
+
+        if (homePage.emailWarningText.equals("An account is already registered with your email address. ")){
+            System.out.println("Test PASSED...");
+        }else {
+            System.out.println("Test Failed...");
+        }
 
 
 

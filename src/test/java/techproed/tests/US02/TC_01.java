@@ -50,7 +50,7 @@ public class TC_01 {
 
         HomePage homePage = new HomePage();
 
-        BrowserUtils.clickWithTimeOut(homePage.registerButton,2);
+        BrowserUtils.clickWithTimeOut(homePage.register,2);
 
         BrowserUtils.sendKeysWithTimeout(homePage.regUsername,fakeName,2);
 
@@ -69,9 +69,6 @@ public class TC_01 {
             System.out.println("Test PASSED");
         }
 
-
-
+        Driver.closeDriver();
     }
-
-
 }
