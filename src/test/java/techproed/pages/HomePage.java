@@ -3,25 +3,21 @@ package techproed.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.w3c.dom.html.HTMLInputElement;
 import techproed.utilities.Driver;
 
 public class HomePage {
-
-
-    public static WebElement signOutButton;
 
     public HomePage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
     @FindBy(xpath = "//*[text()='Sign In']")
-    public static WebElement signIn;
+    public WebElement singIn1;
 
     @FindBy (xpath = "//a[@class='register inline-type']")
     public WebElement register;
 
     @FindBy(xpath = "//button[@name='register']")
-    public WebElement signUp;
+    public WebElement singUp;
 
     @FindBy (xpath = "//input[@id='register-policy']")
     public WebElement agreePolicy;
@@ -33,13 +29,13 @@ public class HomePage {
     public WebElement becomeVendor;
 
     @FindBy (id = "username")
-    public static WebElement username;
+    public WebElement username;
 
     @FindBy (id = "password")
-    public static WebElement password;
+    public WebElement password;
 
     @FindBy (xpath = "//button[@name='login']")
-    public static WebElement signInButton;
+    public WebElement signInButton;
 
     @FindBy (className = "w-icon-cart")
     public WebElement cart;
@@ -82,6 +78,7 @@ public class HomePage {
     @FindBy (xpath = "//p[contains(text(), 'selection')]")
     public WebElement noProductsFoundAlert;
 
-    public static void sendkeys(String property) {
-    }
+    @FindBy (xpath = "//*[@id='signup']/form/p[6]")
+    public WebElement emailWarningText;
+
 }

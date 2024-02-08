@@ -34,6 +34,7 @@ public class DashboardPage {
     public WebElement accountDetails;
 //  xpath corrected by Sarah
 // This doesn't work for me Sarah So, I created new one with same name but 1 at the end and make it work for me
+
 @FindBy (xpath = "//a[text()='Account details']")
 public WebElement accountDetails1;
 
@@ -74,8 +75,10 @@ public WebElement accountDetails1;
     @FindBy (id = "password_2")
     public WebElement confirmPassButton;
 
-    @FindBy (id = "//button[@name='save_account_details']")
+    @FindBy (xpath = "//form/p[7]")
     public WebElement accDetailsSaveChanges;
-//  I can't get the test to click this locator in a way that returns the success message.
+
+    @FindBy (xpath = "//button[@name='save_account_details']")
+    public WebElement accDetailsSaveChanges1;
 
 }
