@@ -39,7 +39,7 @@ public class Bill_ShipAddressPage {
     public WebElement billCountryDD;
 
     //For US_12
-    @FindBy (id="select2-billing_country-container") // Fatih added locator on 06/02/24
+    @FindBy (id="select2-billing_country-container") // Fatih added locator on 07/02/24
     public WebElement billCountryDD1;
 
     @FindBy (name="billing_address_1")
