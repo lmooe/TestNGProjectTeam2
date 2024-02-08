@@ -25,6 +25,7 @@ public class VendorPage {
     @FindBy (xpath = "//*[@id='wcfm_membership_registration_form_expander']/div[2]")
     public WebElement vendorVerifyMessage;
 
-
+    @FindBy (xpath = "//*[@class='wc-setup-content']")
+    public WebElement setupPage;
 
 }

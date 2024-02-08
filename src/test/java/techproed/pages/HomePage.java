@@ -1,5 +1,6 @@
 package techproed.pages;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -19,6 +20,7 @@ public class HomePage {
     @FindBy(xpath = "//button[@name='register']")
     public WebElement singUp;
 
+
     @FindBy (xpath = "//input[@id='register-policy']")
     public WebElement agreePolicy;
 
@@ -30,6 +32,9 @@ public class HomePage {
 
     @FindBy (id = "username")
     public WebElement username;
+
+    @FindBy (id="reg_username")
+    public WebElement regUsername;
 
     @FindBy (id = "password")
     public WebElement password;
@@ -60,7 +65,7 @@ public class HomePage {
 
     //    For Registration Page:
     @FindBy (id = "reg_username")
-    public WebElement regUsername;
+    public WebElement regUsername2;
 
     @FindBy (id = "reg_email")
     public WebElement regEmail;
@@ -78,5 +83,10 @@ public class HomePage {
 
     @FindBy (xpath = "//p[contains(text(), 'selection')]")
     public WebElement noProductsFoundAlert;
+
+    @FindBy (xpath = "//*[@class='submit-status'")
+    public WebElement noSuccess;
+
+
 
 }

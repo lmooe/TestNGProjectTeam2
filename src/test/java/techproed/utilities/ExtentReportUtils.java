@@ -17,7 +17,7 @@ public class ExtentReportUtils {
     protected static ExtentSparkReporter extentSparkReporter;
     protected static ExtentTest extentTest;
     /*
-     Using static block will be called when ever I call ExtentReportUtils.somemethod....
+     Using static block will be called when ever I call ExtentReportUtils.some method....
      then the pre-requisites will be executed by the static block
     */
     static {
@@ -30,12 +30,12 @@ public class ExtentReportUtils {
 //        Create extent report
         extentReports = new ExtentReports();
 //        ***********ADDING CUSTOM SYSTEM INFORMATION ***********
-        extentReports.setSystemInfo("Application Name","Apple M1 Unit");
+        extentReports.setSystemInfo("First Project","TESTNG Group 2");
         extentReports.setSystemInfo("Test Environment","Smoke");
         extentReports.setSystemInfo("Browser","Chrome");
-        extentReports.setSystemInfo("Team Name","Batch197");
-        extentReports.setSystemInfo("QA","Saima");
-        extentReports.setSystemInfo("Feature Number","FE1056");
+        extentReports.setSystemInfo("Team Name","Team2");
+        extentReports.setSystemInfo("QA","Sloane");
+
 //        ***********DOCUMENT INFORMATION************************
         extentSparkReporter.config().setReportName("My Smoke Report");
         extentSparkReporter.config().setDocumentTitle("My Smoke Extent Reports");
