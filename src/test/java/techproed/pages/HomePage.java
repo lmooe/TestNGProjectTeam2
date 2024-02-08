@@ -68,8 +68,7 @@ public class HomePage {
     public WebElement MyAccountOnFooter;
 
     //    For Registration Page:
-    @FindBy (id = "reg_username")
-    public WebElement regUsername2;
+
 
     @FindBy (id = "reg_email")
     public WebElement regEmail;
