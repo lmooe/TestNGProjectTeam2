@@ -121,6 +121,7 @@ public class TC_02 {
         System.out.println("successMsg = " + successMsg);
         Assert.assertEquals(successMsg, "Street address is a required field.");
         ExtentReportUtils.passAndCaptureScreenshot("Billing address not added. Error message successfully displayed.");
+        ExtentReportUtils.flush();
     }
 
     @AfterMethod

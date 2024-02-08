@@ -61,6 +61,7 @@ public class TC_02 {
     System.out.println(successMessage);
     Assert.assertTrue(successMessage.contains("No products were found"));
     ExtentReportUtils.passAndCaptureScreenshot("No products found message successfully displayed");
+    ExtentReportUtils.flush();
 }
 
     @AfterMethod

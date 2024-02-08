@@ -150,6 +150,7 @@ public class TC_01 {
         System.out.println("successMsg = " + successMsg);
         Assert.assertEquals(successMsg, "Address changed successfully.");
         ExtentReportUtils.passAndCaptureScreenshot("Billing address changed message successfully displayed");
+        ExtentReportUtils.flush();
     }
 
     @AfterMethod

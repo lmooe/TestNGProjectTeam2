@@ -146,6 +146,7 @@ public class TC_01 {
         System.out.println(orderRecMsg);
         Assert.assertEquals(orderRecMsg,"Thank you. Your order has been received.");
         ExtentReportUtils.passAndCaptureScreenshot("Order received message successfully displayed");
+        ExtentReportUtils.flush();
     }
 
     @AfterMethod
