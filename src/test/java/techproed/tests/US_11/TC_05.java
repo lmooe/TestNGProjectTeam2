@@ -8,10 +8,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
 import techproed.pages.DashboardPage;
-import techproed.utilities.ActionUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
-import techproed.utilities.WaitUtils;
+import techproed.utilities.*;
 
 public class TC_05 {
 
@@ -32,10 +29,10 @@ public class TC_05 {
     @Test
     public void dashboardElementsVisibilityTest() {
         // Perform login actions
-        homePage.singIn1.click();
+        JSUtils.JSclickWithTimeout(homePage.singIn1);
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));
         homePage.password.sendKeys(ConfigReader.getProperty("US11password"));
-        homePage.signInButton.click();
+        JSUtils.JSclickWithTimeout(homePage.signInButton);
 
         // Click on My Account in the footer using JavaScriptExecutor
 //        WaitUtils.fluentWait("//a[text()='My Account']", 20, 1).click();
@@ -51,36 +48,36 @@ public class TC_05 {
         WaitUtils.waitForVisibility(By.xpath("//a[text()='Dashboard']"), 20);
 
         // Assert the visibility of elements under the Dashboard
-        dashboardPage.dashboard.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.dashboard);
         assertPageURL("Dashboard", "https://allovercommerce.com/my-account-2/");
 
-        dashboardPage.storeManager.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.storeManager);
         assertPageURL("Store Manager", "https://allovercommerce.com/store-manager/");
 
         Driver.getDriver().navigate().back();
-        dashboardPage.orders.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.orders);
         assertPageURL("Orders", "https://allovercommerce.com/my-account-2/orders/");
 
-        dashboardPage.downloads.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.downloads);
         assertPageURL("Downloads", "https://allovercommerce.com/my-account-2/downloads/");
 
-        dashboardPage.addresses.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.addresses);
         assertPageURL("Addresses", "https://allovercommerce.com/my-account-2/edit-address/");
 
-        dashboardPage.accountDetails1.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.accountDetails1);
         assertPageURL("Account details", "https://allovercommerce.com/my-account-2/edit-account/");
 
-        dashboardPage.wishlist.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.wishlist);
         assertPageURL("Wishlist", "https://allovercommerce.com/wishlist/");
 
         Driver.getDriver().navigate().back();
-        dashboardPage.supportTickets.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.supportTickets);
         assertPageURL("Support Tickets", "https://allovercommerce.com/my-account-2/support-tickets/");
 
-        dashboardPage.followings.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.followings);
         assertPageURL("Followings", "https://allovercommerce.com/my-account-2/followings/");
 
-        dashboardPage.logOut.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.logOut);
         assertPageURL("Logout", "https://allovercommerce.com/my-account-2/");
     }
 
