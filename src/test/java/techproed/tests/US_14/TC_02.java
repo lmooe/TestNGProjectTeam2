@@ -72,15 +72,22 @@ public class TC_02 {
             Assert.assertNotEquals(select.getFirstSelectedOption().getText(), "Variable Product");
 
             //	Click on image display
-            BrowserUtils.clickWithTimeOut(addNewProductPage.productImage, 10);
+            BrowserUtils.clickWithTimeOut(addNewProductPage.addDisplayPhotoIcon, 10);
 
             //  Select an image file from computer
-            String userHOME = System.getProperty("user.home");
-            String pathOfFile = userHOME + "\\desktop\\image-70.jpg";
-            addNewProductPage.selectFilesButton.sendKeys(pathOfFile);
+            String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+            BrowserUtils.clickWithTimeOut(addNewProductPage.addDisplayPhotoIcon, 10);
+            BrowserUtils.sendKeysWithTimeout(addNewProductPage.selectFilesButton, newProductImage, 10);
+            Thread.sleep(3000);
+            BrowserUtils.clickWithTimeOut(addNewProductPage.selectToUploadButton, 10);
+            Thread.sleep(2000);
 
-            //  Click on select button to complete uploading image
-            BrowserUtils.clickWithTimeOut(addNewProductPage.productImage, 10);
+//            String userHOME = System.getProperty("user.home");
+//            String pathOfFile = userHOME + "\\desktop\\image-70.jpg";
+//            addNewProductPage.selectFilesButton.sendKeys(pathOfFile);
+//
+//            //  Click on select button to complete uploading image
+//            BrowserUtils.clickWithTimeOut(addNewProductPage.addDisplayPhotoIcon, 10);
 
             // Verify image is displayed on the page
             Assert.assertTrue(addNewProductPage.removeImgButton.isDisplayed());

@@ -29,13 +29,12 @@ public class TC_02 {
         WaitUtils.waitForPageToLoad(20);
     }
 
-
-       @Test
-        public void bill_Ship_Address_Test(){
+    @Test
+    public void vendorShippingAddressTest() throws InterruptedException {
 
             homePage.singIn1.click();
-            homePage.username.sendKeys(ConfigReader.getProperty("Vendor"));
-            homePage.password.sendKeys(ConfigReader.getProperty("VendorAccount"));
+            homePage.username.sendKeys(ConfigReader.getProperty("email"));
+            homePage.password.sendKeys(ConfigReader.getProperty("password"));
             homePage.signInButton.click();
 
             WaitUtils.waitForVisibility(homePage.MyAccountOnFooter, 10);
@@ -45,32 +44,32 @@ public class TC_02 {
             executor.executeScript("arguments[0].click();", homePage.MyAccountOnFooter);
 
 
-            dashboardPage.addresses.click();
-            WaitUtils.waitForVisibility(dashboardPage.editShippingAddress, 10);
-            dashboardPage.editShippingAddress.click();
+           dashboardPage.addresses.click();
+        Thread.sleep(5000);
+           dashboardPage.editShippingAddress.click();
+           Thread.sleep(5000);
 
-
-            Assert.assertTrue(billShipAddressPage.shipFirstName.getAttribute("value").equals(ConfigReader.getProperty("Vendor")),
+            Assert.assertTrue(billShipAddressPage.shipFirstName.getAttribute("value").equals(ConfigReader.getProperty("email")),
                     "First name must entered.");
-
+        Thread.sleep(5000);
             Assert.assertTrue(billShipAddressPage.shipLastName.getAttribute("value").equals(ConfigReader.getProperty("Account")),
                     "Last name must entered.");
-
+        Thread.sleep(5000);
             Assert.assertTrue(billShipAddressPage.shipCompOptional.getAttribute("value").equals(ConfigReader.getProperty("Company name optional")),
                     " Company name optional");
-
+        Thread.sleep(5000);
             Assert.assertTrue(billShipAddressPage.shipCountryDD.getAttribute("value").equals(ConfigReader.getProperty("United States")),
                     "Country/Region must be entered.");
-
+        Thread.sleep(5000);
             Assert.assertTrue(billShipAddressPage.shipAddressLine1.getAttribute("value").equals(ConfigReader.getProperty("Clinton Street")),
                     "First Address line must be entered.");
-
+        Thread.sleep(5000);
             Assert.assertTrue(billShipAddressPage.shipAddressLine2.getAttribute("value").equals(ConfigReader.getProperty("Buffalo")),
                     "Second Address line must be entered.");
-
+        Thread.sleep(5000);
             Assert.assertTrue(billShipAddressPage.shipZipPostCode.getAttribute("value").equals(ConfigReader.getProperty("14201")),
                     "State and zip cod must be entered.");
-
+        Thread.sleep(5000);
             Assert.assertTrue(billShipAddressPage.shipTownCity.getAttribute("value").equals(ConfigReader.getProperty("New York")),
                     "Town/City must be entered.");
 

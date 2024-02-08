@@ -47,12 +47,12 @@ public class TC_01 {
     }
 
         @Test
-        public void vendorShippingAddressTest(){
+        public void vendorShippingAddressTest() throws InterruptedException {
 
 
                 homePage.singIn1.click();
-                homePage.username.sendKeys(ConfigReader.getProperty("Vendor"));
-                homePage.password.sendKeys(ConfigReader.getProperty("VendorAccount"));
+                homePage.username.sendKeys(ConfigReader.getProperty("email"));
+                homePage.password.sendKeys(ConfigReader.getProperty("password"));
                 homePage.signInButton.click();
 
                 WaitUtils.waitForVisibility(homePage.MyAccountOnFooter, 10);
@@ -60,16 +60,20 @@ public class TC_01 {
                 ActionUtils.actionsScrollDown();
                 JavascriptExecutor executor = (JavascriptExecutor) Driver.getDriver();
                 executor.executeScript("arguments[0].click();", homePage.MyAccountOnFooter);
-
+                Thread.sleep(3000);
 
                 dashboardPage.addresses.click();
-                WaitUtils.waitForVisibility(dashboardPage.editShippingAddress, 10);
+                 Thread.sleep(3000);
+            ActionUtils.actionsScrollDown();
                 dashboardPage.editShippingAddress.click();
+                //WaitUtils.waitForVisibility(dashboardPage.editShippingAddress, 10);
+            Thread.sleep(3000);
+                //dashboardPage.editShippingAddress.click();
 
 
-                Assert.assertTrue(billShipAddressPage.shipFirstName.getAttribute("value").
+                Assert.assertTrue(billShipAddressPage.shipFirstName.getAttribute("email").
 
-                                equals(ConfigReader.getProperty("Vendor")),
+                                equals(ConfigReader.getProperty("value")),
                         "First name must entered.");
 
                 Assert.assertTrue(billShipAddressPage.shipLastName.getAttribute("value").

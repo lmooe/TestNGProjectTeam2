@@ -1,8 +1,5 @@
 package techproed.pages;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.util.LRUMap;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -45,10 +42,10 @@ public class Bill_ShipAddressPage {
     @FindBy(id = "select2-billing_country-container")
     public WebElement billCountryDD;
 
-    @FindBy(name = "billing_address_1")
+    //@FindBy(name = "billing_address_1")
 
     @FindBy (id="billing_country") // Sarah updated locator on 06/02/24
-    public WebElement billCountryDD;
+    public WebElement billCountryDDs;
 
     //For US_12
     @FindBy (id="select2-billing_country-container") // Fatih added locator on 07/02/24
