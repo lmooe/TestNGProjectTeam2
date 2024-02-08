@@ -32,7 +32,7 @@ public class CouponPage {
     public WebElement couponAmountField;
 
     @FindBy(xpath = "//input[@name='expiry_date']")
-    public WebElement yearField;
+    public WebElement expireDateField;
 
     @FindBy(xpath = "//select[@class='ui-datepicker-month']")
     public WebElement monthDropdown;
@@ -55,16 +55,28 @@ public class CouponPage {
     @FindBy(id = "maximum_amount")
     public WebElement maximumAmount;
 
-    @FindBy(xpath = "(//input[@class='select2-search__field'])[3]")
-    public WebElement productCategoriesField;
+    @FindBy(id = "product_categories")
+    public WebElement productCategoriesDropDown;
 
-    @FindBy(xpath = "(//input[@class='select2-search__field'])[4]")
-    public WebElement excludeCategoriesField;
+
+
+    @FindBy(id = "exclude_product_categories")
+    public WebElement excludeCategoriesDropDown;
 
     @FindBy(id = "customer_email")
     public WebElement emailRestrictionField;
 
     @FindBy(id = "wcfm_coupon_manager_submit_button")
     public WebElement submitButton;
+
+    @FindBy(xpath = "//div[@class='wcfm-message wcfm-error']")
+    public WebElement errorMessage;
+
+    @FindBy(linkText = "SUMMER2024")
+    public WebElement couponName;
+
+
+
+
 
 }

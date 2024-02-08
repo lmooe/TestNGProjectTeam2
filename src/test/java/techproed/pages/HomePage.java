@@ -9,8 +9,10 @@ import techproed.utilities.Driver;
 public class HomePage {
 
     public HomePage(){
+
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
     @FindBy(xpath = "//*[text()='Sign In']")
     public WebElement singIn1;
 
@@ -51,14 +53,16 @@ public class HomePage {
     @FindBy(xpath = "//a[@class='login logout inline-type']")
     public WebElement signOut;
 
-
+    @FindBy(xpath = "//button[@class='quantity-plus w-icon-plus']")
+    public WebElement quantityBut;
     @FindBy(xpath = "//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wcfm-store-manager']")
     public WebElement storeMng; //check this one please !!
 
 
-    @FindBy (className = "form-control")
+   // @FindBy (className = "form-control")
+    //public WebElement searchBox;
+    @FindBy (xpath = "(//input[@name='s'])[1]")
     public WebElement searchBox;
-
 
     @FindBy (xpath = "//a[text()='My Account']")
     public WebElement MyAccountOnFooter;
@@ -89,5 +93,8 @@ public class HomePage {
 
     @FindBy (className = "page-title")
     public WebElement myAccountTitle;
+
+    @FindBy (xpath = "//*[@id='signup']/form/p[6]")
+    public WebElement emailWarningText;
 
 }

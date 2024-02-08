@@ -3,8 +3,13 @@ package techproed.tests.US_03;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -12,6 +17,8 @@ import techproed.pages.Bill_ShipAddressPage;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
 import techproed.utilities.*;
+
+import javax.swing.*;
 
 public class TC_01 {
 
@@ -33,66 +40,121 @@ public class TC_01 {
     Click on Phone and enter a valid phone number
     Click on Save Address button
     Verify message 'Address changed successfully.' appears
-    Verify billing address has been added
     */
 
     HomePage homePage = new HomePage();
-    Bill_ShipAddressPage billShipAddressPage = new Bill_ShipAddressPage();
+    Bill_ShipAddressPage bill_shipAddressPage = new Bill_ShipAddressPage();
     Faker faker = new Faker();
     DashboardPage dashboardPage = new DashboardPage();
-    SoftAssert softAssert = new SoftAssert();
-    JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
+
+        ExtentReportUtils.createTestReport("End-to-End Test Report", "Add Billing Address Function");
+
 //    User is on www.allovercommerce.com
+        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/");
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+
 //    User has just registered.
+        ExtentReportUtils.info("Pre-condition: User signs up");
         homePage.register.click();
-        homePage.regUsername.click();
-        homePage.regUsername.clear();
         homePage.regUsername.sendKeys(faker.name().username());
-        homePage.regEmail.click();
-        homePage.regEmail.clear();
         homePage.regEmail.sendKeys(faker.internet().emailAddress());
-        homePage.regPassword.click();
-        homePage.regPassword.clear();
         homePage.regPassword.sendKeys(faker.internet().password());
         homePage.agreePolicy.click();
         homePage.singUp.click();
+
+        ExtentReportUtils.info("Pre-condition: User clicks Account button on homepage footer");
         JSUtils.JSclickWithTimeout(homePage.MyAccountOnFooter);
-        JSUtils.JSclickWithTimeout(dashboardPage.accountDetails);
+
+        ExtentReportUtils.info("Pre-condition: User clicks Account Details on dashboard");
+        dashboardPage.accountDetails.click();
+
+        ExtentReportUtils.info("Pre-condition: User enters first name and last name");
+        dashboardPage.accDetailsFirstName.sendKeys(faker.name().firstName());
+        dashboardPage.accDetailsLastName.sendKeys(faker.name().lastName());
+
+        ExtentReportUtils.info("Pre-condition: User clicks Save Changes button");
+        dashboardPage.confirmPassButton.sendKeys(Keys.TAB);
+        ActionUtils.actionsHoverOverOnElement(dashboardPage.accDetailsSaveChanges);
+        WaitUtils.waitFor(2);
+        ActionUtils.actionsDoubleClick(dashboardPage.accDetailsSaveChanges1);
+        WaitUtils.waitFor(2);
+
+        ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button");
+        dashboardPage.addresses.click();
+        bill_shipAddressPage.editBillingAdd.click();
     }
 
-      @Test
-    public void US06_TC01() {
+    @Test
+    public void US03_TC01() {
+
+        ExtentReportUtils.info("User is on Billing Address page");
+
 //    Verify first name has been populated.
-//        WaitUtils.waitFor(2);
-//        String firstName = JSUtils.JSgetValueBy(dashboardPage.accDetailsFirstName);
-//        Assert.assertNotNull(firstName, "The first name is not null");
-//          Assert.assertFalse(firstName.isEmpty(), "The first name is not empty");
-//
-//
-//
-//
-//
-////    Verify last name has been populated.
-////    Verify email address has been populated.
-//          String email = JSUtils.JSgetValueBy(dashboardPage.accDetailsEmail.getText());
-//          WaitUtils.waitFor(2);
-//          Assert.assertTrue(email.contains("@"));
+        String firstName = bill_shipAddressPage.billFirstName.getAttribute("value");
+        System.out.println("firstName = " + firstName);
+        Assert.assertTrue(bill_shipAddressPage.billFirstName.isDisplayed());
+        ExtentReportUtils.passAndCaptureScreenshot("First name is populated");
+
+//    Verify last name has been populated.
+        String lastName = bill_shipAddressPage.billLastName.getAttribute("value");
+        System.out.println("lastName = " + lastName);
+        Assert.assertTrue(bill_shipAddressPage.billLastName.isDisplayed());
+        ExtentReportUtils.passAndCaptureScreenshot("Last name is populated");
+
+//    Verify email address has been populated.
+        String email = bill_shipAddressPage.billEmail.getAttribute("value");
+        System.out.println("email = " + email);
+        Assert.assertTrue(bill_shipAddressPage.billEmail.isDisplayed());
+        ExtentReportUtils.passAndCaptureScreenshot("Email is populated");
+
 //    From the country drop down list click on a valid country
-          //        billShipAddressPage.billCountryDD.click();
+        ExtentReportUtils.pass("User selects valid country");
+        WebElement countryDropDown = bill_shipAddressPage.billCountryDD;
+        Select selectCountry = new Select(countryDropDown);
+        selectCountry.selectByVisibleText(ConfigReader.getProperty("uk"));
+
 //    Click on street address line 1 and enter a valid street address for the chosen country
+        ExtentReportUtils.pass("User enters valid street address line 1");
+        bill_shipAddressPage.billAddressLine1.sendKeys(ConfigReader.getProperty("streetaddress1"));
+
 //    Click on street address line 2 and enter a valid street address for the chosen country
+        ExtentReportUtils.pass("User enters valid street address line 2");
+        bill_shipAddressPage.billAddressLine2.sendKeys(ConfigReader.getProperty("streetaddress2"));
+
 //    Click on town/city and enter valid town name
+        ExtentReportUtils.pass("User enters valid town");
+        bill_shipAddressPage.billTownCity.sendKeys(ConfigReader.getProperty("town"));
+
 //    Click on county and enter valid county name
+        ExtentReportUtils.pass("User enters valid county");
+        bill_shipAddressPage.billCounty.sendKeys(ConfigReader.getProperty("county"));
+
 //    Click on Postcode and enter a valid postcode
+        ExtentReportUtils.pass("User enters valid postcode");
+        bill_shipAddressPage.billZipPostCode.sendKeys(ConfigReader.getProperty("postcode"));
+
 //    Click on Phone and enter a valid phone number
+        ExtentReportUtils.pass("User enters valid phone number");
+        bill_shipAddressPage.billPhoneNumb.sendKeys(ConfigReader.getProperty("phone"));
+
 //    Click on Save Address button
+        ExtentReportUtils.pass("User clicks Save Address button");
+        ActionUtils.actionsDoubleClick(bill_shipAddressPage.billSaveAddressButton);
+
 //    Verify message 'Address changed successfully.' appears
-//    Verify billing address has been added
+        String successMsg = bill_shipAddressPage.addressChangedMsg.getText();
+        System.out.println("successMsg = " + successMsg);
+        Assert.assertEquals(successMsg, "Address changed successfully.");
+        ExtentReportUtils.passAndCaptureScreenshot("Billing address changed message successfully displayed");
+    }
 
-
-      }
+    @AfterMethod
+    public void tearDown(){
+        Driver.closeDriver();
+    }
 }
+

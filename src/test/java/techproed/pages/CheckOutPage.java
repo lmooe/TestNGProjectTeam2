@@ -38,6 +38,9 @@ public class CheckOutPage {
     @FindBy (id="select2-billing_country-container")
     public WebElement billCountryDD;
 
+    @FindBy(xpath = "//select[@id='billing_country']")  //added by Esra
+    public WebElement countryDropDown;
+
     @FindBy (name="billing_address_1")
     public WebElement billAddressLine1;
 
@@ -49,6 +52,9 @@ public class CheckOutPage {
 
     @FindBy (id="select2-billing_state-container")
     public WebElement billStateProvinceDD;
+
+    @FindBy(id = "billing_state")  //added by Esra
+    public WebElement stateDropdown;
 
     @FindBy(name="billing_postcode")
     public WebElement billZipPostCode;
@@ -106,9 +112,21 @@ public class CheckOutPage {
     @FindBy(xpath = "(//span[@class='cart-count'])[1]")
     public WebElement productCounter;
 
+    @FindBy(xpath = "//<li[@class='alert alert-simple alert-icon alert-close-top alert-danger']")
+    public WebElement alertMsg;
     @FindBy(xpath = "//p[text()='Thank you. Your order has been received.']")
     public WebElement orderReceivedMessage;
 //  Added by Sarah (almost the same as verificationOrderMessage but for 'Thank you. Your order has been received.' text only)
+
+
+
+    //Orders Part
+    @FindBy(xpath = "(//a[@class='woocommerce-button btn btn-default btn-rounded btn-outline btn-sm btn-block view'])[1]")
+    public WebElement view;
+
+
+    @FindBy(xpath = "//td[@class='woocommerce-table__product-name product-name']")
+    public  WebElement productNameInOrder;
 
 
 }
