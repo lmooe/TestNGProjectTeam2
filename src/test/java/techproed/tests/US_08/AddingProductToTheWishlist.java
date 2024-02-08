@@ -25,7 +25,6 @@ public class AddingProductToTheWishlist {
 
 //      User goes to https://www.allovercommerce.com
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-
 //      User must click on the specific product (Automatic crusher) he/she likes
         ActionUtils.actionsScrollDown();
         Thread.sleep(2000);
