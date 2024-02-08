@@ -44,11 +44,11 @@ public class TC_01 {
     public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
         WaitUtils.waitForPageToLoad(20);
-
+    }
 
         @Test
-        public void bill_Ship_Address_Test () {
-            {
+        public void vendorShippingAddressTest(){
+
 
                 homePage.singIn1.click();
                 homePage.username.sendKeys(ConfigReader.getProperty("Vendor"));
@@ -106,8 +106,7 @@ public class TC_01 {
 
             }
         }
-    }
-}
+
 
 
 

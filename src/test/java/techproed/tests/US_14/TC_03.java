@@ -35,7 +35,7 @@ public class TC_03 {
 
 
     @Test
-    public void TC_02() throws InterruptedException {
+    public void TC_03() throws InterruptedException {
         //Given User should navigate to Allover Commerce url
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
@@ -97,7 +97,7 @@ public class TC_03 {
 
         //  Enter a short description
         Driver.getDriver().switchTo().frame(0);
-        BrowserUtils.sendKeysWithTimeout(addNewProductPage.shortDescriptionInput, 10);
+        BrowserUtils.sendKeysWithTimeout(addNewProductPage.shortDescriptionInput,"red ball", 10);
         addNewProductPage.shortDescriptionInput.sendKeys("Plastic red ball");
 
         //  Verify data has been entered
@@ -125,9 +125,9 @@ public class TC_03 {
 
 
                 // Assert whether the category element is selected
-                Assert.assertTrue(eachCategory.isSelected(),
-                        Assert.assertTrue(eachCategory.isSelected());
+                Assert.assertTrue(eachCategory.isSelected());
 
+                }
             }
 
 
@@ -149,14 +149,7 @@ public class TC_03 {
 
             }
 
-            }
 
 
-            }
-
-        }
-
-
-
-
-
+    }
+}

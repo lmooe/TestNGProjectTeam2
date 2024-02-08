@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import techproed.pages.Bill_ShipAddressPage;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
@@ -26,11 +27,11 @@ public class TC_02 {
     public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
         WaitUtils.waitForPageToLoad(20);
+    }
 
 
-
-
-        public void bill_Ship_Address_Test () {
+       @Test
+        public void bill_Ship_Address_Test(){
 
             homePage.singIn1.click();
             homePage.username.sendKeys(ConfigReader.getProperty("Vendor"));
@@ -117,7 +118,6 @@ public class TC_02 {
 
             System.out.println("Address changed successfully.");
         }
-    }
 
 }
 
