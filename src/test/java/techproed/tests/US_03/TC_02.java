@@ -73,15 +73,13 @@ public class TC_02 {
         ActionUtils.actionsDoubleClick(dashboardPage.accDetailsSaveChanges1);
         WaitUtils.waitFor(2);
 
-        ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button");
+        ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button and moves to Billing Address page");
         dashboardPage.addresses.click();
         bill_shipAddressPage.editBillingAdd.click();
     }
 
     @Test
     public void US03_TC02() {
-
-        ExtentReportUtils.info("User is on Billing Address page");
 
 //    From the country drop down list click on a valid country
         ExtentReportUtils.pass("User selects valid country");
@@ -125,7 +123,7 @@ public class TC_02 {
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void teardown(){
         Driver.closeDriver();
     }
 }
