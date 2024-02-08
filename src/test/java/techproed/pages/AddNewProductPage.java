@@ -84,6 +84,9 @@ public class AddNewProductPage{
     @FindBy(xpath = "//*[@id='product_cats_checklist']/li/input")
     public List<WebElement> categoriesCheckboxList;
 
+    @FindBy(xpath = "//input[@value='1283']")
+    public WebElement categoryboxTarhana;
+
     @FindBy(xpath = "//*[.='+Add new category']")
     public List<WebElement> addNewCategory;
 
@@ -105,20 +108,6 @@ public class AddNewProductPage{
 
     @FindBy(xpath = "//input[@name='product_cats[]']")
     public List<WebElement> categoryCheckbox;
-
-//    @FindBy(xpath = "//ul[@id='product_cats_checklist']/li")
-//    private List<WebElement> selectCategoriesOptions;
-
-//    public void selectCategories(String desiredValue) {
-//        for (WebElement category : selectCategoriesOptions) {
-//            String categoryValue =category.getText();
-//            if (categoryValue.equals(desiredValue)) {
-//                JSUtils.JSclickWithTimeout(category);
-//                break;
-//            }
-//        }
-//    }
-
 
     @FindBy (id = "regular_price")
     public WebElement priceField;
@@ -166,14 +155,8 @@ public class AddNewProductPage{
     @FindBy (id = "is_downloadable")
     public WebElement downloadBox;
 
-    public static void radioClickByProducCategorytIndex(int index){
-        int numOfRadio =Driver.getDriver().findElements(By.xpath("//ul[@id='product_cats_checklist']/li")).size();
-        for (int i=0;i<numOfRadio;i++){
-            if (!Driver.getDriver().findElements(By.xpath("//ul[@id='product_cats_checklist']/li")).get(index).isSelected()) {
-                Driver.getDriver().findElements(By.xpath("//ul[@id='product_cats_checklist']/li")).get(index).click();
-            }
-        }
-    }
+    @FindBy (xpath = "//a[text()='Simple Product']")
+    public WebElement productCreated;
 
 //Inventory Section
 
