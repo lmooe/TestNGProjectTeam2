@@ -40,7 +40,6 @@ public class TC_01 {
     @Test
     public void vendorBuyProductTest(){
 
-
         //Search and add product
         homePage.searchBox.sendKeys(ConfigReader.getProperty("product2"), Keys.ENTER);
 
