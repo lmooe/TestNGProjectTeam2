@@ -45,9 +45,15 @@ public class TC_01 {
 
     @BeforeMethod
     public void setUp(){
+
+        ExtentReportUtils.createTestReport("End-to-End Test Report", "Product Purchase Function");
+
 //    User is on www.allovercommerce.com
+        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/");
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+
 //    User has signed in.
+        ExtentReportUtils.info("Pre-condition: User signs in");
         BrowserUtils.clickWithTimeOut(homePage.singIn1, 1);
         homePage.username.click();
         homePage.username.clear();
@@ -61,60 +67,89 @@ public class TC_01 {
 
     @Test
     public void US06_TC01() throws InterruptedException {
+
+        ExtentReportUtils.info("User is on homepage");
+
 //    Click in the search box, enter product name (Tshirt) and click enter
+        ExtentReportUtils.pass("User enters product in search box and clicks enter");
         homePage.searchBox.click();
         homePage.searchBox.clear();
         homePage.searchBox.sendKeys(ConfigReader.getProperty("product1"), Keys.ENTER);
         WaitUtils.waitFor(2);
+
 //    Click 'Add to Cart' button
+        ExtentReportUtils.pass("User clicks Add To Cart button");
         productPage.addToCartButton.click();
+
 //    Verify message "'Tshirt' has been added to your cart." appears
         String successMessage = productPage.addedToCartAlert.getText();
         System.out.println(successMessage);
         Assert.assertTrue(successMessage.contains("has been added to your cart."));
+        ExtentReportUtils.passAndCaptureScreenshot("Product added to cart message successfully displayed");
+
 //    Click on Cart icon
+        ExtentReportUtils.pass("User clicks cart icon");
         homePage.cart.click();
         WaitUtils.waitFor(2);
+
 //    Click on View Cart button
+        ExtentReportUtils.pass("User clicks View Cart button");
         JSUtils.JSclickWithTimeout(productPage.viewCartButton);
+
 //    Verify product is visible in Shopping Cart
         String productInCart = shoppingCartPage.productAddedInCart.getText();
         System.out.println(productInCart);
         Assert.assertTrue(productInCart.contains(ConfigReader.getProperty("product1")));
+        ExtentReportUtils.passAndCaptureScreenshot("Product visible in cart");
+
 //    Click on '+' button
+        ExtentReportUtils.pass("User clicks + button");
         shoppingCartPage.plusButton.click();
+
 //    Click on Update Cart button
+        ExtentReportUtils.pass("User clicks Update Cart button");
         shoppingCartPage.updateCartButton.click();
         WaitUtils.waitFor(2);
+
 //    Verify message "Cart updated." appears
         String cartUpdateMsg = shoppingCartPage.cartUpdated.getText();
         Assert.assertEquals(cartUpdateMsg, "Cart updated.");
+        ExtentReportUtils.passAndCaptureScreenshot("Cart Updated message successfully displayed");
+
 //    Click on 'Proceed to Checkout' button
+        ExtentReportUtils.pass("User clicks Procced to Checkout button");
         JSUtils.JSclickWithTimeout(shoppingCartPage.checkoutButton);
+
 //    Verify country, street address lines 1 & 2, town, county, postcode and phone have been populated
-        Assert.assertTrue(checkOutPage.billCountryDD.isDisplayed());
-        Assert.assertTrue(checkOutPage.billAddressLine1.isDisplayed());
-        Assert.assertTrue(checkOutPage.billAddressLine2.isDisplayed());
-        Assert.assertTrue(checkOutPage.billTownCity.isDisplayed());
-        Assert.assertTrue(checkOutPage.billCounty.isDisplayed());
-        Assert.assertTrue(checkOutPage.billZipPostCode.isDisplayed());
-        Assert.assertTrue(checkOutPage.billPhoneNumb.isDisplayed());
+        Assert.assertTrue(checkOutPage.billCountryDD.getAttribute("title").equals(ConfigReader.getProperty("uk")));
+        Assert.assertTrue(checkOutPage.billAddressLine1.getAttribute("value").equals(ConfigReader.getProperty("streetaddress1")));
+        Assert.assertTrue(checkOutPage.billAddressLine2.getAttribute("value").equals(ConfigReader.getProperty("streetaddress2")));
+        Assert.assertTrue(checkOutPage.billTownCity.getAttribute("value").equals(ConfigReader.getProperty("town")));
+        Assert.assertTrue(checkOutPage.billCounty.getAttribute("value").equals(ConfigReader.getProperty("county")));
+        Assert.assertTrue(checkOutPage.billZipPostCode.getAttribute("value").equals(ConfigReader.getProperty("postcode")));
+        Assert.assertTrue(checkOutPage.billPhoneNumb.getAttribute("value").equals(ConfigReader.getProperty("phone")));
+        ExtentReportUtils.passAndCaptureScreenshot("Billing address successfully populated");
+
 //    Verify 'Payment Methods' are visible
-        Assert.assertTrue(checkOutPage.wireTransferEFT.isDisplayed());
-        Assert.assertTrue(checkOutPage.payAtDoor.isDisplayed());
+        Assert.assertTrue(checkOutPage.wireTransferEFT.getText().equals(ConfigReader.getProperty("payment1")));
+        Assert.assertTrue(checkOutPage.payAtDoor.getText().equals(ConfigReader.getProperty("payment2")));
+        ExtentReportUtils.passAndCaptureScreenshot("Payment methods successfully displayed");
+
 //    Select 'Pay at the door'
+        ExtentReportUtils.pass("User selects payment method");
         BrowserUtils.clickWithTimeOut(checkOutPage.payAtDoor, 1);
         BrowserUtils.clickWithTimeOut(checkOutPage.placeOrderButton, 1);
+
 //    On order complete page, verify 'Thank you. Your order has been received.' is visible
         WaitUtils.waitFor(2);
         String orderRecMsg = checkOutPage.orderReceivedMessage.getText();
         System.out.println(orderRecMsg);
         Assert.assertEquals(orderRecMsg,"Thank you. Your order has been received.");
+        ExtentReportUtils.passAndCaptureScreenshot("Order received message successfully displayed");
     }
 
     @AfterMethod
     public void tearDown(){
         Driver.closeDriver();
     }
-
 }
