@@ -47,10 +47,8 @@ public class TC_02 {
 @Test
     public void US06_TC02(){
 
-    ExtentReportUtils.info("User is on homepage");
-
 //    Click in the search box, enter random special characters and click enter
-    ExtentReportUtils.pass("User enters random special characters in search box and clicks enter");
+    ExtentReportUtils.pass("User enters random special characters in search box on homepage and clicks enter");
     homePage.searchBox.click();
     homePage.searchBox.clear();
     homePage.searchBox.sendKeys(ConfigReader.getProperty("random1"), Keys.ENTER);
@@ -61,10 +59,11 @@ public class TC_02 {
     System.out.println(successMessage);
     Assert.assertTrue(successMessage.contains("No products were found"));
     ExtentReportUtils.passAndCaptureScreenshot("No products found message successfully displayed");
-}
+    ExtentReportUtils.flush();
+    }
 
     @AfterMethod
-    public void tearDown(){
+    public void teardown(){
         Driver.closeDriver();
     }
 }

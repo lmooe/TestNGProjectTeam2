@@ -83,15 +83,13 @@ public class TC_01 {
         ActionUtils.actionsDoubleClick(dashboardPage.accDetailsSaveChanges1);
         WaitUtils.waitFor(2);
 
-        ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button");
+        ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button and moves to Billing Address page");
         dashboardPage.addresses.click();
         bill_shipAddressPage.editBillingAdd.click();
     }
 
     @Test
     public void US03_TC01() {
-
-        ExtentReportUtils.info("User is on Billing Address page");
 
 //    Verify first name has been populated.
         String firstName = bill_shipAddressPage.billFirstName.getAttribute("value");
@@ -150,10 +148,11 @@ public class TC_01 {
         System.out.println("successMsg = " + successMsg);
         Assert.assertEquals(successMsg, "Address changed successfully.");
         ExtentReportUtils.passAndCaptureScreenshot("Billing address changed message successfully displayed");
+        ExtentReportUtils.flush();
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void teardown(){
         Driver.closeDriver();
     }
 }
