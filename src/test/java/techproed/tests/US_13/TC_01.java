@@ -1,14 +1,17 @@
 package techproed.tests.US_13;
 
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import techproed.pages.Bill_ShipAddressPage;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
-import techproed.utilities.*;
+import techproed.utilities.ActionUtils;
+import techproed.utilities.ConfigReader;
+import techproed.utilities.Driver;
+import techproed.utilities.WaitUtils;
 
 
 public class TC_01 {
@@ -43,57 +46,71 @@ public class TC_01 {
         WaitUtils.waitForPageToLoad(20);
 
 
+        @Test
+        public void bill_Ship_Address_Test () {
+            {
+
+                homePage.signIn.click();
+                homePage.username.sendKeys(ConfigReader.getProperty("Vendor"));
+                homePage.password.sendKeys(ConfigReader.getProperty("VendorAccount"));
+                homePage.signInButton.click();
+
+                WaitUtils.waitForVisibility(homePage.MyAccountOnFooter, 10);
+                ActionUtils.actionsScrollDown();
+                ActionUtils.actionsScrollDown();
+                JavascriptExecutor executor = (JavascriptExecutor) Driver.getDriver();
+                executor.executeScript("arguments[0].click();", homePage.MyAccountOnFooter);
 
 
-        public void billingAndShippingAddress() {
+                dashboardPage.addresses.click();
+                WaitUtils.waitForVisibility(dashboardPage.editShippingAddress, 10);
+                dashboardPage.editShippingAddress.click();
 
 
-            homePage.signIn.click();
-            homePage.username.sendKeys(ConfigReader.getProperty("Vendor"));
-            homePage.password.sendKeys(ConfigReader.getProperty("VendorAccount"));
-            homePage.signInButton.click();
+                Assert.assertTrue(billShipAddressPage.shipFirstName.getAttribute("value").
 
-            WaitUtils.waitForVisibility(homePage.MyAccountOnFooter, 10);
-            ActionUtils.actionsScrollDown();
-            ActionUtils.actionsScrollDown();
-            JavascriptExecutor executor = (JavascriptExecutor) Driver.getDriver();
-            executor.executeScript("arguments[0].click();", homePage.MyAccountOnFooter);
+                                equals(ConfigReader.getProperty("Vendor")),
+                        "First name must entered.");
 
+                Assert.assertTrue(billShipAddressPage.shipLastName.getAttribute("value").
 
-            dashboardPage.addresses.click();
-            WaitUtils.waitForVisibility(dashboardPage.editShippingAddress, 10);
-            dashboardPage.editShippingAddress.click();
+                                equals(ConfigReader.getProperty("Account")),
+                        "Last name must entered.");
 
+                Assert.assertTrue(billShipAddressPage.shipCompOptional.getAttribute("value").
 
-            Assert.assertTrue(billShipAddressPage.shipFirstName.getAttribute("value").equals(ConfigReader.getProperty("Vendor")),
-                    "First name must entered.");
+                                equals(ConfigReader.getProperty("Company name optional")),
+                        " Company name optional");
 
-            Assert.assertTrue(billShipAddressPage.shipLastName.getAttribute("value").equals(ConfigReader.getProperty("Account")),
-                    "Last name must entered.");
+                Assert.assertTrue(billShipAddressPage.shipCountryDD.getAttribute("value").
+                                equals(ConfigReader.getProperty("United States")),
+                        "Country/Region must be entered.");
 
-            Assert.assertTrue(billShipAddressPage.shipCompOptional.getAttribute("value").equals(ConfigReader.getProperty("Company name optional")),
-                    " Company name optional");
+                Assert.assertTrue(billShipAddressPage.shipAddressLine1.getAttribute("value").
+                                equals(ConfigReader.getProperty("Clinton Street")),
+                        "First Address line must be entered.");
 
-            Assert.assertTrue(billShipAddressPage.shipCountryDD.getAttribute("value").equals(ConfigReader.getProperty("United States")),
-                    "Country/Region must be entered.");
+                Assert.assertTrue(billShipAddressPage.shipAddressLine2.getAttribute("value").
+                                equals(ConfigReader.getProperty("Buffalo")),
+                        "Second Address line must be entered.");
 
-            Assert.assertTrue(billShipAddressPage.shipAddressLine1.getAttribute("value").equals(ConfigReader.getProperty("Clinton Street")),
-                    "First Address line must be entered.");
+                Assert.assertTrue(billShipAddressPage.shipZipPostCode.getAttribute("value").
+                                equals(ConfigReader.getProperty("14201")),
+                        "State and zip cod must be entered.");
 
-            Assert.assertTrue(billShipAddressPage.shipAddressLine2.getAttribute("value").equals(ConfigReader.getProperty("Buffalo")),
-                    "Second Address line must be entered.");
-
-            Assert.assertTrue(billShipAddressPage.shipZipPostCode.getAttribute("value").equals(ConfigReader.getProperty("14201")),
-                    "State and zip cod must be entered.");
-
-            Assert.assertTrue(billShipAddressPage.shipTownCity.getAttribute("value").equals(ConfigReader.getProperty("New York")),
-                    "Town/City must be entered.");
+                Assert.assertTrue(billShipAddressPage.shipTownCity.getAttribute("value").
+                                equals(ConfigReader.getProperty("New York")),
+                        "Town/City must be entered.");
+                System.out.println();
 
 
+            }
         }
     }
-
 }
+
+
+
 
 
 

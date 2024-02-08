@@ -30,7 +30,7 @@ public class TC_02 {
 
 
 
-        public void billAndShippingAddress() {
+        public void bill_Ship_Address_Test () {
 
 
             homePage.signIn.click();
@@ -116,7 +116,7 @@ public class TC_02 {
             WebElement successMessage = billShipAddressPage.addressChangedMsg;
             Assert.assertEquals(successMessage.getText(), "Address changed successfully.");
 
-
+            System.out.println("Address changed successfully.");
         }
     }
 

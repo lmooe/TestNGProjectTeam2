@@ -1,7 +1,11 @@
 package techproed.tests.US_14;
 
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import techproed.pages.AddNewProductPage;
 import techproed.pages.DashboardPage;
@@ -11,8 +15,12 @@ import techproed.utilities.BrowserUtils;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    public class TC_01 {
+
+public class TC_01 {
 
         //  US_14 "User should be able to see the options to add items as a Vendor
         //        (My Account > Store Manager > Product > Add New)"
@@ -68,14 +76,39 @@ import techproed.utilities.Driver;
 
 
             //Verify Simple Product, Variable Product, Grouped Product, External - Affiliate Product options are available
-            BrowserUtils.verifyElementDisplayed(addNewProductPage.menuInventory);
-            BrowserUtils.verifyElementDisplayed(AddNewProductPage.menuShipping);
-            BrowserUtils.verifyElementDisplayed(addNewProductPage.menuAttributes);
-            BrowserUtils.verifyElementDisplayed(addNewProductPage.menuLinked);
-            BrowserUtils.verifyElementDisplayed(addNewProductPage.menuSeo);
-            BrowserUtils.verifyElementDisplayed(addNewProductPage.menuAdvanced);
+            Select select = new Select(addNewProductPage.productTypeDropdown);
+            List<WebElement> allOptions = select.getOptions();
+            List<String> optionsNames =new ArrayList<>(Arrays.asList("Simple Product", "Variable Product", "Grouped Product", "External/Affiliate Product"));
+            boolean isAllOptionsExist=false;
+            int idx = 0;
+            for (WebElement eachOption : allOptions){
+                if (eachOption.getText().equals(optionsNames.get(idx))){
+                    isAllOptionsExist=true;
+                    idx++;
+                }
+            }
+            Assert.assertTrue(isAllOptionsExist);
+
 
         }
+        @AfterMethod
+        public void tearDown(){
+            Driver.closeDriver();
         }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 

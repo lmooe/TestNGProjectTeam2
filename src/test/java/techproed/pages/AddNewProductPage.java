@@ -49,6 +49,11 @@ AddNewProductPage{
     @FindBy(id = "featured_img_remove_button")
     public WebElement removeImgButton;
 
+    @FindBy(id ="featured_img_display")
+    public WebElement productImage;
+
+
+
     @FindBy(id = "gallery_img_gimage_0_display")
     public WebElement addGalleryPhotoIcon;
 
@@ -95,7 +100,7 @@ AddNewProductPage{
     public WebElement addCategoryNameButton;
 
     @FindBy(xpath = "//*[@id='product_cats_checklist']/li/span[2]")
-    public List<WebElement> allMainCategoryNames;
+    public List<WebElement> getAddNewCategory;
 
     @FindBy(id = "wcfm_new_parent_cat")
     public WebElement categorySectionDropdown;
