@@ -1,5 +1,6 @@
 package techproed.pages;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,8 +9,10 @@ import techproed.utilities.Driver;
 public class HomePage {
 
     public HomePage(){
+
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
     @FindBy(xpath = "//*[text()='Sign In']")
     public WebElement singIn1;
 
@@ -18,6 +21,7 @@ public class HomePage {
 
     @FindBy(xpath = "//button[@name='register']")
     public WebElement singUp;
+
 
     @FindBy (xpath = "//input[@id='register-policy']")
     public WebElement agreePolicy;
@@ -30,6 +34,9 @@ public class HomePage {
 
     @FindBy (id = "username")
     public WebElement username;
+
+    @FindBy (id="reg_username")
+    public WebElement regUsername;
 
     @FindBy (id = "password")
     public WebElement password;
@@ -46,20 +53,22 @@ public class HomePage {
     @FindBy(xpath = "//a[@class='login logout inline-type']")
     public WebElement signOut;
 
-
+    @FindBy(xpath = "//button[@class='quantity-plus w-icon-plus']")
+    public WebElement quantityBut;
     @FindBy(xpath = "//li[@class='woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--wcfm-store-manager']")
     public WebElement storeMng; //check this one please !!
 
 
-    @FindBy (className = "form-control")
+   // @FindBy (className = "form-control")
+    //public WebElement searchBox;
+    @FindBy (xpath = "(//input[@name='s'])[1]")
     public WebElement searchBox;
 
     @FindBy (xpath = "//a[text()='My Account']")
     public WebElement MyAccountOnFooter;
 
     //    For Registration Page:
-    @FindBy (id = "reg_username")
-    public WebElement regUsername;
+
 
     @FindBy (id = "reg_email")
     public WebElement regEmail;
@@ -77,6 +86,12 @@ public class HomePage {
 
     @FindBy (xpath = "//p[contains(text(), 'selection')]")
     public WebElement noProductsFoundAlert;
+
+    @FindBy (xpath = "//p[text()='An account is already registered with your email address. ']")
+    public WebElement noSuccess;
+
+    @FindBy (className = "page-title")
+    public WebElement myAccountTitle;
 
     @FindBy (xpath = "//*[@id='signup']/form/p[6]")
     public WebElement emailWarningText;

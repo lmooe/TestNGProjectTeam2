@@ -12,18 +12,15 @@ import org.testng.annotations.Test;
 import techproed.pages.HomePage;
 import techproed.pages.DashboardPage;
 import techproed.pages.Bill_ShipAddressPage;
-import techproed.utilities.ActionUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
-import techproed.utilities.WaitUtils;
+import techproed.utilities.*;
 
 import java.time.Duration;
 
 public class TC_03_and_05_and_07 {
 
-    HomePage homePage = new HomePage();
-    DashboardPage dashboardPage = new DashboardPage();
-    Bill_ShipAddressPage addressPage = new Bill_ShipAddressPage();
+//    HomePage homePage = new HomePage();
+//    DashboardPage dashboardPage = new DashboardPage();
+//    Bill_ShipAddressPage addressPage = new Bill_ShipAddressPage();
 
     @BeforeTest
     public void setUp() {
@@ -38,11 +35,17 @@ public class TC_03_and_05_and_07 {
 
     @Test
     public void addBillingAddressTest() {
+        HomePage homePage = new HomePage();
+        DashboardPage dashboardPage = new DashboardPage();
+        Bill_ShipAddressPage addressPage = new Bill_ShipAddressPage();
         // Perform login actions
-        homePage.singIn1.click();
+        WaitUtils.waitFor(5);
+
+        JSUtils.JSclickWithTimeout(homePage.singIn1);
+        WaitUtils.waitFor(5);
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));
         homePage.password.sendKeys(ConfigReader.getProperty("US11password"));
-        homePage.signInButton.click();
+        JSUtils.JSclickWithTimeout(homePage.signInButton);
 
         WaitUtils.waitForVisibility(homePage.MyAccountOnFooter, 20);
         ActionUtils.actionsScrollDown();
@@ -51,15 +54,15 @@ public class TC_03_and_05_and_07 {
         executor.executeScript("arguments[0].click();", homePage.MyAccountOnFooter);
 
         // Navigate to the Addresses page and click on the Add Button under Billing Address
-        dashboardPage.addresses.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.addresses);
         WaitUtils.waitForVisibility(dashboardPage.editBillingAddress, 20);
-        dashboardPage.editBillingAddress.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.editBillingAddress);
 
 
-        addressPage.billCountryDD1.click();
+        JSUtils.JSclickWithTimeout(addressPage.billCountryDD1);
         //WaitUtils.waitFor(5); //to see the dropdown
         WebElement canadaOption = Driver.getDriver().findElement(By.xpath("//span[text()='Canada']"));
-        canadaOption.click();
+        JSUtils.JSclickWithTimeout(canadaOption);
 
       //  addressPage.billAddressLine2.click();
        // addressPage.billAddressLine1.sendKeys(ConfigReader.getProperty("US12StreetAddress"));
@@ -76,9 +79,9 @@ public class TC_03_and_05_and_07 {
 
         ActionUtils.actionsScrollDown();
 
-        addressPage.billStateProvinceDD.click();
+        JSUtils.JSclickWithTimeout(addressPage.billStateProvinceDD);
         WebElement ontarioOption = Driver.getDriver().findElement(By.xpath("//span[text()='Ontario']"));
-        ontarioOption.click();
+        JSUtils.JSclickWithTimeout(ontarioOption);
         // addressPage.billStateProvinceDD.sendKeys("Ontario" + Keys.ENTER);
 
         //addressPage.billZipPostCode.sendKeys(ConfigReader.getProperty("US12PostalCode"));

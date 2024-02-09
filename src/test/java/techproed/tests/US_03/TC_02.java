@@ -1,9 +1,11 @@
 package techproed.tests.US_03;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -32,35 +34,37 @@ public class TC_02 {
     Verify message 'Street address line 1 is a required field.' appears
      */
 
-    HomePage homePage = new HomePage();
-    Bill_ShipAddressPage bill_shipAddressPage = new Bill_ShipAddressPage();
-    Faker faker = new Faker();
-    DashboardPage dashboardPage = new DashboardPage();
-    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-
     @BeforeMethod
     public void setUp() {
+            Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+        }
+
+    @Test
+    public void US03_TC02() {
+        HomePage homePage = new HomePage();
+        Bill_ShipAddressPage bill_shipAddressPage = new Bill_ShipAddressPage();
+        Faker faker = new Faker();
+        DashboardPage dashboardPage = new DashboardPage();
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
         ExtentReportUtils.createTestReport("End-to-End Test Report", "Add Billing Address Function");
 
+//    Pre-condition:
 //    User is on www.allovercommerce.com
-        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/");
-        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-
 //    User has just registered.
-        ExtentReportUtils.info("Pre-condition: User signs up");
-        homePage.register.click();
-        homePage.regUsername.sendKeys(faker.name().username());
-        homePage.regEmail.sendKeys(faker.internet().emailAddress());
-        homePage.regPassword.sendKeys(faker.internet().password());
-        homePage.agreePolicy.click();
-        homePage.singUp.click();
+        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/ and signs up");
+        BrowserUtils.clickWithTimeOut(homePage.register, 1);
+        BrowserUtils.sendKeysWithTimeout(homePage.regUsername, (faker.name().username()),1);
+        BrowserUtils.sendKeysWithTimeout(homePage.regEmail, (faker.internet().emailAddress()), 1);
+        BrowserUtils.sendKeysWithTimeout(homePage.regPassword, (faker.internet().password()), 1);
+        BrowserUtils.clickWithTimeOut(homePage.agreePolicy,1);
+        BrowserUtils.clickWithTimeOut(homePage.singUp, 1);
 
         ExtentReportUtils.info("Pre-condition: User clicks Account button on homepage footer");
         JSUtils.JSclickWithTimeout(homePage.MyAccountOnFooter);
 
         ExtentReportUtils.info("Pre-condition: User clicks Account Details on dashboard");
-        dashboardPage.accountDetails.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.accountDetails);
 
         ExtentReportUtils.info("Pre-condition: User enters first name and last name");
         dashboardPage.accDetailsFirstName.sendKeys(faker.name().firstName());
@@ -73,19 +77,14 @@ public class TC_02 {
         ActionUtils.actionsDoubleClick(dashboardPage.accDetailsSaveChanges1);
         WaitUtils.waitFor(2);
 
-        ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button");
+        ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button and moves to Billing Address page");
         dashboardPage.addresses.click();
         bill_shipAddressPage.editBillingAdd.click();
-    }
 
-    @Test
-    public void US03_TC02() {
-
-        ExtentReportUtils.info("User is on Billing Address page");
 
 //    From the country drop down list click on a valid country
         ExtentReportUtils.pass("User selects valid country");
-        WebElement countryDropDown = bill_shipAddressPage.billCountryDD;
+        WebElement countryDropDown = bill_shipAddressPage.billCountryDDs;
         Select selectCountry = new Select(countryDropDown);
         selectCountry.selectByVisibleText("United Kingdom (UK)");
 
@@ -121,6 +120,7 @@ public class TC_02 {
         System.out.println("successMsg = " + successMsg);
         Assert.assertEquals(successMsg, "Street address is a required field.");
         ExtentReportUtils.passAndCaptureScreenshot("Billing address not added. Error message successfully displayed.");
+        ExtentReportUtils.flush();
     }
 
     @AfterMethod

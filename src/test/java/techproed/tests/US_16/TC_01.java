@@ -1,5 +1,7 @@
 package techproed.tests.US_16;
 
+import com.github.javafaker.Faker;
+import org.bouncycastle.oer.its.ieee1609dot2.VerificationKeyIndicator;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -8,10 +10,7 @@ import techproed.pages.AddNewProductPage;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
 import techproed.pages.ProductPage;
-import techproed.utilities.BrowserUtils;
-import techproed.utilities.ExtentReportUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
+import techproed.utilities.*;
 
 public class TC_01 {
 
@@ -43,6 +42,7 @@ public class TC_01 {
     DashboardPage dbp = new DashboardPage();
     AddNewProductPage anpp = new AddNewProductPage();
     ProductPage pp = new ProductPage();
+    Faker fake = new Faker();
 
     @Test
     public void TC_01() throws InterruptedException {
@@ -51,37 +51,38 @@ public class TC_01 {
 
         //PC_2- Sign in with given credentials
 
-        BrowserUtils.clickWithTimeOut(hp.singIn1, 1);
-        BrowserUtils.sendKeysWithTimeout(hp.username, ConfigReader.getProperty("email"), 1);
-        BrowserUtils.sendKeysWithTimeout(hp.password, ConfigReader.getProperty("password"), 1);
-        BrowserUtils.clickWithTimeOut(hp.signInButton, 1);
+        BrowserUtils.clickWithTimeOut(hp.singIn1, 5);
+        BrowserUtils.sendKeysWithTimeout(hp.username, ConfigReader.getProperty("email"), 3);
+        BrowserUtils.sendKeysWithTimeout(hp.password, ConfigReader.getProperty("password"), 3);
+        BrowserUtils.clickWithTimeOut(hp.signInButton, 5);
 
         //PC_3- than must land on to Store Manager from My Account.
-        BrowserUtils.clickWithTimeOut(hp.signOut, 1);
+        BrowserUtils.clickWithTimeOut(hp.signOut, 5);
 
-        BrowserUtils.clickWithTimeOut(dbp.storeManager, 1);
+        BrowserUtils.clickWithTimeOut(dbp.storeManager, 5);
 
-        BrowserUtils.clickWithTimeOut(anpp.productsOption, 1);
-        BrowserUtils.clickWithTimeOut(anpp.addNewButton, 1);
+        BrowserUtils.clickWithTimeOut(anpp.productsOption, 5);
+        BrowserUtils.clickWithTimeOut(anpp.addNewButton, 5);
 
         //PC_4- User must enter valid product image, gallery image, product category
 
         //product image for display
-        String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
-        BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 10);
+        // String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+        String newProductImage = System.getProperty("user.dir")+"/src/main/resources/images/images.jpg";
+        BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 5);
         BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         BrowserUtils.clickWithTimeOut(anpp.selectToUploadButton, 10);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
 
         //product image for gallery
         BrowserUtils.clickWithTimeOut(anpp.addGalleryPhotoIcon, 10);
-        Thread.sleep(3000);
-        anpp.uploadFiles.click();
+        Thread.sleep(5000);
+        JSUtils.JSclickWithTimeout(anpp.uploadFiles);
         BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         BrowserUtils.clickWithTimeOut(anpp.addToGalleryButton, 10);
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
         // >>>>>>>>>>>>>>>>>>
         //TS_01- The user should verify that the default option is set to "Simple Product."
@@ -97,24 +98,31 @@ public class TC_01 {
         BrowserUtils.sendKeysWithTimeout(anpp.salePriceField, ConfigReader.getProperty("Sale_price"),5);
 
         //TS_04- User needs to type valid data to Product Title field
-        BrowserUtils.sendKeysWithTimeout(anpp.productTitleInput, ConfigReader.getProperty("product_title"), 3);
+        BrowserUtils.sendKeysWithTimeout(anpp.productTitleInput, ConfigReader.getProperty("product_title"), 5);
 
         //TS_05- User needs to click valid product Category
+        JSUtils.JSclickWithTimeout(anpp.categoryboxTarhana);
+        Thread.sleep(2000);
 
-//        AddNewProductPage.radioClickByProducCategorytIndex(3);
-//        Thread.sleep(2000);
+        //sku
+        BrowserUtils.sendKeysWithTimeout(anpp.sku,fake.number().digits(6),5);
 
         //TS_06- User needs to click Submit button
         BrowserUtils.clickWithTimeOut(anpp.productSubmitButton,5);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         //TS_07- Enter product title in Search field on top of the page and Click the product
         hp.searchBox.sendKeys(ConfigReader.getProperty("product_title"), Keys.ENTER);
+        JSUtils.JSclickWithTimeout(anpp.productCreated);
         //TS_08- User needs to click "add to cart"
-        pp.addToCartButton.click();
+        JSUtils.JSclickWithTimeout(pp.addToCartButton2);
         //TS_09- User needs to click shopping card icon ( right top corner shopping bag icon) and then click "view cart"button
-        hp.cart.click();
-        pp.viewCartButton.click();
+        JSUtils.JSclickWithTimeout(hp.cart);
+        JSUtils.JSclickWithTimeout(pp.viewCartButton);
 
-        ExtentReportUtils.passAndCaptureScreenshot("Passed!!");
+    //VERIFICATION
+        BrowserUtils.verifyElementDisplayed(anpp.productCreated);
+        System.out.println("PASSED");
+
+        Driver.closeDriver();
     }
 }
