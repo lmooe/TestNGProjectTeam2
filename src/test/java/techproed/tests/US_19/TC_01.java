@@ -74,7 +74,7 @@ public class TC_01 {
             WaitUtils.waitFor(1);
 
             WebElement checkOut = Driver.getDriver().findElement(By.xpath("//a[@class='button checkout wc-forward']"));
-            JSUtils.JSclickWithTimeout(checkOut);
+            BrowserUtils.clickWithTimeOut(checkOut,5);
 
             checkoutPage.enterYourCode.click();
             WaitUtils.waitFor(1);

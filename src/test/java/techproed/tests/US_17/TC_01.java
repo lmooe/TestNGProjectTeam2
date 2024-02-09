@@ -32,9 +32,9 @@ public class TC_01 {
 
         //Delete cart, if it is not empty
         if(Integer.parseInt(checkOutPage.productCounter.getText())>0){
-            homePage.cart.click();
-            checkOutPage.viewChartButton.click();
-            checkOutPage.clearChart.click();
+            JSUtils.JSclickWithTimeout(homePage.cart);
+            JSUtils.JSclickWithTimeout(checkOutPage.viewChartButton);
+            JSUtils.JSclickWithTimeout(checkOutPage.clearChart);
         }
     }
 
@@ -52,9 +52,10 @@ public class TC_01 {
 
         WebElement leatherShoe = Driver.getDriver().findElement(By.linkText("Leather shoes"));
         JSUtils.JSclickWithTimeout(leatherShoe);
-
+        WaitUtils.waitFor(3);
         BrowserUtils.clickWithTimeOut(productPage.plusButton,5);
-        BrowserUtils.clickWithTimeOut(productPage.addToCartButton2,5);
+
+        JSUtils.JSclickWithTimeout(productPage.addToCartButton2);
 
         ExtentReportUtils.pass("Vendor adds product into cart successfully.");
 
