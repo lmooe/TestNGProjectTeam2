@@ -75,12 +75,12 @@ public class TC_03 {
         Assert.assertNotEquals(select.getFirstSelectedOption().getText(), "Variable Product");
 
         //	Click on image display
-        String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
-        BrowserUtils.clickWithTimeOut(addNewProductPage.addDisplayPhotoIcon, 10);
-        BrowserUtils.sendKeysWithTimeout(addNewProductPage.selectFilesButton, newProductImage, 10);
-        Thread.sleep(3000);
-        BrowserUtils.clickWithTimeOut(addNewProductPage.selectToUploadButton, 10);
-        Thread.sleep(2000);
+//        String newProductImage = "C:\\User.Home\\desktop\\images\\images-70";
+//        BrowserUtils.clickWithTimeOut(addNewProductPage.addDisplayPhotoIcon, 10);
+//        BrowserUtils.sendKeysWithTimeout(addNewProductPage.selectFilesButton, newProductImage, 10);
+//        Thread.sleep(3000);
+//        BrowserUtils.clickWithTimeOut(addNewProductPage.selectToUploadButton, 10);
+//        Thread.sleep(2000);
 
         // Verify image is displayed on the page
         Assert.assertTrue(addNewProductPage.removeImgButton.isDisplayed());

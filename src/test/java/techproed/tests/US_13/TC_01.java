@@ -64,12 +64,15 @@ public class TC_01 {
 
                 dashboardPage.addresses.click();
                  Thread.sleep(3000);
-            ActionUtils.actionsScrollDown();
+            WaitUtils.waitForVisibility(dashboardPage.editShippingAddress, 10);
                 dashboardPage.editShippingAddress.click();
                 //WaitUtils.waitForVisibility(dashboardPage.editShippingAddress, 10);
-            Thread.sleep(3000);
+            //Thread.sleep(3000);
                 //dashboardPage.editShippingAddress.click();
-
+               //// Navigate to the Address page and click edit billing address
+            //        dashboardPage.addresses.click();
+            //        WaitUtils.waitForVisibility(dashboardPage.editBillingAddress, 20);
+            //        dashboardPage.editBillingAddress.click();
 
                 Assert.assertTrue(billShipAddressPage.shipFirstName.getAttribute("email").
 

@@ -43,7 +43,7 @@ public class TC_01 {
          */
         HomePage homePage = new HomePage();
         DashboardPage dashboardPage = new DashboardPage();
-
+    AddNewProductPage addNewProductPage = new AddNewProductPage();
 
         @Test
         public void TC_01() throws InterruptedException {

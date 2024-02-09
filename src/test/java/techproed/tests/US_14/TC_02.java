@@ -75,12 +75,13 @@ public class TC_02 {
             BrowserUtils.clickWithTimeOut(addNewProductPage.addDisplayPhotoIcon, 10);
 
             //  Select an image file from computer
-            String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+            String newProductImage = "C:\\Users\\evrim\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images-70.jpg";
             BrowserUtils.clickWithTimeOut(addNewProductPage.addDisplayPhotoIcon, 10);
             BrowserUtils.sendKeysWithTimeout(addNewProductPage.selectFilesButton, newProductImage, 10);
             Thread.sleep(3000);
             BrowserUtils.clickWithTimeOut(addNewProductPage.selectToUploadButton, 10);
             Thread.sleep(2000);
+
 
 //            String userHOME = System.getProperty("user.home");
 //            String pathOfFile = userHOME + "\\desktop\\image-70.jpg";
