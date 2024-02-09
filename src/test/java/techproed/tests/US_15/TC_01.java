@@ -67,7 +67,8 @@ public class TC_01 {
         //product title
         BrowserUtils.sendKeysWithTimeout(anpp.productTitleInput, ConfigReader.getProperty("product_title"), 3);
         //product image for display
-        String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+        //C:\Users\paulr\IdeaProjects\TestNGProjectTeam2\Resources\images\images.jpg
+        String newProductImage = System.getProperty("user.dir")+ "src/main/Resources/image";
         BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 10);
         BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
         Thread.sleep(3000);
