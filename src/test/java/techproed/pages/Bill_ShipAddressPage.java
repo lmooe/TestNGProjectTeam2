@@ -8,8 +8,11 @@ import techproed.utilities.Driver;
 
 public class Bill_ShipAddressPage {
 
-    public Bill_ShipAddressPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+
+
+
+    public Bill_ShipAddressPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
 
@@ -66,6 +69,11 @@ public class Bill_ShipAddressPage {
     @FindBy (id="billing_country") // Sarah updated locator on 06/02/24
     public WebElement billCountryDD;
 
+    //@FindBy(name = "billing_address_1")
+
+    @FindBy (id="billing_country") // Sarah updated locator on 06/02/24
+    public WebElement billCountryDDs;
+
     //For US_12
     @FindBy (id="select2-billing_country-container") // Fatih added locator on 07/02/24
     public WebElement billCountryDD1;
@@ -79,6 +87,9 @@ public class Bill_ShipAddressPage {
     @FindBy(name="billing_city")
     public WebElement billTownCity;
 
+
+    @FindBy(id = "select2-billing_state-container")
+public WebElement billstate;
     @FindBy (id = "billing_state")
     public WebElement billCounty;
 
@@ -88,7 +99,7 @@ public class Bill_ShipAddressPage {
     @FindBy(name="billing_postcode")
     public WebElement billZipPostCode;
 
-    @FindBy(id="billing_phone")
+    @FindBy(id = "billing_phone")
     public WebElement billPhoneNumb;
 
     @FindBy (id="billing_email")

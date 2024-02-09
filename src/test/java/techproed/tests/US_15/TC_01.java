@@ -67,7 +67,8 @@ public class TC_01 {
         //product title
         BrowserUtils.sendKeysWithTimeout(anpp.productTitleInput, ConfigReader.getProperty("product_title"), 3);
         //product image for display
-        String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+       // String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+        String newProductImage = System.getProperty("user.dir")+"/src/main/resources/images/images.jpg";
         BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 10);
         BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
         Thread.sleep(3000);
@@ -140,6 +141,8 @@ public class TC_01 {
         //VERIFICATION
         Assert.assertTrue(anpp.published.isDisplayed());  //OR Assert.assertTrue(anpp.published.getText().contains("Published"));
         System.out.println("US_15 TC_1 is passed!!!");
+
+        Driver.closeDriver();
 
 
         }
