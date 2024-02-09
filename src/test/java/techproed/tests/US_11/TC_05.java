@@ -15,11 +15,11 @@ public class TC_05 {
 //    HomePage homePage = new HomePage();
 //    DashboardPage dashboardPage = new DashboardPage();
 
-    @BeforeTest
-    public void setUp() {
-        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-        WaitUtils.waitForPageToLoad(20);
-    }
+//    @BeforeTest
+//    public void setUp() {
+//        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+//        WaitUtils.waitForPageToLoad(20);
+//    }
 
     @AfterTest
     public void tearDown() {
@@ -28,10 +28,16 @@ public class TC_05 {
 
     @Test
     public void dashboardElementsVisibilityTest() {
+        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+        WaitUtils.waitForPageToLoad(20);
+
         HomePage homePage = new HomePage();
         DashboardPage dashboardPage = new DashboardPage();
         // Perform login actions
+        WaitUtils.waitFor(5);
         JSUtils.JSclickWithTimeout(homePage.singIn1);
+        WaitUtils.waitFor(5);
+
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));
         homePage.password.sendKeys(ConfigReader.getProperty("US11password"));
         JSUtils.JSclickWithTimeout(homePage.signInButton);

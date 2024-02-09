@@ -29,7 +29,7 @@ public class TC_01 {
         homePage.username.sendKeys(ConfigReader.getProperty("email"));
         homePage.password.sendKeys(ConfigReader.getProperty("password"));
         homePage.signInButton.click();
-        WaitUtils.waitFor(2);
+        WaitUtils.waitFor(5);
     }
 
     @Test

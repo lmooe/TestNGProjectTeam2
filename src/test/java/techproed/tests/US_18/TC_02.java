@@ -22,11 +22,12 @@ public class TC_02 {
         HomePage homePage = new HomePage();
 
         //Sign in
+        WaitUtils.waitFor(5);
         JSUtils.JSclickWithTimeout(homePage.singIn1);
         homePage.username.sendKeys(ConfigReader.getProperty("email"));
         homePage.password.sendKeys(ConfigReader.getProperty("password"));
         homePage.signInButton.click();
-        WaitUtils.waitFor(2);
+        WaitUtils.waitFor(5);
     }
 
     @Test
