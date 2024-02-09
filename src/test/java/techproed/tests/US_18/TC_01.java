@@ -28,7 +28,7 @@ public class TC_01 {
         JSUtils.JSclickWithTimeout(homePage.singIn1);
         homePage.username.sendKeys(ConfigReader.getProperty("email"));
         homePage.password.sendKeys(ConfigReader.getProperty("password"));
-        homePage.signInButton.click();
+        JSUtils.JSclickWithTimeout(homePage.signInButton);
         WaitUtils.waitFor(5);
     }
 
