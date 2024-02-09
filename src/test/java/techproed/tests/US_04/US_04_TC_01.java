@@ -73,7 +73,8 @@ public class US_04_TC_01 {
         JSUtils.JSclickWithTimeout(billShipAddressPage.shipTownCity);
         billShipAddressPage.shipTownCity.sendKeys("Toronto");
         JSUtils.JSclickWithTimeout(billShipAddressPage.shipStateProvinceDD);
-        WebElement ontarioOption = Driver.getDriver().findElement(By.xpath("//*[@value='ON']"));
+        WaitUtils.waitFor(5);
+        WebElement ontarioOption = Driver.getDriver().findElement(By.xpath("//*[@id='select2-shipping_state-result-mutp-ON']"));
         JSUtils.JSclickWithTimeout(ontarioOption);
 
 
