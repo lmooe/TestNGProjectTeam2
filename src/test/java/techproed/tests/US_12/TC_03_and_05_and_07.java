@@ -39,8 +39,10 @@ public class TC_03_and_05_and_07 {
         DashboardPage dashboardPage = new DashboardPage();
         Bill_ShipAddressPage addressPage = new Bill_ShipAddressPage();
         // Perform login actions
-        WaitUtils.waitFor(10);
+        WaitUtils.waitFor(5);
+
         JSUtils.JSclickWithTimeout(homePage.singIn1);
+        WaitUtils.waitFor(5);
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));
         homePage.password.sendKeys(ConfigReader.getProperty("US11password"));
         JSUtils.JSclickWithTimeout(homePage.signInButton);

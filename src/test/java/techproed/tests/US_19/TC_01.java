@@ -33,6 +33,7 @@ public class TC_01 {
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
         //Sign in
+        WaitUtils.waitFor(5);
         JSUtils.JSclickWithTimeout(homepage.singIn1);
         homepage.username.sendKeys(ConfigReader.getProperty("email"));
         homepage.password.sendKeys(ConfigReader.getProperty("password"));

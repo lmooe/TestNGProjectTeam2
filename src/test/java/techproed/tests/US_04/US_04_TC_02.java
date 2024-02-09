@@ -39,10 +39,10 @@ public class US_04_TC_02 {
 
         JSUtils.JSclickWithTimeout(homePage.MyAccountOnFooter);
         JSUtils.JSclickWithTimeout(dashboardPage.addresses);
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
 
         JSUtils.JSclickWithTimeout(billShipAddressPage.addShip);
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
 
         JSUtils.JSclickWithTimeout(billShipAddressPage.shipFirstName);
         billShipAddressPage.shipFirstName.sendKeys("Jane");

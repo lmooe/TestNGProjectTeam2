@@ -132,7 +132,7 @@ public class TC_02 {
 
             //TS_5- The user needs to click submit button
             BrowserUtils.clickWithTimeOut(anpp.productSubmitButton,5);
-            Thread.sleep(2000);
+            Thread.sleep(5000);
 
             //VERIFICATION
             Assert.assertFalse(anpp.published.isDisplayed());  //OR Assert.assertTrue(!anpp.published.getText().contains("Published"));
