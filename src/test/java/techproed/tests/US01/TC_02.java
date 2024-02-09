@@ -26,10 +26,10 @@ public class TC_02 {
         WaitUtils.waitForPageToLoad(20);
     }
 
-    @AfterMethod
-    public void tearDown(){
-        Driver.closeDriver();
-    }
+//    @AfterMethod
+//    public void tearDown(){
+//        Driver.closeDriver();
+//    }
 
     @Test
     public void TC_02(){
