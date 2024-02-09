@@ -28,7 +28,7 @@ public class DashboardPage {
     public WebElement downloads;
 
     @FindBy(xpath = "//a[text()='Addresses']")
-    public static WebElement addresses;
+    public WebElement addresses;
 
     @FindBy (xpath = "//p[text()='Account details']")
     public WebElement accountDetails;
