@@ -134,13 +134,13 @@ public class TC_01 {
 //    Select 'Pay at the door'
         ExtentReportUtils.pass("User selects payment method");
         if (checkOutPage.payAtDoor.isEnabled()) {
-            BrowserUtils.clickWithTimeOut(checkOutPage.wireTransferEFT, 1);
+            JSUtils.JSclickWithTimeout(checkOutPage.wireTransferEFT);
          }
-        checkOutPage.payAtDoor.click();
+        JSUtils.JSclickWithTimeout(checkOutPage.payAtDoor);
 
 //    Select 'Place order'
         ExtentReportUtils.pass("User clicks Place Order button");
-        BrowserUtils.clickWithTimeOut(checkOutPage.placeOrderButton, 1);
+        JSUtils.JSclickWithTimeout(checkOutPage.placeOrderButton);
 
 //    On order complete page, verify 'Thank you. Your order has been received.' is visible
         WaitUtils.waitFor(2);
