@@ -1,5 +1,7 @@
 package techproed.tests.US_16;
 
+import com.github.javafaker.Faker;
+import org.bouncycastle.oer.its.ieee1609dot2.VerificationKeyIndicator;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -8,10 +10,7 @@ import techproed.pages.AddNewProductPage;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
 import techproed.pages.ProductPage;
-import techproed.utilities.BrowserUtils;
-import techproed.utilities.ExtentReportUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
+import techproed.utilities.*;
 
 public class TC_01 {
 
@@ -43,6 +42,7 @@ public class TC_01 {
     DashboardPage dbp = new DashboardPage();
     AddNewProductPage anpp = new AddNewProductPage();
     ProductPage pp = new ProductPage();
+    Faker fake = new Faker();
 
     @Test
     public void TC_01() throws InterruptedException {
@@ -68,9 +68,9 @@ public class TC_01 {
 
         //product image for display
         String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
-        BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 10);
+        BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 3);
         BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         BrowserUtils.clickWithTimeOut(anpp.selectToUploadButton, 10);
         Thread.sleep(2000);
 
@@ -100,21 +100,26 @@ public class TC_01 {
         BrowserUtils.sendKeysWithTimeout(anpp.productTitleInput, ConfigReader.getProperty("product_title"), 3);
 
         //TS_05- User needs to click valid product Category
+        JSUtils.JSclickWithTimeout(anpp.categoryboxTarhana);
+        Thread.sleep(2000);
 
-//        AddNewProductPage.radioClickByProducCategorytIndex(3);
-//        Thread.sleep(2000);
+        //sku
+        BrowserUtils.sendKeysWithTimeout(anpp.sku,fake.number().digits(6),5);
 
         //TS_06- User needs to click Submit button
         BrowserUtils.clickWithTimeOut(anpp.productSubmitButton,5);
         Thread.sleep(2000);
         //TS_07- Enter product title in Search field on top of the page and Click the product
         hp.searchBox.sendKeys(ConfigReader.getProperty("product_title"), Keys.ENTER);
+        anpp.productCreated.click();
         //TS_08- User needs to click "add to cart"
-        pp.addToCartButton.click();
+        pp.addToCartButton2.click();
         //TS_09- User needs to click shopping card icon ( right top corner shopping bag icon) and then click "view cart"button
         hp.cart.click();
         pp.viewCartButton.click();
 
-        ExtentReportUtils.passAndCaptureScreenshot("Passed!!");
+    //VERIFICATION
+        BrowserUtils.verifyElementDisplayed(anpp.productCreated);
+        System.out.println("PASSED");
     }
 }

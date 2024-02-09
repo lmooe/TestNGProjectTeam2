@@ -1,5 +1,6 @@
 package techproed.pages;
 
+import freemarker.cache.WebappTemplateLoader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -29,8 +30,35 @@ public class Bill_ShipAddressPage {
     @FindBy(id = "billing_first_name")
     public WebElement billFirstName;
 
+    @FindBy(id = "account_first_name")
+    public WebElement accFirstName;
+
     @FindBy(id = "billing_last_name")
     public WebElement billLastName;
+
+    @FindBy(id = "account_last_name")
+    public WebElement accLastName;
+
+    @FindBy(id = "account_display_name")
+    public WebElement ADN;
+
+    @FindBy(id = "account_email")
+    public WebElement AEA;
+
+    @FindBy(xpath = "//*[@id=\"tinymce\"]/p")
+    public WebElement biog;
+
+    @FindBy(id = "password_current")
+    public WebElement curpass;
+
+    @FindBy(id = "password_1")
+    public WebElement newpass;
+
+    @FindBy(id = "password_2")
+    public WebElement conpass;
+
+    @FindBy (xpath = "//button[@name='save_account_details']")
+    public WebElement accSaveButton;
 
     @FindBy(id = "billing_company")
     public WebElement billCompOptional;
@@ -39,7 +67,7 @@ public class Bill_ShipAddressPage {
     public WebElement billCountryDD;
 
     //For US_12
-    @FindBy (id="select2-billing_country-container") // Fatih added locator on 06/02/24
+    @FindBy (id="select2-billing_country-container") // Fatih added locator on 07/02/24
     public WebElement billCountryDD1;
 
     @FindBy (name="billing_address_1")

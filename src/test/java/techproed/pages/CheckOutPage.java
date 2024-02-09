@@ -97,8 +97,14 @@ public class CheckOutPage {
     @FindBy(xpath = "//div[@class='payment_box payment_method_bacs']")
     public WebElement additionInfoForWireTransfer;
 
+    @FindBy(xpath = "//*[@for='payment_method_bacs']")
+    public WebElement wireTransferEFTLabel;
+
     @FindBy(xpath = "//input[@id='payment_method_cod']")
     public WebElement payAtDoor;
+
+    @FindBy(xpath = "//*[@for='payment_method_cod']")
+    public WebElement payAtDoorLabel;
 
     @FindBy(xpath = "//button[@id='place_order']")
     public WebElement placeOrderButton;
@@ -112,6 +118,8 @@ public class CheckOutPage {
     @FindBy(xpath = "(//span[@class='cart-count'])[1]")
     public WebElement productCounter;
 
+    @FindBy(xpath = "//<li[@class='alert alert-simple alert-icon alert-close-top alert-danger']")
+    public WebElement alertMsg;
     @FindBy(xpath = "//p[text()='Thank you. Your order has been received.']")
     public WebElement orderReceivedMessage;
 //  Added by Sarah (almost the same as verificationOrderMessage but for 'Thank you. Your order has been received.' text only)

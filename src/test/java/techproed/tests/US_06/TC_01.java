@@ -68,10 +68,8 @@ public class TC_01 {
     @Test
     public void US06_TC01() throws InterruptedException {
 
-        ExtentReportUtils.info("User is on homepage");
-
 //    Click in the search box, enter product name (Tshirt) and click enter
-        ExtentReportUtils.pass("User enters product in search box and clicks enter");
+        ExtentReportUtils.pass("User enters product in search box on homepage and clicks enter");
         homePage.searchBox.click();
         homePage.searchBox.clear();
         homePage.searchBox.sendKeys(ConfigReader.getProperty("product1"), Keys.ENTER);
@@ -121,18 +119,18 @@ public class TC_01 {
         JSUtils.JSclickWithTimeout(shoppingCartPage.checkoutButton);
 
 //    Verify country, street address lines 1 & 2, town, county, postcode and phone have been populated
-        Assert.assertTrue(checkOutPage.billCountryDD.getAttribute("title").equals(ConfigReader.getProperty("uk")));
-        Assert.assertTrue(checkOutPage.billAddressLine1.getAttribute("value").equals(ConfigReader.getProperty("streetaddress1")));
-        Assert.assertTrue(checkOutPage.billAddressLine2.getAttribute("value").equals(ConfigReader.getProperty("streetaddress2")));
-        Assert.assertTrue(checkOutPage.billTownCity.getAttribute("value").equals(ConfigReader.getProperty("town")));
-        Assert.assertTrue(checkOutPage.billCounty.getAttribute("value").equals(ConfigReader.getProperty("county")));
-        Assert.assertTrue(checkOutPage.billZipPostCode.getAttribute("value").equals(ConfigReader.getProperty("postcode")));
-        Assert.assertTrue(checkOutPage.billPhoneNumb.getAttribute("value").equals(ConfigReader.getProperty("phone")));
+        Assert.assertEquals(checkOutPage.billCountryDD.getAttribute("title"), ConfigReader.getProperty("uk"));
+        Assert.assertEquals(checkOutPage.billAddressLine1.getAttribute("value"), ConfigReader.getProperty("streetaddress1"));
+        Assert.assertEquals(checkOutPage.billAddressLine2.getAttribute("value"), ConfigReader.getProperty("streetaddress2"));
+        Assert.assertEquals(checkOutPage.billTownCity.getAttribute("value"), ConfigReader.getProperty("town"));
+        Assert.assertEquals(checkOutPage.billCounty.getAttribute("value"), ConfigReader.getProperty("county"));
+        Assert.assertEquals(checkOutPage.billZipPostCode.getAttribute("value"), ConfigReader.getProperty("postcode"));
+        Assert.assertEquals(checkOutPage.billPhoneNumb.getAttribute("value"), ConfigReader.getProperty("phone"));
         ExtentReportUtils.passAndCaptureScreenshot("Billing address successfully populated");
 
 //    Verify 'Payment Methods' are visible
-        Assert.assertTrue(checkOutPage.wireTransferEFT.getText().equals(ConfigReader.getProperty("payment1")));
-        Assert.assertTrue(checkOutPage.payAtDoor.getText().equals(ConfigReader.getProperty("payment2")));
+        Assert.assertEquals(checkOutPage.wireTransferEFTLabel.getText(), ConfigReader.getProperty("payment1"));
+        Assert.assertEquals(checkOutPage.payAtDoorLabel.getText(), ConfigReader.getProperty("payment2"));
         ExtentReportUtils.passAndCaptureScreenshot("Payment methods successfully displayed");
 
 //    Select 'Pay at the door'
@@ -146,10 +144,11 @@ public class TC_01 {
         System.out.println(orderRecMsg);
         Assert.assertEquals(orderRecMsg,"Thank you. Your order has been received.");
         ExtentReportUtils.passAndCaptureScreenshot("Order received message successfully displayed");
+        ExtentReportUtils.flush();
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void teardown(){
         Driver.closeDriver();
     }
 }
