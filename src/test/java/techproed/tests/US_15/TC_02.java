@@ -38,13 +38,15 @@ public class TC_02 {
 
     */
 
-        HomePage hp = new HomePage();
-        DashboardPage dbp = new DashboardPage();
-        AddNewProductPage anpp = new AddNewProductPage();
-        Faker fake = new Faker();
 
         @Test
         public void TC_02() throws InterruptedException {
+
+            HomePage hp = new HomePage();
+            DashboardPage dbp = new DashboardPage();
+            AddNewProductPage anpp = new AddNewProductPage();
+            Faker fake = new Faker();
+
             //PC_1- User must be landed on valid url
             Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
