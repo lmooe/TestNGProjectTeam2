@@ -240,4 +240,15 @@ public class BrowserUtils {
         Driver.getDriver().switchTo().window(list.get(windowIndex));
     }
 
+
+
+   // *****
+    public static void wait(int sn){
+        try {
+            Thread.sleep(sn*1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

@@ -1,6 +1,6 @@
 package techproed.utilities;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -29,24 +29,25 @@ public class Driver {
     public static void initialiseDriver(){
         switch (ConfigReader.getProperty("browser")) {
             case "chrome":
-                WebDriverManager.chromedriver().setup();
+               // WebDriverManager.chromedriver().setup();
                 driver.set(ThreadGuard.protect(new ChromeDriver()));
                 break;
             case "firefox":
-                WebDriverManager.firefoxdriver().setup();
+              //  WebDriverManager.firefoxdriver().setup();
                 driver.set(ThreadGuard.protect(new FirefoxDriver()));
                 break;
             case "safari":
-                WebDriverManager.safaridriver().setup();
+              //  WebDriverManager.safaridriver().setup();
                 driver.set(ThreadGuard.protect(new SafariDriver()));
                 break;
             case "edge":
-                WebDriverManager.edgedriver().setup();
+              //  WebDriverManager.edgedriver().setup();
                 driver.set(ThreadGuard.protect(new EdgeDriver()));
                 break;
             case "chrome-headless":
-                WebDriverManager.chromedriver().setup();
-                driver.set(ThreadGuard.protect(new ChromeDriver(new ChromeOptions().addArguments("--headless=new"))));
+                WebDriver driver = new ChromeDriver ();
+                // WebDriverManager.chromedriver().setup();
+              //  driver.set(ThreadGuard.protect(new ChromeDriver(new ChromeOptions().addArguments("--headless=new"))));
                 break;
         }
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

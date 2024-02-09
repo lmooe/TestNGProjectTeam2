@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
 import techproed.utilities.BrowserUtils;
+import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
 import techproed.utilities.WaitUtils;
 
@@ -24,8 +25,8 @@ public class TC_01 {
 
     @BeforeMethod
     public void setUp(){
-        Driver.getDriver().get("https://allovercommerce.com/");
-        WaitUtils.waitForPageToLoad(20);
+        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+        WaitUtils.waitForPageToLoad(10);
     }
 
     @Test
@@ -40,6 +41,7 @@ public class TC_01 {
            user clicks on sign-up button
            user registers successfully
      */
+
         Faker faker = new Faker();
         String fakeName = faker.name().firstName();
         String fakeEmail = faker.internet().emailAddress();
