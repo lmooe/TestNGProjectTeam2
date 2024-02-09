@@ -18,8 +18,8 @@ public class US_09_TC_02 {
 
 
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-        WaitUtils.waitFor(3);
-        BrowserUtils.clickWithTimeOut(homePage.register, 1);
+        WaitUtils.waitFor(5);
+        BrowserUtils.clickWithTimeOut(homePage.register, 5);
 
         JSUtils.JSclickWithTimeout(homePage.regUsername);
         homePage.regUsername.sendKeys(faker.name().username());
@@ -28,8 +28,8 @@ public class US_09_TC_02 {
         JSUtils.JSclickWithTimeout(homePage.regPassword);
         homePage.regPassword.sendKeys(faker.internet().password());
         JSUtils.JSclickWithTimeout((homePage.agreePolicy));
-        BrowserUtils.clickWithTimeOut(homePage.signUpButton, 1);
-        WaitUtils.waitFor(3);
+        BrowserUtils.clickWithTimeOut(homePage.signUpButton, 5);
+        WaitUtils.waitFor(5);
 
 
 

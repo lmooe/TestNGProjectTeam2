@@ -3,7 +3,6 @@ package techproed.tests.US_04;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.pages.Bill_ShipAddressPage;
@@ -27,10 +26,8 @@ public class US_04_TC_02 {
 
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
         BrowserUtils.clickWithTimeOut(homePage.register, 1);
-        WaitUtils.waitFor(3);
 
         JSUtils.JSclickWithTimeout(homePage.regUsername);
-        WaitUtils.waitFor(2);
         homePage.regUsername.sendKeys(faker.name().username());
         JSUtils.JSclickWithTimeout(homePage.regEmail);
         homePage.regEmail.sendKeys(faker.internet().emailAddress());
@@ -42,10 +39,10 @@ public class US_04_TC_02 {
 
         JSUtils.JSclickWithTimeout(homePage.MyAccountOnFooter);
         JSUtils.JSclickWithTimeout(dashboardPage.addresses);
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
 
         JSUtils.JSclickWithTimeout(billShipAddressPage.addShip);
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
 
         JSUtils.JSclickWithTimeout(billShipAddressPage.shipFirstName);
         billShipAddressPage.shipFirstName.sendKeys("Jane");
@@ -55,7 +52,7 @@ public class US_04_TC_02 {
         JSUtils.JSclickWithTimeout(billShipAddressPage.shipCountryDD);
         //WaitUtils.waitFor(5); //to see the dropdown
         WebElement canadaOption = Driver.getDriver().findElement(By.xpath("//*[@value='CA']"));
-        canadaOption.click();
+        JSUtils.JSclickWithTimeout(canadaOption);
 
         JSUtils.JSclickWithTimeout(billShipAddressPage.shipAddressLine1);
         billShipAddressPage.shipAddressLine1.sendKeys("150 Dowling Ave");
@@ -66,7 +63,7 @@ public class US_04_TC_02 {
         billShipAddressPage.shipTownCity.sendKeys("Toronto");
         JSUtils.JSclickWithTimeout(billShipAddressPage.shipStateProvinceDD);
         WebElement ontarioOption = Driver.getDriver().findElement(By.xpath("//*[@value='ON']"));
-        ontarioOption.click();
+        JSUtils.JSclickWithTimeout(ontarioOption);
 
 
         JSUtils.JSclickWithTimeout(billShipAddressPage.shipZipPostCode);

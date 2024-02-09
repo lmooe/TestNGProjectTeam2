@@ -33,6 +33,7 @@ public class TC_01 {
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
         //Sign in
+        WaitUtils.waitFor(5);
         JSUtils.JSclickWithTimeout(homepage.singIn1);
         homepage.username.sendKeys(ConfigReader.getProperty("email"));
         homepage.password.sendKeys(ConfigReader.getProperty("password"));
@@ -73,7 +74,7 @@ public class TC_01 {
             WaitUtils.waitFor(1);
 
             WebElement checkOut = Driver.getDriver().findElement(By.xpath("//a[@class='button checkout wc-forward']"));
-            JSUtils.JSclickWithTimeout(checkOut);
+            BrowserUtils.clickWithTimeOut(checkOut,5);
 
             checkoutPage.enterYourCode.click();
             WaitUtils.waitFor(1);

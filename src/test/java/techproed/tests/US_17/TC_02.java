@@ -21,11 +21,12 @@ public class TC_02 {
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
         //Sign in
+        WaitUtils.waitFor(5);
         JSUtils.JSclickWithTimeout(homePage.singIn1);
         homePage.username.sendKeys(ConfigReader.getProperty("email"));
         homePage.password.sendKeys(ConfigReader.getProperty("password"));
-        homePage.signInButton.click();
-        WaitUtils.waitFor(2);
+        JSUtils.JSclickWithTimeout(homePage.signInButton);
+        WaitUtils.waitFor(5);
     }
 
     @Test
@@ -35,58 +36,60 @@ public class TC_02 {
 
         WebElement leatherShoe = Driver.getDriver().findElement(By.linkText("Leather shoes"));
         JSUtils.JSclickWithTimeout(leatherShoe);
-        WaitUtils.waitFor(2);
+        WaitUtils.waitFor(5);
 
-        productPage.plusButton.click();
-        WaitUtils.waitFor(2);
+        JSUtils.JSclickWithTimeout(productPage.plusButton);
+        WaitUtils.waitFor(5);
 
 
-        productPage.addToCartButton2.click();
-        WaitUtils.waitFor(1);
+        JSUtils.JSclickWithTimeout(productPage.addToCartButton2);
+        WaitUtils.waitFor(5);
 
 
         //Go to cart pop-up and click checkout button
-        homePage.cart.click();
-        WaitUtils.waitFor(2);
-        checkOutPage.checkoutButton.click();
+        JSUtils.JSclickWithTimeout(homePage.cart);
+        WaitUtils.waitFor(5);
+        JSUtils.JSclickWithTimeout(checkOutPage.checkoutButton);
 
         //Check editable fields in billing address
         checkOutPage.billFirstName.clear();
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
         checkOutPage.billFirstName.sendKeys(ConfigReader.getProperty("vendorfirstname"));
 
         checkOutPage.billLastName.clear();
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
         checkOutPage.billLastName.sendKeys(ConfigReader.getProperty("vendorlastname"));
 
         Select selectCounty = new Select(checkOutPage.countryDropDown);
         selectCounty.selectByVisibleText("Canada");
-        WaitUtils.waitFor(2);
+        WaitUtils.waitFor(5);
         selectCounty.selectByVisibleText("United States (US)");
 
         checkOutPage.billAddressLine1.clear();
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
         checkOutPage.billAddressLine1.sendKeys(ConfigReader.getProperty("streetaddress"));
 
         checkOutPage.billTownCity.clear();
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
         checkOutPage.billTownCity.sendKeys(ConfigReader.getProperty("city"));
 
         checkOutPage.billZipPostCode.clear();
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
         checkOutPage.billZipPostCode.sendKeys(ConfigReader.getProperty("zipcode"));
 
         checkOutPage.billPhoneNumb.clear();
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
         checkOutPage.billPhoneNumb.sendKeys(ConfigReader.getProperty("phoneno"));
 
         checkOutPage.billEmail.clear();
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
         checkOutPage.billEmail.sendKeys(ConfigReader.getProperty("email"));
 
-        WaitUtils.waitFor(2);
+        WaitUtils.waitFor(5);
         Select selectCity = new Select(checkOutPage.stateDropdown);
         selectCity.selectByValue("NY");
+
+        Driver.closeDriver();
 
 
     }
