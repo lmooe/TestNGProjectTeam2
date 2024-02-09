@@ -9,15 +9,17 @@ import techproed.utilities.*;
 
 public class TC_02 {
 
-    HomePage homePage = new HomePage();
-    ProductPage productPage = new ProductPage();
-    CheckOutPage checkOutPage = new CheckOutPage();
-    DashboardPage dashboardPage = new DashboardPage();
-    CouponPage couponPage = new CouponPage();
+//    HomePage homePage = new HomePage();
+//    ProductPage productPage = new ProductPage();
+//    CheckOutPage checkOutPage = new CheckOutPage();
+//    DashboardPage dashboardPage = new DashboardPage();
+//    CouponPage couponPage = new CouponPage();
 
     @BeforeMethod
     public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+
+        HomePage homePage = new HomePage();
 
         //Sign in
         JSUtils.JSclickWithTimeout(homePage.singIn1);
@@ -29,6 +31,13 @@ public class TC_02 {
 
     @Test
     public void vendorCreateCouponTest(){
+
+        HomePage homePage = new HomePage();
+        ProductPage productPage = new ProductPage();
+        CheckOutPage checkOutPage = new CheckOutPage();
+        DashboardPage dashboardPage = new DashboardPage();
+        CouponPage couponPage = new CouponPage();
+
 
         JSUtils.JSclickWithTimeout(homePage.signOut);
         JSUtils.JSclickWithTimeout(dashboardPage.storeManager);

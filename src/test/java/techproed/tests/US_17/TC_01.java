@@ -41,6 +41,7 @@ public class TC_01 {
     @Test
     public void vendorBuyProductTest(){
 
+
         ExtentReportUtils.createTestReport("Extent Report for US_17  TC_01","Place Order As Vendor Functionality");
 
         ExtentReportUtils.info("Vendor places order successfully");
