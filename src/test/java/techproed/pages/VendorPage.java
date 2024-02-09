@@ -16,7 +16,7 @@ public class VendorPage {
     @FindBy (name = "wcfm_email_verified_input")
     public WebElement vendorVerificationCode;
 
-    @FindBy (name = "wcfm_email_verified_button")
+    @FindBy (xpath = "//*[@name='wcfm_email_verified_button']")
     public WebElement vendorResendCode;
 
     @FindBy (id = "wcfm_membership_register_button")
@@ -25,6 +25,7 @@ public class VendorPage {
     @FindBy (xpath = "//*[@id='wcfm_membership_registration_form_expander']/div[2]")
     public WebElement vendorVerifyMessage;
 
-
+    @FindBy (xpath = "//*[@class='wc-setup-content']")
+    public WebElement setupPage;
 
 }
