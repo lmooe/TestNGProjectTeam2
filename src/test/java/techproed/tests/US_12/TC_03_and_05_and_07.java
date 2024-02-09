@@ -18,9 +18,9 @@ import java.time.Duration;
 
 public class TC_03_and_05_and_07 {
 
-    HomePage homePage = new HomePage();
-    DashboardPage dashboardPage = new DashboardPage();
-    Bill_ShipAddressPage addressPage = new Bill_ShipAddressPage();
+//    HomePage homePage = new HomePage();
+//    DashboardPage dashboardPage = new DashboardPage();
+//    Bill_ShipAddressPage addressPage = new Bill_ShipAddressPage();
 
     @BeforeTest
     public void setUp() {
@@ -35,7 +35,11 @@ public class TC_03_and_05_and_07 {
 
     @Test
     public void addBillingAddressTest() {
+        HomePage homePage = new HomePage();
+        DashboardPage dashboardPage = new DashboardPage();
+        Bill_ShipAddressPage addressPage = new Bill_ShipAddressPage();
         // Perform login actions
+        WaitUtils.waitFor(10);
         JSUtils.JSclickWithTimeout(homePage.singIn1);
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));
         homePage.password.sendKeys(ConfigReader.getProperty("US11password"));
