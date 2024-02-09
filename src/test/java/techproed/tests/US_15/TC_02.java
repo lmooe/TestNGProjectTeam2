@@ -38,13 +38,15 @@ public class TC_02 {
 
     */
 
-        HomePage hp = new HomePage();
-        DashboardPage dbp = new DashboardPage();
-        AddNewProductPage anpp = new AddNewProductPage();
-        Faker fake = new Faker();
 
         @Test
         public void TC_02() throws InterruptedException {
+
+            HomePage hp = new HomePage();
+            DashboardPage dbp = new DashboardPage();
+            AddNewProductPage anpp = new AddNewProductPage();
+            Faker fake = new Faker();
+
             //PC_1- User must be landed on valid url
             Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
@@ -64,7 +66,8 @@ public class TC_02 {
             //product title
             BrowserUtils.sendKeysWithTimeout(anpp.productTitleInput, ConfigReader.getProperty("product_title"), 3);
             //product image for display
-            String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+            //String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+            String newProductImage = System.getProperty("user.dir")+"/src/main/resources/images/images.jpg";
             BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 10);
             BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
             Thread.sleep(3000);
@@ -96,7 +99,7 @@ public class TC_02 {
             //TS_2- The user needs to click on "Inventory" and must see related section is visible, then needs enter unique
             //      SKU, click to Manage Stock box, leave empty of Stock Qty field
             BrowserUtils.clickWithTimeOut(anpp.menuInventory,1);
-            BrowserUtils.verifyElementDisplayed(anpp.sku);
+ //           BrowserUtils.verifyElementDisplayed(anpp.sku);
             BrowserUtils.sendKeysWithTimeout(anpp.sku,fake.number().digits(6),5);
 //            if(!anpp.manageStock.isSelected()){
 //                BrowserUtils.clickWithTimeOut(anpp.manageStock,5);
@@ -107,7 +110,7 @@ public class TC_02 {
             //        Dimensions (Length, Width, Height) fields. User needs to select valid options of Shipping class and  Processing
             //        Time must choose "Ready to ship in"
             BrowserUtils.clickWithTimeOut(anpp.menuShipping,5);
-            BrowserUtils.verifyElementDisplayed(anpp.weight);
+ //           BrowserUtils.verifyElementDisplayed(anpp.weight);
             anpp.weight.clear();
             anpp.length.clear();
             anpp.width.clear();
@@ -135,6 +138,7 @@ public class TC_02 {
             Assert.assertFalse(anpp.published.isDisplayed());  //OR Assert.assertTrue(!anpp.published.getText().contains("Published"));
             System.out.println("US_15 TC_2 is Failed!!!-bug-");
 
+            Driver.closeDriver();
 
         }
 

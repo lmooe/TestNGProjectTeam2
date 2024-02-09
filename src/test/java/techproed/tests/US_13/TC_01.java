@@ -47,12 +47,12 @@ public class TC_01 {
     }
 
         @Test
-        public void vendorShippingAddressTest () {
+        public void vendorShippingAddressTest() throws InterruptedException {
 
 
                 homePage.singIn1.click();
-                homePage.username.sendKeys(ConfigReader.getProperty("Vendor"));
-                homePage.password.sendKeys(ConfigReader.getProperty("VendorAccount"));
+                homePage.username.sendKeys(ConfigReader.getProperty("email"));
+                homePage.password.sendKeys(ConfigReader.getProperty("password"));
                 homePage.signInButton.click();
 
                 WaitUtils.waitForVisibility(homePage.MyAccountOnFooter, 10);
@@ -60,16 +60,23 @@ public class TC_01 {
                 ActionUtils.actionsScrollDown();
                 JavascriptExecutor executor = (JavascriptExecutor) Driver.getDriver();
                 executor.executeScript("arguments[0].click();", homePage.MyAccountOnFooter);
-
+                Thread.sleep(3000);
 
                 dashboardPage.addresses.click();
-                WaitUtils.waitForVisibility(dashboardPage.editShippingAddress, 10);
+                 Thread.sleep(3000);
+            WaitUtils.waitForVisibility(dashboardPage.editShippingAddress, 10);
                 dashboardPage.editShippingAddress.click();
+                //WaitUtils.waitForVisibility(dashboardPage.editShippingAddress, 10);
+            //Thread.sleep(3000);
+                //dashboardPage.editShippingAddress.click();
+               //// Navigate to the Address page and click edit billing address
+            //        dashboardPage.addresses.click();
+            //        WaitUtils.waitForVisibility(dashboardPage.editBillingAddress, 20);
+            //        dashboardPage.editBillingAddress.click();
 
+                Assert.assertTrue(billShipAddressPage.shipFirstName.getAttribute("email").
 
-                Assert.assertTrue(billShipAddressPage.shipFirstName.getAttribute("value").
-
-                                equals(ConfigReader.getProperty("Vendor")),
+                                equals(ConfigReader.getProperty("value")),
                         "First name must entered.");
 
                 Assert.assertTrue(billShipAddressPage.shipLastName.getAttribute("value").
@@ -105,6 +112,11 @@ public class TC_01 {
 
 
             }
+        }
 
 
-}
+
+
+
+
+

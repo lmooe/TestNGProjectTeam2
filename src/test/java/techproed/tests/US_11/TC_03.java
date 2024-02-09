@@ -22,8 +22,8 @@ public class TC_03 {
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
         WaitUtils.waitForPageToLoad(20);
 
-        homePage = new HomePage();
-        dashboardPage = new DashboardPage();
+//        homePage = new HomePage();
+//        dashboardPage = new DashboardPage();
     }
 
     @AfterMethod
@@ -33,6 +33,8 @@ public class TC_03 {
 
     @Test
     public void dashboardElementsVisibilityTest() {
+        homePage = new HomePage();
+        dashboardPage = new DashboardPage();
         // Perform login actions
         homePage.singIn1.click();
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));

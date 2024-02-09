@@ -64,7 +64,7 @@ public class TC_02 {
         JSUtils.JSclickWithTimeout(homePage.MyAccountOnFooter);
 
         ExtentReportUtils.info("Pre-condition: User clicks Account Details on dashboard");
-        dashboardPage.accountDetails.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.accountDetails);
 
         ExtentReportUtils.info("Pre-condition: User enters first name and last name");
         dashboardPage.accDetailsFirstName.sendKeys(faker.name().firstName());
@@ -84,7 +84,7 @@ public class TC_02 {
 
 //    From the country drop down list click on a valid country
         ExtentReportUtils.pass("User selects valid country");
-        WebElement countryDropDown = bill_shipAddressPage.billCountryDD;
+        WebElement countryDropDown = bill_shipAddressPage.billCountryDDs;
         Select selectCountry = new Select(countryDropDown);
         selectCountry.selectByVisibleText("United Kingdom (UK)");
 

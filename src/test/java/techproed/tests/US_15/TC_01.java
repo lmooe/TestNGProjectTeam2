@@ -38,14 +38,16 @@ public class TC_01 {
 
     */
 
-    HomePage hp = new HomePage();
-    DashboardPage dbp = new DashboardPage();
-    AddNewProductPage anpp = new AddNewProductPage();
 
-    Faker fake = new Faker();
 
     @Test
     public void TC_01() throws InterruptedException {
+
+        HomePage hp = new HomePage();
+        DashboardPage dbp = new DashboardPage();
+        AddNewProductPage anpp = new AddNewProductPage();
+        Faker fake = new Faker();
+
         //PC_1- User must be landed on valid url
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
@@ -67,8 +69,8 @@ public class TC_01 {
         //product title
         BrowserUtils.sendKeysWithTimeout(anpp.productTitleInput, ConfigReader.getProperty("product_title"), 3);
         //product image for display
-        //C:\Users\paulr\IdeaProjects\TestNGProjectTeam2\Resources\images\images.jpg
-        String newProductImage = System.getProperty("user.dir")+ "src/main/Resources/image";
+       // String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+        String newProductImage = System.getProperty("user.dir")+"/src/main/resources/images/images.jpg";
         BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 10);
         BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
         Thread.sleep(3000);
@@ -78,7 +80,9 @@ public class TC_01 {
         //product image for gallery
           BrowserUtils.clickWithTimeOut(anpp.addGalleryPhotoIcon,10);
         Thread.sleep(3000);
-        anpp.uploadFiles.click();
+        JSUtils.JSclickWithTimeout(anpp.uploadFiles);
+        Thread.sleep(3000);
+       //  anpp.uploadFiles.click();
           BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
         Thread.sleep(3000);
           BrowserUtils.clickWithTimeOut(anpp.addToGalleryButton,10);
@@ -141,6 +145,8 @@ public class TC_01 {
         //VERIFICATION
         Assert.assertTrue(anpp.published.isDisplayed());  //OR Assert.assertTrue(anpp.published.getText().contains("Published"));
         System.out.println("US_15 TC_1 is passed!!!");
+
+        Driver.closeDriver();
 
 
         }
