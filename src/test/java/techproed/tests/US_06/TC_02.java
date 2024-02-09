@@ -19,20 +19,21 @@ public class TC_02 {
     Verify message 'No products were found matching your selection.' appears
      */
 
-    HomePage homePage = new HomePage();
-
     @BeforeMethod
+    public void setUp() {
+        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+    }
 
-    public void setUp(){
+    @Test
+    public void US06_TC02(){
+        HomePage homePage = new HomePage();
 
         ExtentReportUtils.createTestReport("End-to-End Test Report", "Product Purchase Function");
 
+//    Pre-condition:
 //    User is on www.allovercommerce.com
-        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/");
-        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-
 //    User has signed in.
-        ExtentReportUtils.info("Pre-condition: User signs in");
+        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/ and has signed in");
         BrowserUtils.clickWithTimeOut(homePage.singIn1, 1);
         homePage.username.click();
         homePage.username.clear();
@@ -42,10 +43,7 @@ public class TC_02 {
         homePage.password.sendKeys(ConfigReader.getProperty("pass1"));
         BrowserUtils.clickWithTimeOut(homePage.signInButton, 1);
         WaitUtils.waitFor(3);
-    }
 
-@Test
-    public void US06_TC02(){
 
 //    Click in the search box, enter random special characters and click enter
     ExtentReportUtils.pass("User enters random special characters in search box on homepage and clicks enter");
@@ -63,7 +61,7 @@ public class TC_02 {
     }
 
     @AfterMethod
-    public void teardown(){
+    public void tearDown() {
         Driver.closeDriver();
     }
 }
