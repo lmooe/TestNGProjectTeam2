@@ -1,24 +1,18 @@
 package techproed.tests.US_03;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import techproed.pages.Bill_ShipAddressPage;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
 import techproed.utilities.*;
-
-import javax.swing.*;
 
 public class TC_01 {
 
@@ -110,7 +104,7 @@ public class TC_01 {
 
 //    From the country drop down list click on a valid country
         ExtentReportUtils.pass("User selects valid country");
-        WebElement countryDropDown = bill_shipAddressPage.billCountryDD;
+        WebElement countryDropDown = bill_shipAddressPage.billCountryDDs;
         Select selectCountry = new Select(countryDropDown);
         selectCountry.selectByVisibleText(ConfigReader.getProperty("uk"));
 

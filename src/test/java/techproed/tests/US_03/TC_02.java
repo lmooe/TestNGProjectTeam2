@@ -84,7 +84,7 @@ public class TC_02 {
 
 //    From the country drop down list click on a valid country
         ExtentReportUtils.pass("User selects valid country");
-        WebElement countryDropDown = bill_shipAddressPage.billCountryDD;
+        WebElement countryDropDown = bill_shipAddressPage.billCountryDDs;
         Select selectCountry = new Select(countryDropDown);
         selectCountry.selectByVisibleText("United Kingdom (UK)");
 
