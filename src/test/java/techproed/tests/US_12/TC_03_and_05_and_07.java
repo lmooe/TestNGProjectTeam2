@@ -18,9 +18,9 @@ import java.time.Duration;
 
 public class TC_03_and_05_and_07 {
 
-    HomePage homePage = new HomePage();
-    DashboardPage dashboardPage = new DashboardPage();
-    Bill_ShipAddressPage addressPage = new Bill_ShipAddressPage();
+//    HomePage homePage = new HomePage();
+//    DashboardPage dashboardPage = new DashboardPage();
+//    Bill_ShipAddressPage addressPage = new Bill_ShipAddressPage();
 
     @BeforeTest
     public void setUp() {
@@ -35,8 +35,14 @@ public class TC_03_and_05_and_07 {
 
     @Test
     public void addBillingAddressTest() {
+        HomePage homePage = new HomePage();
+        DashboardPage dashboardPage = new DashboardPage();
+        Bill_ShipAddressPage addressPage = new Bill_ShipAddressPage();
         // Perform login actions
+        WaitUtils.waitFor(5);
+
         JSUtils.JSclickWithTimeout(homePage.singIn1);
+        WaitUtils.waitFor(5);
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));
         homePage.password.sendKeys(ConfigReader.getProperty("US11password"));
         JSUtils.JSclickWithTimeout(homePage.signInButton);
@@ -56,7 +62,7 @@ public class TC_03_and_05_and_07 {
         JSUtils.JSclickWithTimeout(addressPage.billCountryDD1);
         //WaitUtils.waitFor(5); //to see the dropdown
         WebElement canadaOption = Driver.getDriver().findElement(By.xpath("//span[text()='Canada']"));
-        canadaOption.click();
+        JSUtils.JSclickWithTimeout(canadaOption);
 
       //  addressPage.billAddressLine2.click();
        // addressPage.billAddressLine1.sendKeys(ConfigReader.getProperty("US12StreetAddress"));

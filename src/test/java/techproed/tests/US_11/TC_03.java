@@ -7,10 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
-import techproed.utilities.ActionUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
-import techproed.utilities.WaitUtils;
+import techproed.utilities.*;
 
 public class TC_03 {
 
@@ -36,10 +33,10 @@ public class TC_03 {
         homePage = new HomePage();
         dashboardPage = new DashboardPage();
         // Perform login actions
-        homePage.singIn1.click();
+        JSUtils.JSclickWithTimeout(homePage.singIn1);
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));
         homePage.password.sendKeys(ConfigReader.getProperty("US11password"));
-        homePage.signInButton.click();
+        JSUtils.JSclickWithTimeout(homePage.signInButton);
         WaitUtils.waitForVisibility(homePage.MyAccountOnFooter,20);
         ActionUtils.actionsScrollDown();
         ActionUtils.actionsScrollDown();

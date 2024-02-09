@@ -13,13 +13,16 @@ import techproed.utilities.*;
 
 public class US_04_TC_01 {
 
-    HomePage homePage = new HomePage();
-    Faker faker = new Faker();
+//    HomePage homePage = new HomePage();
+//    Faker faker = new Faker();
 
 
     @Test
     public void us4TC1() {
 
+
+        HomePage homePage = new HomePage();
+        Faker faker = new Faker();
 
 
 
@@ -31,51 +34,53 @@ public class US_04_TC_01 {
 
 
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-        BrowserUtils.clickWithTimeOut(homePage.register, 1);
+        BrowserUtils.clickWithTimeOut(homePage.register, 5);
 
-        homePage.regUsername.click();
+        WaitUtils.waitFor(5);
+        JSUtils.JSclickWithTimeout(homePage.regUsername);
         homePage.regUsername.sendKeys(faker.name().username());
-        homePage.regEmail.click();
+        JSUtils.JSclickWithTimeout(homePage.regEmail);
         homePage.regEmail.sendKeys(faker.internet().emailAddress());
-        homePage.regPassword.click();
+        JSUtils.JSclickWithTimeout(homePage.regPassword);
         homePage.regPassword.sendKeys(faker.internet().password());
-        homePage.agreePolicy.click();
-        BrowserUtils.clickWithTimeOut(homePage.signUpButton, 1);
-        WaitUtils.waitFor(3);
+        JSUtils.JSclickWithTimeout(homePage.agreePolicy);
+        BrowserUtils.clickWithTimeOut(homePage.signUpButton, 5);
+        WaitUtils.waitFor(5);
 
         JSUtils.JSclickWithTimeout(homePage.MyAccountOnFooter);
-        dashboardPage.addresses.click();
-        WaitUtils.waitFor(1);
+        JSUtils.JSclickWithTimeout(dashboardPage.addresses);
+        WaitUtils.waitFor(5);
 
         JSUtils.JSclickWithTimeout(billShipAddressPage.addShip);
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(5);
 
         JSUtils.JSclickWithTimeout(billShipAddressPage.shipFirstName);
-        WaitUtils.waitFor(2);
+        WaitUtils.waitFor(5);
         billShipAddressPage.shipFirstName.sendKeys("Jane");
         billShipAddressPage.shipLastName.click();
         billShipAddressPage.shipLastName.sendKeys("Doe");
 
-        billShipAddressPage.shipCountryDD.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipCountryDD);
         //WaitUtils.waitFor(5); //to see the dropdown
         WebElement canadaOption = Driver.getDriver().findElement(By.xpath("//*[@value='CA']"));
-        canadaOption.click();
+        JSUtils.JSclickWithTimeout(canadaOption);
 
         JSUtils.JSclickWithTimeout(billShipAddressPage.shipAddressLine1);
         billShipAddressPage.shipAddressLine1.sendKeys("150 Dowling Ave");
-        billShipAddressPage.shipAddressLine2.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipAddressLine2);
         billShipAddressPage.shipAddressLine2.sendKeys("unit 700");
 
-        billShipAddressPage.shipTownCity.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipTownCity);
         billShipAddressPage.shipTownCity.sendKeys("Toronto");
-        billShipAddressPage.shipStateProvinceDD.click();
-        WebElement ontarioOption = Driver.getDriver().findElement(By.xpath("//*[@value='ON']"));
-        ontarioOption.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipStateProvinceDD);
+        WaitUtils.waitFor(5);
+        WebElement ontarioOption = Driver.getDriver().findElement(By.xpath("//*[@id='select2-shipping_state-result-mutp-ON']"));
+        JSUtils.JSclickWithTimeout(ontarioOption);
 
 
-        billShipAddressPage.shipZipPostCode.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipZipPostCode);
         billShipAddressPage.shipZipPostCode.sendKeys("M6K 3A8");
-        billShipAddressPage.shipSaveAddressButton.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipSaveAddressButton);
 
         String successMsg = billShipAddressPage.successMessage.getText();
 

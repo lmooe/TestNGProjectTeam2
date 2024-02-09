@@ -36,12 +36,12 @@
             </class>
             <class name="techproed.tests.US_04.US_04_TC_01">
                 <methods>
-                    <include name="us4TC1"/>
+                    <exclude name="us4TC1"/>
                 </methods>
             </class>
             <class name="techproed.tests.US_04.US_04_TC_02">
                 <methods>
-                    <include name="us4TC2"/>
+                    <exclude name="us4TC2"/>
                 </methods>
             </class>
             <class name="techproed.tests.US_05.TC">

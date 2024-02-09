@@ -38,14 +38,16 @@ public class TC_01 {
 
     */
 
-    HomePage hp = new HomePage();
-    DashboardPage dbp = new DashboardPage();
-    AddNewProductPage anpp = new AddNewProductPage();
 
-    Faker fake = new Faker();
 
     @Test
     public void TC_01() throws InterruptedException {
+
+        HomePage hp = new HomePage();
+        DashboardPage dbp = new DashboardPage();
+        AddNewProductPage anpp = new AddNewProductPage();
+        Faker fake = new Faker();
+
         //PC_1- User must be landed on valid url
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
@@ -78,7 +80,9 @@ public class TC_01 {
         //product image for gallery
           BrowserUtils.clickWithTimeOut(anpp.addGalleryPhotoIcon,10);
         Thread.sleep(3000);
-        anpp.uploadFiles.click();
+        JSUtils.JSclickWithTimeout(anpp.uploadFiles);
+        Thread.sleep(3000);
+       //  anpp.uploadFiles.click();
           BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
         Thread.sleep(3000);
           BrowserUtils.clickWithTimeOut(anpp.addToGalleryButton,10);
