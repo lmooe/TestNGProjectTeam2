@@ -25,10 +25,10 @@ public class TC_01 {
         WaitUtils.waitForPageToLoad(20);
     }
 
-    @AfterTest
-    public void tearDown() {
-        Driver.closeDriver();
-    }
+//    @AfterTest
+//    public void tearDown() {
+//        Driver.closeDriver();
+//    }
 
     @Test
     public void vendorAddBillingAddressTest() {
@@ -63,6 +63,6 @@ public class TC_01 {
                 "Email address does not match.");
         System.out.println("Success!!! US_12 TC_01");
 
-
+        Driver.closeDriver();
     }
 }
