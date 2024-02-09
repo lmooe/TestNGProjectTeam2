@@ -67,7 +67,8 @@ public class TC_01 {
         //PC_4- User must enter valid product image, gallery image, product category
 
         //product image for display
-        String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+        // String newProductImage = "C:\\Users\\paulr\\IdeaProjects\\TestNGProjectTeam2\\Resources\\images\\images.jpg";
+        String newProductImage = System.getProperty("user.dir")+"/src/main/resources/images/images.jpg";
         BrowserUtils.clickWithTimeOut(anpp.addDisplayPhotoIcon, 3);
         BrowserUtils.sendKeysWithTimeout(anpp.selectFilesButton, newProductImage, 10);
         Thread.sleep(5000);
@@ -121,5 +122,7 @@ public class TC_01 {
     //VERIFICATION
         BrowserUtils.verifyElementDisplayed(anpp.productCreated);
         System.out.println("PASSED");
+
+        Driver.closeDriver();
     }
 }

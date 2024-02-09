@@ -15,9 +15,9 @@ import techproed.utilities.WaitUtils;
 
 public class TC_01 {
 
-    HomePage homePage = new HomePage();
-    DashboardPage dashboardPage = new DashboardPage();
-    Bill_ShipAddressPage billShipAddressPage = new Bill_ShipAddressPage();
+//    HomePage homePage = new HomePage();
+//    DashboardPage dashboardPage = new DashboardPage();
+//    Bill_ShipAddressPage billShipAddressPage = new Bill_ShipAddressPage();
 
     @BeforeTest
     public void setUp() {
@@ -32,6 +32,9 @@ public class TC_01 {
 
     @Test
     public void vendorAddBillingAddressTest() {
+        HomePage homePage = new HomePage();
+        DashboardPage dashboardPage = new DashboardPage();
+        Bill_ShipAddressPage billShipAddressPage = new Bill_ShipAddressPage();
         // Perform login actions
         homePage.singIn1.click();
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));

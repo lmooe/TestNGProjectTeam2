@@ -12,8 +12,8 @@ import techproed.utilities.*;
 
 public class TC_05 {
 
-    HomePage homePage = new HomePage();
-    DashboardPage dashboardPage = new DashboardPage();
+//    HomePage homePage = new HomePage();
+//    DashboardPage dashboardPage = new DashboardPage();
 
     @BeforeTest
     public void setUp() {
@@ -28,6 +28,8 @@ public class TC_05 {
 
     @Test
     public void dashboardElementsVisibilityTest() {
+        HomePage homePage = new HomePage();
+        DashboardPage dashboardPage = new DashboardPage();
         // Perform login actions
         JSUtils.JSclickWithTimeout(homePage.singIn1);
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));

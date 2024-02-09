@@ -66,7 +66,7 @@ public class TC_01 {
         JSUtils.JSclickWithTimeout(homePage.MyAccountOnFooter);
 
         ExtentReportUtils.info("Pre-condition: User clicks Account Details on dashboard");
-        dashboardPage.accountDetails.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.accountDetails);
 
         ExtentReportUtils.info("Pre-condition: User enters first name and last name");
         dashboardPage.accDetailsFirstName.sendKeys(faker.name().firstName());

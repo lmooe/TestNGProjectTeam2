@@ -88,6 +88,8 @@ public class TC_02 {
         Select selectCity = new Select(checkOutPage.stateDropdown);
         selectCity.selectByValue("NY");
 
+        Driver.closeDriver();
+
 
     }
     }

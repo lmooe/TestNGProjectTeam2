@@ -2,6 +2,8 @@ package techproed.tests.US01;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -60,9 +62,7 @@ public class TC_02 {
 
         BrowserUtils.clickWithTimeOut(homePage.signUpButton,2);
 
-        Alert alert = Driver.getDriver().switchTo().alert();
-
-        String alertMessage = alert.getText();
+        String alertMessage = Driver.getDriver().findElement(By.xpath("//*[@id='signup']/form/p[1]/label")).getText();
 
         System.out.println("alertMessage = " + alertMessage);
 
