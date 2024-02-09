@@ -3,6 +3,7 @@ package techproed.tests.US_04;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.pages.Bill_ShipAddressPage;
@@ -26,30 +27,32 @@ public class US_04_TC_02 {
 
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
         BrowserUtils.clickWithTimeOut(homePage.register, 1);
+        WaitUtils.waitFor(3);
 
-        homePage.regUsername.click();
+        JSUtils.JSclickWithTimeout(homePage.regUsername);
+        WaitUtils.waitFor(2);
         homePage.regUsername.sendKeys(faker.name().username());
-        homePage.regEmail.click();
+        JSUtils.JSclickWithTimeout(homePage.regEmail);
         homePage.regEmail.sendKeys(faker.internet().emailAddress());
-        homePage.regPassword.click();
+        JSUtils.JSclickWithTimeout(homePage.regPassword);
         homePage.regPassword.sendKeys(faker.internet().password());
-        homePage.agreePolicy.click();
+        JSUtils.JSclickWithTimeout(homePage.agreePolicy);
         BrowserUtils.clickWithTimeOut(homePage.signUpButton, 1);
         WaitUtils.waitFor(3);
 
         JSUtils.JSclickWithTimeout(homePage.MyAccountOnFooter);
-        dashboardPage.addresses.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.addresses);
         WaitUtils.waitFor(1);
 
-        billShipAddressPage.addShip.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.addShip);
         WaitUtils.waitFor(1);
 
-        billShipAddressPage.shipFirstName.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipFirstName);
         billShipAddressPage.shipFirstName.sendKeys("Jane");
-        billShipAddressPage.shipLastName.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipLastName);
         billShipAddressPage.shipLastName.sendKeys("Doe");
 
-        billShipAddressPage.shipCountryDD.click();
+        JSUtils.JSclickWithTimeout(billShipAddressPage.shipCountryDD);
         //WaitUtils.waitFor(5); //to see the dropdown
         WebElement canadaOption = Driver.getDriver().findElement(By.xpath("//*[@value='CA']"));
         canadaOption.click();

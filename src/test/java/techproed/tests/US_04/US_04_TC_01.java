@@ -10,20 +10,13 @@ import techproed.pages.DashboardPage;
 import techproed.pages.HomePage;
 import techproed.utilities.*;
 
-
 public class US_04_TC_01 {
 
     HomePage homePage = new HomePage();
     Faker faker = new Faker();
 
-
     @Test
     public void us4TC1() {
-
-
-
-
-
 
         Bill_ShipAddressPage billShipAddressPage = new Bill_ShipAddressPage();
         DashboardPage dashboardPage = new DashboardPage(); //  @FindBy(xpath = "//a[text()='Addresses']")
