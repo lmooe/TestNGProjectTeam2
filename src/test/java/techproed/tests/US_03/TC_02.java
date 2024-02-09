@@ -34,12 +34,6 @@ public class TC_02 {
     Verify message 'Street address line 1 is a required field.' appears
      */
 
-    HomePage homePage = new HomePage();
-    Bill_ShipAddressPage bill_shipAddressPage = new Bill_ShipAddressPage();
-    Faker faker = new Faker();
-    DashboardPage dashboardPage = new DashboardPage();
-    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-
     @BeforeMethod
     public void setUp() {
             Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
@@ -47,6 +41,12 @@ public class TC_02 {
 
     @Test
     public void US03_TC02() {
+        HomePage homePage = new HomePage();
+        Bill_ShipAddressPage bill_shipAddressPage = new Bill_ShipAddressPage();
+        Faker faker = new Faker();
+        DashboardPage dashboardPage = new DashboardPage();
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
         ExtentReportUtils.createTestReport("End-to-End Test Report", "Add Billing Address Function");
 
 //    Pre-condition:

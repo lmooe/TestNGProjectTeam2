@@ -38,11 +38,6 @@ public class TC_01 {
     On order complete page, verify 'Thank you. Your order has been received.' is visible
      */
 
-    HomePage homePage = new HomePage();
-    ProductPage productPage = new ProductPage();
-    ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
-    CheckOutPage checkOutPage = new CheckOutPage();
-
     @BeforeMethod
     public void setUp(){
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
@@ -50,8 +45,14 @@ public class TC_01 {
 
     @Test
     public void US06_TC01() throws InterruptedException {
+        HomePage homePage = new HomePage();
+        ProductPage productPage = new ProductPage();
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+        CheckOutPage checkOutPage = new CheckOutPage();
+
         ExtentReportUtils.createTestReport("End-to-End Test Report", "Product Purchase Function");
 
+//    Pre-condition:
 //    User is on www.allovercommerce.com
 //    User has signed in.
         ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/ and has signed in");
@@ -131,18 +132,15 @@ public class TC_01 {
         ExtentReportUtils.passAndCaptureScreenshot("Payment methods successfully displayed");
 
 //    Select 'Pay at the door'
-//    Select 'Place order'
         ExtentReportUtils.pass("User selects payment method");
-        if (!checkOutPage.payAtDoor.isSelected()) {
-            BrowserUtils.clickWithTimeOut(checkOutPage.payAtDoor, 1);
-            ExtentReportUtils.pass("User clicks Place Order button");
-            BrowserUtils.clickWithTimeOut(checkOutPage.placeOrderButton, 1);
-        }else{
+        if (checkOutPage.payAtDoor.isEnabled()) {
             BrowserUtils.clickWithTimeOut(checkOutPage.wireTransferEFT, 1);
-            BrowserUtils.clickWithTimeOut(checkOutPage.payAtDoor, 1);
-            ExtentReportUtils.pass("User clicks Place Order button");
-            BrowserUtils.clickWithTimeOut(checkOutPage.placeOrderButton, 1);
-        }
+         }
+        checkOutPage.payAtDoor.click();
+
+//    Select 'Place order'
+        ExtentReportUtils.pass("User clicks Place Order button");
+        BrowserUtils.clickWithTimeOut(checkOutPage.placeOrderButton, 1);
 
 //    On order complete page, verify 'Thank you. Your order has been received.' is visible
         WaitUtils.waitFor(2);
