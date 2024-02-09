@@ -52,8 +52,9 @@ public class TC_01 {
 
         WebElement leatherShoe = Driver.getDriver().findElement(By.linkText("Leather shoes"));
         JSUtils.JSclickWithTimeout(leatherShoe);
+        WaitUtils.waitFor(3);
+        BrowserUtils.clickWithTimeOut(productPage.plusButton,5);
 
-        JSUtils.JSclickWithTimeout(productPage.plusButton);
         JSUtils.JSclickWithTimeout(productPage.addToCartButton2);
 
         ExtentReportUtils.pass("Vendor adds product into cart successfully.");
