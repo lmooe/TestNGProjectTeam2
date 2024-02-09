@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader {
+
 //This class is used the read the data from configuration.properties file
 
     private  static Properties properties;
