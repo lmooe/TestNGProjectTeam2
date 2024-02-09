@@ -97,8 +97,14 @@ public class CheckOutPage {
     @FindBy(xpath = "//div[@class='payment_box payment_method_bacs']")
     public WebElement additionInfoForWireTransfer;
 
+    @FindBy(xpath = "//*[@for='payment_method_bacs']")
+    public WebElement wireTransferEFTLabel;
+
     @FindBy(xpath = "//input[@id='payment_method_cod']")
     public WebElement payAtDoor;
+
+    @FindBy(xpath = "//*[@for='payment_method_cod']")
+    public WebElement payAtDoorLabel;
 
     @FindBy(xpath = "//button[@id='place_order']")
     public WebElement placeOrderButton;

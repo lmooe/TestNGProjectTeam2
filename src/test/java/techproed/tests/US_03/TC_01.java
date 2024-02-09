@@ -36,24 +36,26 @@ public class TC_01 {
     Verify message 'Address changed successfully.' appears
     */
 
-    HomePage homePage = new HomePage();
-    Bill_ShipAddressPage bill_shipAddressPage = new Bill_ShipAddressPage();
-    Faker faker = new Faker();
-    DashboardPage dashboardPage = new DashboardPage();
-    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-
     @BeforeMethod
-    public void setUp() {
+    public void setUp(){
+        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+    }
+
+    @Test
+    public void US03_TC01() {
+        HomePage homePage = new HomePage();
+        Bill_ShipAddressPage bill_shipAddressPage = new Bill_ShipAddressPage();
+        Faker faker = new Faker();
+        DashboardPage dashboardPage = new DashboardPage();
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
         ExtentReportUtils.createTestReport("End-to-End Test Report", "Add Billing Address Function");
 
+//    Pre-condition:
 //    User is on www.allovercommerce.com
-        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/");
-        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-
 //    User has just registered.
-        ExtentReportUtils.info("Pre-condition: User signs up");
-        homePage.register.click();
+        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/ and signs up");
+        homePage.registerButton.click();
         homePage.regUsername.sendKeys(faker.name().username());
         homePage.regEmail.sendKeys(faker.internet().emailAddress());
         homePage.regPassword.sendKeys(faker.internet().password());
@@ -77,15 +79,10 @@ public class TC_01 {
         ActionUtils.actionsDoubleClick(dashboardPage.accDetailsSaveChanges1);
         WaitUtils.waitFor(2);
 
-        ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button");
+        ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button and moves to Billing Address page");
         dashboardPage.addresses.click();
         bill_shipAddressPage.editBillingAdd.click();
-    }
 
-    @Test
-    public void US03_TC01() {
-
-        ExtentReportUtils.info("User is on Billing Address page");
 
 //    Verify first name has been populated.
         String firstName = bill_shipAddressPage.billFirstName.getAttribute("value");
@@ -144,6 +141,7 @@ public class TC_01 {
         System.out.println("successMsg = " + successMsg);
         Assert.assertEquals(successMsg, "Address changed successfully.");
         ExtentReportUtils.passAndCaptureScreenshot("Billing address changed message successfully displayed");
+        ExtentReportUtils.flush();
     }
 
     @AfterMethod
