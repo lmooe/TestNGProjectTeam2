@@ -8,10 +8,7 @@ import org.testng.annotations.Test;
 import techproed.pages.Bill_ShipAddressPage;
 import techproed.pages.HomePage;
 import techproed.pages.DashboardPage;
-import techproed.utilities.ActionUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
-import techproed.utilities.WaitUtils;
+import techproed.utilities.*;
 
 public class TC_01 {
 
@@ -36,10 +33,10 @@ public class TC_01 {
         DashboardPage dashboardPage = new DashboardPage();
         Bill_ShipAddressPage billShipAddressPage = new Bill_ShipAddressPage();
         // Perform login actions
-        homePage.singIn1.click();
+        JSUtils.JSclickWithTimeout(homePage.singIn1);
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));
         homePage.password.sendKeys(ConfigReader.getProperty("US11password"));
-        homePage.signInButton.click();
+        JSUtils.JSclickWithTimeout(homePage.signInButton);
 
         WaitUtils.waitForVisibility(homePage.MyAccountOnFooter, 20);
         ActionUtils.actionsScrollDown();
@@ -48,9 +45,9 @@ public class TC_01 {
         executor.executeScript("arguments[0].click();", homePage.MyAccountOnFooter);
 
         // Navigate to the Address page and click edit billing address
-        dashboardPage.addresses.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.addresses);
         WaitUtils.waitForVisibility(dashboardPage.editBillingAddress, 20);
-        dashboardPage.editBillingAddress.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.editBillingAddress);
 
         // Assert that the billing address is already filled
         Assert.assertTrue(billShipAddressPage.billFirstName.getAttribute("value").equals(ConfigReader.getProperty("US12firstname")),
