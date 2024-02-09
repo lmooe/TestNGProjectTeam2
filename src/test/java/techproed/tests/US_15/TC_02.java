@@ -38,13 +38,15 @@ public class TC_02 {
 
     */
 
-        HomePage hp = new HomePage();
-        DashboardPage dbp = new DashboardPage();
-        AddNewProductPage anpp = new AddNewProductPage();
-        Faker fake = new Faker();
 
         @Test
         public void TC_02() throws InterruptedException {
+
+            HomePage hp = new HomePage();
+            DashboardPage dbp = new DashboardPage();
+            AddNewProductPage anpp = new AddNewProductPage();
+            Faker fake = new Faker();
+
             //PC_1- User must be landed on valid url
             Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
@@ -130,7 +132,7 @@ public class TC_02 {
 
             //TS_5- The user needs to click submit button
             BrowserUtils.clickWithTimeOut(anpp.productSubmitButton,5);
-            Thread.sleep(2000);
+            Thread.sleep(5000);
 
             //VERIFICATION
             Assert.assertFalse(anpp.published.isDisplayed());  //OR Assert.assertTrue(!anpp.published.getText().contains("Published"));

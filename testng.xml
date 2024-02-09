@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/esrab/OneDrive/Masa�st�/TestNGProjectTeam2/src/test/java/techproed/tests">
+        <classes>
+            <class name="techproed.tests.US01.TC_01">
+                <methods>
+                    <include name="TC_01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US01.TC_02">
+                <methods>
+                    <include name="TC_02"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US02.TC_01">
+                <methods>
+                    <include name="TC_01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US02.TC_02">
+                <methods>
+                    <include name="TC_02"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_03.TC_01">
+                <methods>
+                    <include name="US03_TC01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_03.TC_02">
+                <methods>
+                    <include name="US03_TC02"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_04.US_04_TC_01">
+                <methods>
+                    <exclude name="us4TC1"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_04.US_04_TC_02">
+                <methods>
+                    <exclude name="us4TC2"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_05.TC">
+                <methods>
+                    <include name="changeAccountDetailsTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_06.TC_01">
+                <methods>
+                    <include name="US06_TC01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_06.TC_02">
+                <methods>
+                    <include name="US06_TC02"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_08.AddingProductToTheWishlist">
+                <methods>
+                    <include name="addProducttoWishlist"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_09.US_09_TC_01">
+                <methods>
+                    <include name="us9TC1"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_09.US_09_TC_02">
+                <methods>
+                    <include name="us9TC2"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_10.PasswordStrength">
+                <methods>
+                    <include name="shortPasswordTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_11.TC_01">
+                <methods>
+                    <include name="vendorSignInTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_11.TC_03">
+                <methods>
+                    <include name="dashboardElementsVisibilityTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_11.TC_05">
+                <methods>
+                    <include name="dashboardElementsVisibilityTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_12.TC_01">
+                <methods>
+                    <include name="vendorAddBillingAddressTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_12.TC_03_and_05_and_07">
+                <methods>
+                    <include name="addBillingAddressTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_13.TC_01">
+                <methods>
+                    <exclude name="vendorShippingAddressTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_13.TC_02">
+                <methods>
+                    <exclude name="vendorShippingAddressTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_14.TC_01">
+                <methods>
+                    <exclude name="TC_01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_14.TC_01_">
+                <methods>
+                    <exclude name="TC_01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_14.TC_02">
+                <methods>
+                    <exclude name="TC_02"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_14.TC_03">
+                <methods>
+                    <exclude name="TC_03"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_15.TC_01">
+                <methods>
+                    <include name="TC_01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_15.TC_02">
+                <methods>
+                    <include name="TC_02"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_16.TC_01">
+                <methods>
+                    <include name="TC_01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_17.TC_01">
+                <methods>
+                    <include name="vendorBuyProductTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_17.TC_02">
+                <methods>
+                    <include name="vendorCheckEditableInAddress"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_18.TC_01">
+                <methods>
+                    <include name="vendorCreateCouponTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_18.TC_02">
+                <methods>
+                    <include name="vendorCreateCouponTest"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_19.TC_01">
+                <methods>
+                    <include name="test01"/>
+                </methods>
+            </class>
+            <class name="techproed.tests.US_20.TC_01">
+                <methods>
+                    <include name="vendorBuyProductTest1"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
