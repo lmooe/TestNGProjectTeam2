@@ -49,17 +49,19 @@ public class TC_01 {
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp(){
+        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+    }
 
+    @Test
+    public void US03_TC01() {
         ExtentReportUtils.createTestReport("End-to-End Test Report", "Add Billing Address Function");
 
+//    Pre-condition:
 //    User is on www.allovercommerce.com
-        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/");
-        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-
 //    User has just registered.
-        ExtentReportUtils.info("Pre-condition: User signs up");
-        homePage.register.click();
+        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/ and signs up");
+        homePage.registerButton.click();
         homePage.regUsername.sendKeys(faker.name().username());
         homePage.regEmail.sendKeys(faker.internet().emailAddress());
         homePage.regPassword.sendKeys(faker.internet().password());
@@ -86,10 +88,7 @@ public class TC_01 {
         ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button and moves to Billing Address page");
         dashboardPage.addresses.click();
         bill_shipAddressPage.editBillingAdd.click();
-    }
 
-    @Test
-    public void US03_TC01() {
 
 //    Verify first name has been populated.
         String firstName = bill_shipAddressPage.billFirstName.getAttribute("value");
@@ -149,11 +148,10 @@ public class TC_01 {
         Assert.assertEquals(successMsg, "Address changed successfully.");
         ExtentReportUtils.passAndCaptureScreenshot("Billing address changed message successfully displayed");
         ExtentReportUtils.flush();
-
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(){
         Driver.closeDriver();
     }
 }

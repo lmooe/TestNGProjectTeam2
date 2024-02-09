@@ -45,15 +45,16 @@ public class TC_01 {
 
     @BeforeMethod
     public void setUp(){
+        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+    }
 
+    @Test
+    public void US06_TC01() throws InterruptedException {
         ExtentReportUtils.createTestReport("End-to-End Test Report", "Product Purchase Function");
 
 //    User is on www.allovercommerce.com
-        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/");
-        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-
 //    User has signed in.
-        ExtentReportUtils.info("Pre-condition: User signs in");
+        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/ and has signed in");
         BrowserUtils.clickWithTimeOut(homePage.singIn1, 1);
         homePage.username.click();
         homePage.username.clear();
@@ -63,10 +64,6 @@ public class TC_01 {
         homePage.password.sendKeys(ConfigReader.getProperty("pass1"));
         BrowserUtils.clickWithTimeOut(homePage.signInButton, 1);
         WaitUtils.waitFor(3);
-    }
-
-    @Test
-    public void US06_TC01() throws InterruptedException {
 
 //    Click in the search box, enter product name (Tshirt) and click enter
         ExtentReportUtils.pass("User enters product in search box on homepage and clicks enter");
@@ -134,9 +131,18 @@ public class TC_01 {
         ExtentReportUtils.passAndCaptureScreenshot("Payment methods successfully displayed");
 
 //    Select 'Pay at the door'
+//    Select 'Place order'
         ExtentReportUtils.pass("User selects payment method");
-        BrowserUtils.clickWithTimeOut(checkOutPage.payAtDoor, 1);
-        BrowserUtils.clickWithTimeOut(checkOutPage.placeOrderButton, 1);
+        if (!checkOutPage.payAtDoor.isSelected()) {
+            BrowserUtils.clickWithTimeOut(checkOutPage.payAtDoor, 1);
+            ExtentReportUtils.pass("User clicks Place Order button");
+            BrowserUtils.clickWithTimeOut(checkOutPage.placeOrderButton, 1);
+        }else{
+            BrowserUtils.clickWithTimeOut(checkOutPage.wireTransferEFT, 1);
+            BrowserUtils.clickWithTimeOut(checkOutPage.payAtDoor, 1);
+            ExtentReportUtils.pass("User clicks Place Order button");
+            BrowserUtils.clickWithTimeOut(checkOutPage.placeOrderButton, 1);
+        }
 
 //    On order complete page, verify 'Thank you. Your order has been received.' is visible
         WaitUtils.waitFor(2);
@@ -147,8 +153,8 @@ public class TC_01 {
         ExtentReportUtils.flush();
     }
 
-    @AfterMethod
-    public void tearDown() {
-        Driver.closeDriver();
-    }
+        @AfterMethod
+        public void tearDown() {
+            Driver.closeDriver();
+        }
 }

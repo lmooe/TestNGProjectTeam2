@@ -1,9 +1,11 @@
 package techproed.tests.US_03;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -40,21 +42,23 @@ public class TC_02 {
 
     @BeforeMethod
     public void setUp() {
+            Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+        }
 
+    @Test
+    public void US03_TC02() {
         ExtentReportUtils.createTestReport("End-to-End Test Report", "Add Billing Address Function");
 
+//    Pre-condition:
 //    User is on www.allovercommerce.com
-        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/");
-        Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-
 //    User has just registered.
-        ExtentReportUtils.info("Pre-condition: User signs up");
-        homePage.register.click();
-        homePage.regUsername.sendKeys(faker.name().username());
-        homePage.regEmail.sendKeys(faker.internet().emailAddress());
-        homePage.regPassword.sendKeys(faker.internet().password());
-        homePage.agreePolicy.click();
-        homePage.singUp.click();
+        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/ and signs up");
+        BrowserUtils.clickWithTimeOut(homePage.register, 1);
+        BrowserUtils.sendKeysWithTimeout(homePage.regUsername, (faker.name().username()),1);
+        BrowserUtils.sendKeysWithTimeout(homePage.regEmail, (faker.internet().emailAddress()), 1);
+        BrowserUtils.sendKeysWithTimeout(homePage.regPassword, (faker.internet().password()), 1);
+        BrowserUtils.clickWithTimeOut(homePage.agreePolicy,1);
+        BrowserUtils.clickWithTimeOut(homePage.singUp, 1);
 
         ExtentReportUtils.info("Pre-condition: User clicks Account button on homepage footer");
         JSUtils.JSclickWithTimeout(homePage.MyAccountOnFooter);
@@ -76,10 +80,7 @@ public class TC_02 {
         ExtentReportUtils.info("Pre-condition: User clicks Add Your Billing Address button and moves to Billing Address page");
         dashboardPage.addresses.click();
         bill_shipAddressPage.editBillingAdd.click();
-    }
 
-    @Test
-    public void US03_TC02() {
 
 //    From the country drop down list click on a valid country
         ExtentReportUtils.pass("User selects valid country");
@@ -123,7 +124,7 @@ public class TC_02 {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(){
         Driver.closeDriver();
     }
 }

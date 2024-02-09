@@ -22,30 +22,27 @@ public class TC_02 {
     HomePage homePage = new HomePage();
 
     @BeforeMethod
-
-    public void setUp(){
-
-        ExtentReportUtils.createTestReport("End-to-End Test Report", "Product Purchase Function");
-
-//    User is on www.allovercommerce.com
-        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/");
+    public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-
-//    User has signed in.
-        ExtentReportUtils.info("Pre-condition: User signs in");
-        BrowserUtils.clickWithTimeOut(homePage.singIn1, 1);
-        homePage.username.click();
-        homePage.username.clear();
-        homePage.username.sendKeys(ConfigReader.getProperty("user1"));
-        homePage.password.click();
-        homePage.password.clear();
-        homePage.password.sendKeys(ConfigReader.getProperty("pass1"));
-        BrowserUtils.clickWithTimeOut(homePage.signInButton, 1);
-        WaitUtils.waitFor(3);
     }
 
-@Test
+    @Test
     public void US06_TC02(){
+            ExtentReportUtils.createTestReport("End-to-End Test Report", "Product Purchase Function");
+
+//    User is on www.allovercommerce.com
+//    User has signed in.
+        ExtentReportUtils.info("Pre-condition: User is on https://allovercommerce.com/ and has signed in");
+            BrowserUtils.clickWithTimeOut(homePage.singIn1, 1);
+            homePage.username.click();
+            homePage.username.clear();
+            homePage.username.sendKeys(ConfigReader.getProperty("user1"));
+            homePage.password.click();
+            homePage.password.clear();
+            homePage.password.sendKeys(ConfigReader.getProperty("pass1"));
+            BrowserUtils.clickWithTimeOut(homePage.signInButton, 1);
+            WaitUtils.waitFor(3);
+
 
 //    Click in the search box, enter random special characters and click enter
     ExtentReportUtils.pass("User enters random special characters in search box on homepage and clicks enter");
