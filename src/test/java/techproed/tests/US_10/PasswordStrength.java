@@ -5,10 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
-import techproed.utilities.ActionUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
-import techproed.utilities.WaitUtils;
+import techproed.utilities.*;
 
 public class PasswordStrength {
 
@@ -19,7 +16,7 @@ public class PasswordStrength {
 
 
     @Test
-    public void shortPasswordTest() throws InterruptedException {
+    public void passwordTest() throws InterruptedException {
         HomePage homePage=new HomePage();
 //    User goes to https://www.allovercommerce.com
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
@@ -28,7 +25,7 @@ public class PasswordStrength {
         Driver.getDriver().findElement(By.xpath("//a[@class='register inline-type']")).click();
         WaitUtils.waitFor(5);
         Driver.getDriver().findElement(By.xpath("//div[@class='wcfmmp_become_vendor_link']")).click();
-       homePage.register.click();
+        JSUtils.JSclickWithTimeout(homePage.register);
 //    User clicks on the ""Become a Vendor"" button on the opened pop up window
         homePage.becomeVendor.click();
 
