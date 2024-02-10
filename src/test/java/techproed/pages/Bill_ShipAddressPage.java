@@ -8,8 +8,11 @@ import techproed.utilities.Driver;
 
 public class Bill_ShipAddressPage {
 
-    public Bill_ShipAddressPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+
+
+
+    public Bill_ShipAddressPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
 
@@ -66,6 +69,11 @@ public class Bill_ShipAddressPage {
     @FindBy (id="billing_country") // Sarah updated locator on 06/02/24
     public WebElement billCountryDD;
 
+    //@FindBy(name = "billing_address_1")
+
+    @FindBy (id="billing_country") // Sarah updated locator on 06/02/24
+    public WebElement billCountryDDs;
+
     //For US_12
     @FindBy (id="select2-billing_country-container") // Fatih added locator on 07/02/24
     public WebElement billCountryDD1;
@@ -79,6 +87,9 @@ public class Bill_ShipAddressPage {
     @FindBy(name="billing_city")
     public WebElement billTownCity;
 
+
+    @FindBy(id = "select2-billing_state-container")
+public WebElement billstate;
     @FindBy (id = "billing_state")
     public WebElement billCounty;
 
@@ -88,7 +99,7 @@ public class Bill_ShipAddressPage {
     @FindBy(name="billing_postcode")
     public WebElement billZipPostCode;
 
-    @FindBy(id="billing_phone")
+    @FindBy(id = "billing_phone")
     public WebElement billPhoneNumb;
 
     @FindBy (id="billing_email")
@@ -105,10 +116,11 @@ public class Bill_ShipAddressPage {
 
     // Note: works for both existing and new profile
 
-    @FindBy(xpath = "//*[@class='edit btn btn-link btn-primary btn-underline mb-4']")
+    @FindBy(xpath = "//*[@class='w-icon-long-arrow-right']")
     public WebElement editShippingAdd;
 
-    //need non edit option
+    @FindBy (xpath = "//*[@href='https://allovercommerce.com/my-account-2/edit-address/shipping/']")
+    public WebElement addShip;
 
     @FindBy(id = "shipping_first_name")
     public WebElement shipFirstName;
@@ -119,7 +131,7 @@ public class Bill_ShipAddressPage {
     @FindBy(id = "shipping_company")
     public WebElement shipCompOptional;
 
-    @FindBy (id="select2-shipping_country-container")
+    @FindBy  (xpath = "//*[@class='select2-selection select2-selection--single']")
     public WebElement shipCountryDD;
 
     @FindBy (name="shipping_address_1")
@@ -140,6 +152,11 @@ public class Bill_ShipAddressPage {
     @FindBy  (xpath = "//button[@name='save_address']")
     public WebElement shipSaveAddressButton;
 
+    @FindBy (xpath = "//*[@class='woocommerce-message alert alert-simple alert-icon alert-close-top alert-success']")
+    public WebElement successMessage;
+
+    @FindBy (xpath = "//*[@class='alert alert-simple alert-icon alert-close-top alert-danger']")
+    public WebElement nonSuccessMessage;
 
 
 

@@ -21,12 +21,12 @@ public class TC_01 {
     public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 
-
+        WaitUtils.waitFor(5);
         JSUtils.JSclickWithTimeout(homepage.singIn1);
         homepage.username.sendKeys(ConfigReader.getProperty("email"));
         homepage.password.sendKeys(ConfigReader.getProperty("password"));
-        homepage.signInButton.click();
-        WaitUtils.waitFor(2);
+        JSUtils.JSclickWithTimeout(homepage.signInButton);
+        WaitUtils.waitFor(5);
     }
 
     @Test

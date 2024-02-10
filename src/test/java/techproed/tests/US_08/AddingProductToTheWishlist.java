@@ -24,12 +24,14 @@ public class AddingProductToTheWishlist {
         Actions actions= new Actions(Driver.getDriver());
 
 //      User goes to https://www.allovercommerce.com
+
+        Thread.sleep(6000);
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
 //      User must click on the specific product (Automatic crusher) he/she likes
         ActionUtils.actionsScrollDown();
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         actions.click(wishListPage.clickOnAutomaticCrusher).build().perform();
-        WaitUtils.waitForPageToLoad(2);
+        WaitUtils.waitForPageToLoad(5);
 
 //      User must click on the wishlist icon(heart icon under add to cart button)
         actions.click(wishListPage.clickOnHeart).build().perform();

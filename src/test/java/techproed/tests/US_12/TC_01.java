@@ -8,16 +8,13 @@ import org.testng.annotations.Test;
 import techproed.pages.Bill_ShipAddressPage;
 import techproed.pages.HomePage;
 import techproed.pages.DashboardPage;
-import techproed.utilities.ActionUtils;
-import techproed.utilities.ConfigReader;
-import techproed.utilities.Driver;
-import techproed.utilities.WaitUtils;
+import techproed.utilities.*;
 
 public class TC_01 {
 
-    HomePage homePage = new HomePage();
-    DashboardPage dashboardPage = new DashboardPage();
-    Bill_ShipAddressPage billShipAddressPage = new Bill_ShipAddressPage();
+//    HomePage homePage = new HomePage();
+//    DashboardPage dashboardPage = new DashboardPage();
+//    Bill_ShipAddressPage billShipAddressPage = new Bill_ShipAddressPage();
 
     @BeforeTest
     public void setUp() {
@@ -25,18 +22,23 @@ public class TC_01 {
         WaitUtils.waitForPageToLoad(20);
     }
 
-    @AfterTest
-    public void tearDown() {
-        Driver.closeDriver();
-    }
+//    @AfterTest
+//    public void tearDown() {
+//        Driver.closeDriver();
+//    }
 
     @Test
     public void vendorAddBillingAddressTest() {
+        HomePage homePage = new HomePage();
+        DashboardPage dashboardPage = new DashboardPage();
+        Bill_ShipAddressPage billShipAddressPage = new Bill_ShipAddressPage();
         // Perform login actions
-        homePage.singIn1.click();
+        WaitUtils.waitFor(5);
+        JSUtils.JSclickWithTimeout(homePage.singIn1);
+        WaitUtils.waitFor(5);
         homePage.username.sendKeys(ConfigReader.getProperty("US11username"));
         homePage.password.sendKeys(ConfigReader.getProperty("US11password"));
-        homePage.signInButton.click();
+        JSUtils.JSclickWithTimeout(homePage.signInButton);
 
         WaitUtils.waitForVisibility(homePage.MyAccountOnFooter, 20);
         ActionUtils.actionsScrollDown();
@@ -45,9 +47,9 @@ public class TC_01 {
         executor.executeScript("arguments[0].click();", homePage.MyAccountOnFooter);
 
         // Navigate to the Address page and click edit billing address
-        dashboardPage.addresses.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.addresses);
         WaitUtils.waitForVisibility(dashboardPage.editBillingAddress, 20);
-        dashboardPage.editBillingAddress.click();
+        JSUtils.JSclickWithTimeout(dashboardPage.editBillingAddress);
 
         // Assert that the billing address is already filled
         Assert.assertTrue(billShipAddressPage.billFirstName.getAttribute("value").equals(ConfigReader.getProperty("US12firstname")),
@@ -60,6 +62,6 @@ public class TC_01 {
                 "Email address does not match.");
         System.out.println("Success!!! US_12 TC_01");
 
-
+        Driver.closeDriver();
     }
 }

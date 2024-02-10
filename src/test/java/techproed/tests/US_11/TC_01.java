@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import techproed.pages.HomePage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
+import techproed.utilities.JSUtils;
 import techproed.utilities.WaitUtils;
 
 public class TC_01 {
@@ -62,7 +63,7 @@ public class TC_01 {
 //        WebElement signInButton = Driver.getDriver().findElement(By.xpath("//button[@name='login']"));
 //        signInButton.click();
         HomePage homePage = PageFactory.initElements(Driver.getDriver(), HomePage.class);
-        homePage.signInButton.click();
+        JSUtils.JSclickWithTimeout(homePage.signInButton);
     }
 
     private void assertMyAccountDisplayed() {

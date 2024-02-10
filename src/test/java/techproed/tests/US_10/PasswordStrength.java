@@ -23,7 +23,11 @@ public class PasswordStrength {
         HomePage homePage=new HomePage();
 //    User goes to https://www.allovercommerce.com
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
+        WaitUtils.waitFor(5);
 //    User clicks on the "Register" button in the upper right corner
+        Driver.getDriver().findElement(By.xpath("//a[@class='register inline-type']")).click();
+        WaitUtils.waitFor(5);
+        Driver.getDriver().findElement(By.xpath("//div[@class='wcfmmp_become_vendor_link']")).click();
        homePage.register.click();
 //    User clicks on the ""Become a Vendor"" button on the opened pop up window
         homePage.becomeVendor.click();
@@ -41,6 +45,12 @@ public class PasswordStrength {
         String expectedText1="Too short";
         Assert.assertEquals(actualtext1,expectedText1);
 //        MediaUtils.takeScreenshotOfTheEntirePage();
+
+
+        WaitUtils.waitFor(5);
+
+
+        Driver.getDriver().findElement(By.xpath("//input[@id='passoword']")).sendKeys("Abc");
 
 
 //        User types "Abcdef" to the password part and see "Weak" message under password box
