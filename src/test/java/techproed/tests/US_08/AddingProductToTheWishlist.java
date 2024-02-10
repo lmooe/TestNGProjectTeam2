@@ -27,7 +27,6 @@ public class AddingProductToTheWishlist {
 
         Thread.sleep(6000);
         Driver.getDriver().get(ConfigReader.getProperty("allovercom_url"));
-
 //      User must click on the specific product (Automatic crusher) he/she likes
         ActionUtils.actionsScrollDown();
         Thread.sleep(5000);
